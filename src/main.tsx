@@ -1,10 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
+import './index.css'
+import { ThemeProvider, createTheme } from '@mui/material'
+import { grey, blue } from '@mui/material/colors'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+const darkTheme = createTheme({
+  palette: {
+    primary: {
+      main: grey[800], // Set your primary color here
+    },
+    secondary: {
+      main: blue[500], // Set your secondary color here
+    },
+  },
+})
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <ThemeProvider theme={darkTheme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
 )
