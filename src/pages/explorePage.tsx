@@ -5,6 +5,7 @@ import { Bag } from '../types'
 
 const ContentWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   padding: 10px;
