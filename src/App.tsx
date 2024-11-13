@@ -11,7 +11,14 @@ const ContentWrapper = styled.div`
 
 function App() {
   const [showNotification, setShowNotification] = useState(true)
-  return <></>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<>home</>} />
+        <Route path="about" element={<>about page</>} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
