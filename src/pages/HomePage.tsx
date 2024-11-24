@@ -1,5 +1,6 @@
 import { memo } from 'react'
-import { Article, HeroSection, PageContainer } from '../components'
+import { Article, HeroSection, PageContainer, Cards } from '../components'
+import { bags } from '../dumpData'
 
 const HomePageRaw = () => {
   return (
@@ -18,7 +19,7 @@ const HomePageRaw = () => {
           flipped
         />
       </section>
-      <randomBags />
+      <Cards bags={bags.slice(0, 2)} />
     </PageContainer>
   )
 }
