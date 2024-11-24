@@ -4,6 +4,11 @@ import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
 
 const BurgerWrapper = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 1;
+
   width: 30px;
   height: 30px;
   display: flex;
@@ -22,7 +27,7 @@ const Line = styled.div`
 const Menu = styled.div<{ open: boolean }>`
   display: ${({ open }) => (open ? 'block' : 'none')};
   position: absolute;
-  top: 70px;
+  top: 0px;
   right: 0;
   width: 100%;
   background-color: #333;
@@ -55,6 +60,11 @@ export const NavigationMenuRaw = () => {
         <Line />
       </BurgerWrapper>
       <Menu open={open}>
+        <BurgerWrapper onClick={() => setOpen(!open)}>
+          <Line />
+          <Line />
+          <Line />
+        </BurgerWrapper>
         {menuItems.map((item, _idx) => (
           <MenuItem
             key={item.label + '_' + _idx}
