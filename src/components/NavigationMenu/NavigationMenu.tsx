@@ -1,4 +1,4 @@
-import { memo, useState } from 'react'
+import React from 'react'
 
 import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
@@ -49,7 +49,7 @@ const menuItems = [
   { label: 'Contact', path: 'contact' },
 ]
 export const NavigationMenuRaw = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = React.useState(false)
   const navigate = useNavigate()
 
   return (
@@ -81,4 +81,4 @@ export const NavigationMenuRaw = () => {
   )
 }
 
-export const NavigationMenu = memo(NavigationMenuRaw)
+export const NavigationMenu = React.memo(NavigationMenuRaw)

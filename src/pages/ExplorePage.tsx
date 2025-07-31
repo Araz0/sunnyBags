@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import React from 'react'
 import { Cards, PageContainer } from '../components'
 import { bags } from '../dumpData'
 
@@ -10,4 +10,4 @@ const ExplorePageRaw = () => {
   )
 }
 
-export const ExplorePage = memo(ExplorePageRaw)
+export const ExplorePage = React.memo(ExplorePageRaw)

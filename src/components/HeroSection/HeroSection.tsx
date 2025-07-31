@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { memo } from 'react'
+import React from 'react'
 
 const StyledHeroSection = styled.section<{ imgSrc: string }>`
   background-image: url(${({ imgSrc }) => imgSrc});
@@ -30,4 +30,4 @@ export const HeroSectionRaw = ({ src }: HeroSectionProps) => {
   )
 }
 
-export const HeroSection = memo(HeroSectionRaw)
+export const HeroSection = React.memo(HeroSectionRaw)

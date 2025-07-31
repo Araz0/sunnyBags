@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { memo } from 'react'
+import React from 'react'
 import { Bag } from '../../types'
 import { Card } from '../Card/'
 
@@ -30,4 +30,4 @@ const CardsRaw = ({ bags }: CardsProps) => {
   )
 }
 
-export const Cards = memo(CardsRaw)
+export const Cards = React.memo(CardsRaw)

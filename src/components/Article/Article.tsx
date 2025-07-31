@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { memo } from 'react'
+import React from 'react'
 
 const StyledArticle = styled.article<{ flipped: boolean }>`
   display: flex;
@@ -46,4 +46,4 @@ export const ArticleRaw = ({
   )
 }
 
-export const Article = memo(ArticleRaw)
+export const Article = React.memo(ArticleRaw)

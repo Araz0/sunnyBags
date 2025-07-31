@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import React from 'react'
 import { Article, HeroSection, PageContainer, Cards } from '../components'
 import { bags } from '../dumpData'
 
@@ -24,4 +24,4 @@ const HomePageRaw = () => {
   )
 }
 
-export const HomePage = memo(HomePageRaw)
+export const HomePage = React.memo(HomePageRaw)

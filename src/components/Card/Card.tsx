@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { memo } from 'react'
+import React from 'react'
 
 const size = 200
 const CardContainer = styled.div`
@@ -61,4 +61,4 @@ const CardRaw = ({ thumbnail, name, discount, price, category }: CardProps) => {
   )
 }
 
-export const Card = memo(CardRaw)
+export const Card = React.memo(CardRaw)
