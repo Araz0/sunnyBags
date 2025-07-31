@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import React from 'react'
 import { NavigationMenu } from '../NavigationMenu'
 
 export type PageContainerProps = {
@@ -13,4 +13,4 @@ export const PageContainerRaw = ({ children }: PageContainerProps) => {
   )
 }
 
-export const PageContainer = memo(PageContainerRaw)
+export const PageContainer = React.memo(PageContainerRaw)
