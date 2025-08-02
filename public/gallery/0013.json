@@ -1,0 +1,40 @@
+[
+  {
+    "ID": 1,
+    "category_id": 13,
+    "Description": "Vibrant hand-sewn crossbody tote featuring bold blue, red, white, and yellow striped patterns—perfect for day trips or everyday errands. The lightweight design and adjustable black strap make it a fun, eco-friendly accessory for all ages.",
+    "Fabric": "Upcycled handwoven cotton blend with sturdy black nylon webbing strap",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+  "ID": 2,
+  "category_id": 13,
+  "Description": "Handcrafted crossbody bag showcasing a bold chevron zigzag pattern in vivid rainbow hues on a deep navy base. Features a sleek black adjustable strap and subtle metal emblem detail—perfect for adding a pop of color to any outfit, day or night.",
+  "Fabric": "Upcycled wool-blend textile with sturdy black nylon webbing strap and metal accent",
+  "Price": 0,
+  "DiscountPercentage": 0,
+  "BackgroundColor": "lightgray"
+}
+,
+  {
+  "ID": 3,
+  "category_id": 13,
+  "Description": "Artisan shoulder bag with vivid blue, red and white handwoven stripes, finished with a charming wooden button loop closure. The adjustable black nylon strap makes it a versatile, eco-friendly companion for market runs or weekend strolls.",
+  "Fabric": "Upcycled handwoven cotton with sturdy black nylon webbing strap and natural wood button",
+  "Price": 0,
+  "DiscountPercentage": 0,
+  "BackgroundColor": "lightgray"
+},
+  {
+  "ID": 4,
+  "category_id": 13,
+  "Description": "Chic handmade shoulder bag adorned with vibrant red floral motifs on a deep black background. Features a tasteful V-shaped navy trim and classic black button closure—ideal for both casual outings and dressier occasions.",
+  "Fabric": "Upcycled cotton print with durable black nylon strap and button detail",
+  "Price": 0,
+  "DiscountPercentage": 0,
+  "BackgroundColor": "lightgray"
+}
+
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "ID": 5,
+    "category_id": 12,
+    "Description": "Chic forest green tote with a metallic silver band and lavender jacquard stripe at the base, accented by a peek of black-and-white plaid at the scalloped neckline. Perfect for market runs or daily essentials.",
+    "Fabric": "Upcycled cotton canvas with metallic ribbon and plaid cotton lining",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 6,
+    "category_id": 12,
+    "Description": "Minimalist cream and natural beige striped shoulder bag in a soft linen-cotton blend. Features a gentle V-neck opening and matching straps for a laid-back, versatile everyday carry.",
+    "Fabric": "Upcycled linen-cotton blend",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 7,
+    "category_id": 12,
+    "Description": "Playful teal tote showcasing scattered paisley patchwork in jewel-tone blues and greens. The curved top and matching straps make it a fun, artful companion for casual outings.",
+    "Fabric": "Upcycled linen with cotton paisley fabric patches",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 8,
+    "category_id": 12,
+    "Description": "Vibrant sky-blue shoulder bag crafted from repurposed sari fabric, featuring subtle stitched stripes and a chevron neckline trimmed in delicate white floral print. Lightweight and eye-catching.",
+    "Fabric": "Upcycled cotton sari fabric with stitched detailing",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 9,
+    "category_id": 12,
+    "Description": "Whimsical watercolor cat-print tote adorned with colorful feline faces and daisies on a soft pastel backdrop. Sweet V-neck opening and matching handles—ideal for cat lovers young and old.",
+    "Fabric": "Hand-painted cotton canvas",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 10,
+    "category_id": 12,
+    "Description": "Vibrant red shoulder tote with a scalloped V-neck trimmed in black geometric print. A decorative gold-and-olive floral jacquard band wraps around the base for a playful pop of pattern—great for errands or evening outings.",
+    "Fabric": "Upcycled red cotton canvas with jacquard ribbon and printed cotton trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 11,
+    "category_id": 12,
+    "Description": "Rich plum-colored artisan tote featuring a zigzag neckline edged in black-and-white geometric fabric. The bottom is patched with strips of colorful prints—orange florals, stripes, and abstract motifs—making each bag uniquely eye-catching.",
+    "Fabric": "Upcycled plum cotton-linen blend with assorted printed fabric scraps",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  }
+]

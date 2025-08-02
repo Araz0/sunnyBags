@@ -1,0 +1,83 @@
+[
+  {
+    "id": 136,
+    "description": "Black woven pouch densely covered with bright linear multicolor looped embroidery in abstract geometric motifs, finished with small tassel knots at the corners, and suspended from a thick braided strap of burgundy, olive, and cream yarns.",
+    "fabric": "wool",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 1,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 137,
+    "description": "Soft red woolen jacquard pouch with contrasting black geometric tartan-inspired panel at the top, hanging from a braided burgundy, white, and amber strap.",
+    "fabric": "wool",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 1,
+    "backgroundColor": "darkred"
+  },
+  {
+    "id": 138,
+    "description": "Black cotton pouch embroidered with diagonal rows of variegated loop stitches in pink, orange, beige, and purple over a wavy zigzag band, topped with a compact braided orange and ivory strap and tassel ties.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 1,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 139,
+    "description": "Black cotton pouch featuring horizontal bands of multicolor loop embroidery and rhythmic wavy stitching, accented with abstract floral motifs, and suspended from a braided burgundy-cream strap.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 1,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 140,
+    "description": "Black cotton pouch embroidered with rows of stylized leaf-like loops in shades of orange, pink, purple, and cream, separated by zigzag bands, with a braided burgundy and ivory strap and tassel knots.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 1,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 141,
+    "description": "Black cotton pouch embroidered with rows of stylized looped floral motifs in cream, red, and pink on a black ground, set between a purple stitched top border and a wavy cream zigzag band, hanging from a burgundy-and-cream braided strap with tassel ties.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 2,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 142,
+    "description": "Black cotton pouch featuring a top band of multicolor diagonal loop stitches in orange, pink, purple, and cream, separated from a cream zigzag band and a lower section of abstract swirl-and-leaf embroidery, suspended from a braided neutral-tone strap.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 2,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 143,
+    "description": "Black cotton pouch with three horizontal panels—tulip-shaped loop motifs in yellow, cream, and pink; a wavy cream zigzag band; and a bottom panel of floral-and-spiral embroidery in cream, purple, and orange—hanging from a burgundy-and-cream braided strap.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 2,
+    "backgroundColor": "black"
+  },
+  {
+    "id": 144,
+    "description": "Black cotton pouch embroidered with a top stripe of curving multicolor loops in pink, orange, and cream, a central wavy cream zigzag, and a bottom section of abstract floral-and-spiral motifs, finished with a braided burgundy-and-white strap and small tassels.",
+    "fabric": "cotton",
+    "price": 0,
+    "discount": 0,
+    "categoryId": 2,
+    "backgroundColor": "black"
+  }
+]

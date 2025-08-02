@@ -1,0 +1,308 @@
+[
+  {
+    "ID": 47,
+    "category_id": 10,
+    "Description": "Bohemian-chic tote in vibrant purple printed cotton, featuring a playful cat-and-floral motif and contrasting orange-and-blue tropical print straps.",
+    "Fabric": "Printed cotton",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "purple"
+  },
+  {
+    "ID": 48,
+    "category_id": 10,
+    "Description": "Festive gray canvas tote accented with two horizontal bands of poinsettia-and-snowflake ribbon for a subtle holiday flourish.",
+    "Fabric": "Cotton canvas with embroidered ribbon trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "gray"
+  },
+  {
+    "ID": 49,
+    "category_id": 10,
+    "Description": "Sunny red canvas tote with a bold mustard-and-olive striped hem, adding a warm, graphic contrast to a classic silhouette.",
+    "Fabric": "Cotton canvas with woven stripe trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "red"
+  },
+  {
+    "ID": 50,
+    "category_id": 10,
+    "Description": "Artisanal woven tote in a neutral tweed-like fabric, highlighted by a peek of plaid lining at the neckline for a touch of tailored refinement.",
+    "Fabric": "Textured woven blend with plaid interior detail",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 51,
+    "category_id": 10,
+    "Description": "Vibrant botanical tote in richly colored printed cotton, showcasing oversized floral and bird imagery in electric blue, orange, and red tones with matching printed straps.",
+    "Fabric": "Printed cotton",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "lightgray"
+  },
+  {
+    "ID": 52,
+    "category_id": 10,
+    "Description": "Bohemian-chic tote in vibrant purple printed cotton, featuring a whimsical jungle-cat and floral motif at the base, finished with contrasting indigo wave-striped straps.",
+    "Fabric": "Printed cotton",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "purple"
+  },
+  {
+    "ID": 53,
+    "category_id": 10,
+    "Description": "Sunny red canvas tote with a bold mustard, olive, and burgundy striped hem, adding a warm, graphic flourish to its classic silhouette.",
+    "Fabric": "Cotton canvas with woven stripe trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "red"
+  },
+  {
+    "ID": 54,
+    "category_id": 10,
+    "Description": "Midnight black canvas tote scattered with playful embroidered birds, butterflies, and blossoms in jewel-tone threads, with a hint of gingham lining at the neckline.",
+    "Fabric": "Cotton canvas with multicolor embroidery",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "black"
+  },
+  {
+    "ID": 55,
+    "category_id": 10,
+    "Description": "Casual mixed-media tote combining a blue-green plaid linen upper panel with a sturdy indigo denim base for a smart, everyday carryall.",
+    "Fabric": "Linen blend with denim bottom",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 56,
+    "category_id": 10,
+    "Description": "Luminous golden-orange silk-blend tote adorned with artful patchwork of tonal floral-print squares for an elegant, handcrafted look.",
+    "Fabric": "Silk blend with printed appliqués",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "orange"
+  },
+  {
+    "ID": 57,
+    "category_id": 10,
+    "Description": "Forest-green linen tote accented with a handwoven ikat-style stripe panel in chartreuse, aqua, and yellow, punctuated by red diamond motifs.",
+    "Fabric": "Linen with ikat-style panel",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 58,
+    "category_id": 10,
+    "Description": "Two-tone tote combining raw denim on top with vibrant cobalt-blue linen below, separated by a narrow tribal-inspired jacquard ribbon trim.",
+    "Fabric": "Denim and linen with jacquard trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 59,
+    "category_id": 10,
+    "Description": "Slate-gray canvas tote embroidered with double rows of red and white floral motifs on a black band, evoking a heritage folk aesthetic.",
+    "Fabric": "Canvas with embroidered trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "gray"
+  },
+  {
+    "ID": 60,
+    "category_id": 10,
+    "Description": "Charcoal-grey canvas shoulder bag featuring forest-green and mustard botanical-print stripes at the hem, accented by stitched ric-rac edges.",
+    "Fabric": "Canvas with printed ribbon trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "gray"
+  },
+  {
+    "ID": 61,
+    "category_id": 10,
+    "Description": "Quilted navy cotton tote detailed with a bold southwestern geometric jacquard band in teal, ivory, and black for textured interest.",
+    "Fabric": "Quilted cotton with jacquard ribbon",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 62,
+    "category_id": 10,
+    "Description": "Olive-green canvas tote with contrasting striped cotton-webbing straps in varying shades of green for a tonal, outdoorsy look.",
+    "Fabric": "Canvas with striped cotton-webbing straps",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 63,
+    "category_id": 10,
+    "Description": "Tri-tone canvas shopper featuring natural undyed cotton top and bottom panels framing a bold cobalt center, detailed with an upcycled denim pocket.",
+    "Fabric": "Cotton canvas with denim pocket",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 64,
+    "category_id": 10,
+    "Description": "Chambray denim tote accented with a diagonal dark-wash denim sash and a repurposed jeans back-pocket for a modern patchwork aesthetic.",
+    "Fabric": "Chambray and dark denim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 65,
+    "category_id": 10,
+    "Description": "Sky-blue cotton tote trimmed at the hem with a multicolored rainbow stitch band, adding a playful pop of pastel embroidery.",
+    "Fabric": "Cotton with embroidered trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 66,
+    "category_id": 10,
+    "Description": "Olive-linen shoulder bag detailed with two horizontal woven ribbon bands in mint and emerald hues, echoing the stripe-patterned strap lining.",
+    "Fabric": "Linen blend with woven ribbons",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 67,
+    "category_id": 10,
+    "Description": "Deep teal cotton tote accented with a handwoven ikat border in chartreuse, lemon, and ivory hues highlighted by subtle red medallion motifs.",
+    "Fabric": "Cotton with handwoven ikat trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 68,
+    "category_id": 10,
+    "Description": "Lagoon-teal cotton shopper featuring an ikat-inspired weave band in mint, gold, and sky stripes for a boho-chic accent.",
+    "Fabric": "Cotton with ikat-patterned trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 69,
+    "category_id": 10,
+    "Description": "Pistachio-green cotton sling bag in a clean, single-panel silhouette for a fresh, minimalist look.",
+    "Fabric": "Cotton canvas",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 70,
+    "category_id": 10,
+    "Description": "Soft mint cotton tote in a seamless design, offering a pastel-toned, everyday carry essential.",
+    "Fabric": "Cotton canvas",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 71,
+    "category_id": 10,
+    "Description": "Apple-green cotton shoulder bag trimmed at the hem with vibrant Madras plaid checks in citrus orange, lemon yellow, and teal.",
+    "Fabric": "Cotton canvas with plaid trim",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 72,
+    "category_id": 10,
+    "Description": "Periwinkle satin tote printed with bold brown abstract swirls and accented by hand-stitched black cord embroidery for a sculptural, modern look.",
+    "Fabric": "Satin with corded embroidery",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 73,
+    "category_id": 10,
+    "Description": "Natural linen shoulder bag trimmed along the hem with a wide tan canvas stripe and a narrow black-and-white floral jacquard ribbon for a subtle heritage touch.",
+    "Fabric": "Linen with jacquard ribbon",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "beige"
+  },
+  {
+    "ID": 74,
+    "category_id": 10,
+    "Description": "Creamy linen tote with a tailored bottom band of multicolor ticking stripes above a warm tan canvas panel for a softly tailored accent.",
+    "Fabric": "Linen and canvas ticking",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "beige"
+  },
+  {
+    "ID": 75,
+    "category_id": 10,
+    "Description": "Charcoal linen shopper featuring a trio of decorative trims at the hem: red floral grosgrain, dark green cord, and a multicolor jacquard ribbon for layered texture.",
+    "Fabric": "Linen with mixed ribbon trims",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "gray"
+  },
+  {
+    "ID": 76,
+    "category_id": 10,
+    "Description": "Taupe cotton canvas tote with a bottom panel in floral tapestry jacquard showcasing muted blooms on a woven grid background.",
+    "Fabric": "Cotton canvas with tapestry jacquard",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "beige"
+  },
+  {
+    "ID": 77,
+    "category_id": 10,
+    "Description": "Taupe herringbone tote featuring alternating stripes of cream, white, and pale blue in a classic herringbone weave, highlighted by dark green zigzag stitch accents for a handcrafted feel.",
+    "Fabric": "Herringbone weave with decorative stitching",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "beige"
+  },
+  {
+    "ID": 78,
+    "category_id": 10,
+    "Description": "Indigo cotton canvas bag printed with tonal diamond microdots and geometric fade, trimmed at the hem and straps with multicolor pinstriped cotton for a vibrant contrast.",
+    "Fabric": "Printed cotton canvas",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "blue"
+  },
+  {
+    "ID": 79,
+    "category_id": 10,
+    "Description": "Two-tone canvas shopper in navy and soft mint, featuring a repurposed denim pocket appliqué with white topstitching for practical flair.",
+    "Fabric": "Canvas with denim patch",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "green"
+  },
+  {
+    "ID": 80,
+    "category_id": 10,
+    "Description": "Blush pink cotton tote printed with painterly feather and leaf motifs in fuchsia, teal, and brown, finished with a matching decorative fringe trim at the waist for artisanal flair.",
+    "Fabric": "Printed cotton",
+    "Price": 0,
+    "DiscountPercentage": 0,
+    "BackgroundColor": "pink"
+  }
+]
