@@ -14,6 +14,8 @@ const StyledHeroSection = styled.section<{ imgSrc: string }>`
   align-items: center;
   text-align: center;
 
+  margin-bottom: 20px;
+
   h1 {
     color: white;
     font-size: 1.5rem;

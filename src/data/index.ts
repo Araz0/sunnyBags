@@ -12,6 +12,7 @@ import data0010 from '../data/0010.json';
 import data0011 from '../data/0011.json';
 import data0012 from '../data/0012.json';
 import data0013 from '../data/0013.json';
+import categories from '../data/categories.json';
 
 const allData = [
   ...data0000,
@@ -30,24 +31,19 @@ const allData = [
   ...data0013
 ];
 
-
-export {
-    data0000,
-    data0001,
-    data0002,
-    data0003,
-    data0004,
-    data0005,
-    data0006,
-    data0007,
-    data0008,
-    data0009,
-    data0010,
-    data0011,
-    data0012,
-    data0013,
-    allData
-};
-
-
-
+export { data0000 }
+export { data0001 }
+export { data0002 }
+export { data0003 }
+export { data0004 }
+export { data0005 }
+export { data0006 }
+export { data0007 }
+export { data0008 }
+export { data0009 }
+export { data0010 }
+export { data0011 }
+export { data0012 }
+export { data0013 }
+export { categories }
+export { allData }

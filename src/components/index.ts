@@ -1,4 +1,5 @@
 export * from './Cards'
+export * from './CategoryCard'
 export * from './PageContainer'
 export * from './HeroSection'
 export * from './Article'

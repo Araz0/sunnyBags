@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 
-const size = 200
+const size = 175
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,16 +22,15 @@ const StyledContentWrapper = styled.div`
 const StyledTagsContainer = styled.div`
   display: flex;
   gap: 5px;
-
-  & > :first-child {
-    margin-right: auto;
-  }
 `
-const StyledTag = styled.span`
+const StyledTag = styled.span<{bgcolor?: string, color?: string}>`
   border-radius: 2px;
   background-color: lightgray;
   padding-inline: 5px;
   font-size: 12px;
+
+  ${({ bgcolor }) => bgcolor && `background-color: ${bgcolor};`}
+  ${({ color }) => color && `color: ${color};`}
 `
 const StyledName = styled.span`
   display: block;
@@ -52,7 +51,7 @@ const CardRaw = ({ thumbnail, name, discount, price, category }: CardProps) => {
       <StyledContentWrapper>
         <StyledTagsContainer>
           <StyledTag>{price - price * (discount / 100)}€</StyledTag>
-          {/* <StyledTag>{discount}%</StyledTag> */}
+          <StyledTag bgcolor='#cc0e26' color='#ffcccc'>{discount}%</StyledTag>
           <StyledTag>{category}</StyledTag>
         </StyledTagsContainer>
         <StyledName>{name}</StyledName>
