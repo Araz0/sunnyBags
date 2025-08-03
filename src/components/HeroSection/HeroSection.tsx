@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const StyledHeroSection = styled.section<{ imgSrc: string }>`
   background-image: url(${({ imgSrc }) => imgSrc});
@@ -38,10 +39,15 @@ type HeroSectionProps = {
   src: string
 }
 export const HeroSectionRaw = ({ src }: HeroSectionProps) => {
+  const navigate = useNavigate()
+
+  const handleExploreClick = () => {
+    navigate('/explore')
+  }
   return (
     <StyledHeroSection imgSrc={src}>
       <h1>Hand Made Bags</h1>
-      <button>Explore all</button>
+      <button onClick={handleExploreClick}>Explore all</button>
     </StyledHeroSection>
   )
 }
