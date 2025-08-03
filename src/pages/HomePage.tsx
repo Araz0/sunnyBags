@@ -1,10 +1,8 @@
 import React from 'react'
 import { CategoryCard, HeroSection, PageContainer } from '../components'
-import { getFeaturedEach } from '../utils/getFeaturedEach'
 import styled from '@emotion/styled'
 import { categories } from '../data'
 
-const featuredItems = getFeaturedEach();
 
 const StyledIntroText = styled.p`
   text-align: center;
