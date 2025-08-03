@@ -19,11 +19,11 @@ const CardsRaw = ({ bags }: CardsProps) => {
       {bags.map((bag) => (
         <Card
           key={bag.id}
-          thumbnail={bag.frontPhoto}
+          thumbnail={`/gallery/thumbnails/${bag.category_id.toString().padStart(4, '0')}/${bag.id}A.png`}
           price={bag.price}
-          discount={bag.discountPercent}
-          name={bag.name}
-          category={bag.category}
+          discount={bag.discount}
+          name={bag.id.toString().padStart(4, '0')}
+          category={bag.category_id.toString().padStart(4, '0')}
         />
       ))}
     </ContentWrapper>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Cards, PageContainer } from '../components'
-import { bags } from '../dumpData'
+import { allData } from "../data";
 
 const ExplorePageRaw = () => {
   return (
     <PageContainer>
-      <Cards bags={bags} />
+      <Cards bags={allData} />
     </PageContainer>
   )
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 88,
+    "category_id": 7,
+    "description": "Tall rectangular crossbody bag in mustard yellow and olive-green vertical stripes with narrow crimson-red side panels and a matching striped shoulder strap.",
+    "fabric": "Handwoven cotton blend",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "yellow"
+  },
+  {
+    "id": 89,
+    "category_id": 7,
+    "description": "Slim shoulder pouch featuring alternating coral-red and rust-red vertical bands printed with gold medallion motifs, finished with a coordinating patterned strap.",
+    "fabric": "Printed cotton",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "red"
+  }
+]

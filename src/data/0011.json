@@ -1,0 +1,308 @@
+[
+  {
+    "id": 13,
+    "category_id": 11,
+    "description": "Casual mid-blue denim tote with classic back-pocket accent and contrasting top stitch—perfect for everyday wear and extra storage.",
+    "fabric": "Upcycled medium-wash denim with original jean pocket",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 14,
+    "category_id": 11,
+    "description": "Artisan patchwork denim bag combining light and dark jean panels in a bold triangular layout, accented by original belt loops for a unique statement piece.",
+    "fabric": "Mixed reclaimed denim scraps",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 15,
+    "category_id": 11,
+    "description": "Chic dark indigo tote transformed from jeans—features a functional front fly and rivet details for authentic denim flair.",
+    "fabric": "Recycled dark indigo denim with rivet & fly hardware",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 16,
+    "category_id": 11,
+    "description": "Vibrant light-wash denim bag accented with horizontal seam detail and a buttoned belt-loop pocket—adds playful texture to any outfit.",
+    "fabric": "Upcycled light-wash denim with button & belt-loop trim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 17,
+    "category_id": 11,
+    "description": "Edgy dark-wash denim shoulder bag repurposed from jeans—features a deep U-neckline and subtle horizontal seam detailing for a sleek, minimalist look.",
+    "fabric": "Recycled dark denim jeans",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 18,
+    "category_id": 11,
+    "description": "Artisan indigo jacquard tote accented with a horizontal reclaimed denim stripe and an original jean pocket—combines bold texture with functional detail.",
+    "fabric": "Indigo jacquard fabric with recycled denim trim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 19,
+    "category_id": 11,
+    "description": "Chic denim tote featuring a lace-trimmed pocket detail alongside authentic jean rivets—adds a touch of femininity to sturdy upcycled denim.",
+    "fabric": "Upcycled blue denim with lace and hardware",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 20,
+    "category_id": 11,
+    "description": "Monochrome navy bag in tonal circle-print jacquard with clean lines and seamless body for a versatile, modern accessory.",
+    "fabric": "Navy printed jacquard",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 21,
+    "category_id": 11,
+    "description": "Denim shoulder bag featuring a horizontal waistband stripe with dual decorative buttons and belt-loop accents for authentic jean styling.",
+    "fabric": "Reclaimed denim with jean hardware",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 22,
+    "category_id": 11,
+    "description": "Upcycled patchwork denim tote with contrasting leather piping and original back-pocket detail—an artful blend of textures and trims.",
+    "fabric": "Mixed reclaimed denim with leather accents",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 23,
+    "category_id": 12,
+    "description": "Minimalist dark-indigo tote repurposed from raw denim jeans, featuring a clean center-seam front and simple scoop neck for a sleek, pared-down look.",
+    "fabric": "Recycled dark-wash denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 24,
+    "category_id": 12,
+    "description": "Light-wash gradient denim tote with angular front pocket and belt-loop trim detail—combines soft, faded tones with structured jean accents.",
+    "fabric": "Upcycled light-wash denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 25,
+    "category_id": 12,
+    "description": "Mid-wash denim shoulder bag accented by a horizontal jean waistband and three small patch pocket appliqués—an edgy take on classic denim details.",
+    "fabric": "Reclaimed mid-wash jeans",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 26,
+    "category_id": 12,
+    "description": "Structured blue-denim tote featuring overlapping pocket panels and contrasting topstitch lines for a modern, geometric aesthetic.",
+    "fabric": "Mixed denim panels",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 27,
+    "category_id": 12,
+    "description": "Deep-wash denim bag with dual front pockets and tonal denim belt-loop detail at the waist seam—an authentic, utilitarian design.",
+    "fabric": "Recycled dark-blue denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 28,
+    "category_id": 12,
+    "description": "Dark-indigo tote featuring a bold chevron yoke seam across the front and natural whisker fades—an angular, graphic twist on classic denim styling.",
+    "fabric": "Reclaimed dark-wash denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 29,
+    "category_id": 12,
+    "description": "Mid-wash denim bag with dual front pockets and vibrant green-and-orange trim on the larger pocket for a playful pop of color and practical storage.",
+    "fabric": "Upcycled mid-wash jeans with recycled fabric trim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 30,
+    "category_id": 12,
+    "description": "Structured navy tote accented by a horizontal belt-loop detail at the waist seam and a single offset front pocket—clean lines meet utility.",
+    "fabric": "Recycled dark-blue denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 31,
+    "category_id": 12,
+    "description": "Textured dark-denim tote stitched in horizontal panels with mini belt-loop accents for a subtle, layered look that celebrates jean craftsmanship.",
+    "fabric": "Mixed reclaimed jean panels",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 32,
+    "category_id": 12,
+    "description": "Light-and-medium-wash patchwork tote showcasing a branded jean pocket and belt-loop band—an artful collage of repurposed denim elements.",
+    "fabric": "Upcycled light- and mid-wash jeans",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 33,
+    "category_id": 12,
+    "description": "Mid-wash denim tote with a pair of signature jean back pockets on the front, each highlighted by a bold yellow welt stitch for a graphic, utilitarian look.",
+    "fabric": "Upcycled mid-wash jeans",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 34,
+    "category_id": 12,
+    "description": "Dark-blue tote showcasing a bleached mid-belt panel embroidered with an ornate tribal swirl motif and stud accents—an edgy fusion of street style and denim reuse.",
+    "fabric": "Reclaimed dark denim with bleach-washed panel",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 35,
+    "category_id": 12,
+    "description": "Simplified two-tone tote featuring a contrast between a lighter top panel and deeper indigo lower body, separated by a clean horizontal seam for understated, modern appeal.",
+    "fabric": "Upcycled light- and dark-wash denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 36,
+    "category_id": 12,
+    "description": "Vintage-washed denim bag detailed with a belt-loop waist band trimmed in colorful embroidered ribbon, paired with an offset patch pocket for playful utility.",
+    "fabric": "Reclaimed jeans with decorative trim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 37,
+    "category_id": 12,
+    "description": "Graphic patchwork tote stitched from angular jean panels, featuring diagonal pocket placements and exposed seam piping for a dynamic, upcycled art piece.",
+    "fabric": "Mixed reclaimed denim panels",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 38,
+    "category_id": 12,
+    "description": "Minimalist deep-indigo tote with subtle whisker fades and a center front seam for a clean, modern silhouette.",
+    "fabric": "Upcycled dark-wash denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 39,
+    "category_id": 12,
+    "description": "Deconstructed-pocket tote with a repurposed jean waistband and asymmetrical back-pocket detail accented by rivet hardware for utilitarian flair.",
+    "fabric": "Reclaimed dark denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 40,
+    "category_id": 12,
+    "description": "Textured tote featuring a belt-line panel inset with leather piping above a functional back pocket, blending rugged denim and refined detail.",
+    "fabric": "Reclaimed denim with leather trim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 41,
+    "category_id": 12,
+    "description": "Artisan-inspired tote accented by an embroidered jacquard ribbon trim at the waist seam, complete with a roomy patch pocket and gentle wash variations.",
+    "fabric": "Reclaimed denim with decorative ribbon",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 42,
+    "category_id": 12,
+    "description": "Understated tote in uniform dark denim, highlighted by a two-tone strap in contrasting indigo hues and a vertical center seam for minimalist style.",
+    "fabric": "Mixed upcycled denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 43,
+    "category_id": 12,
+    "description": "Faded-wash tote repurposed from light indigo denim, featuring twin button-flap back pockets with loop-stitch embroidery for a playful, vintage-inspired look.",
+    "fabric": "Upcycled light-wash denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 44,
+    "category_id": 12,
+    "description": "Midnight-black denim tote built from a jean waistband and pocket panel, accented by a subtle sequin-trimmed interior binding for a hint of understated glamour.",
+    "fabric": "Reclaimed black denim with sequin trim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 45,
+    "category_id": 12,
+    "description": "Stealth-chic tote in deep black denim, highlighted by a repurposed belt-loop waist panel and exposed silver rivets, with a hidden floral-print lining peek.",
+    "fabric": "Upcycled black denim with patterned lining",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  },
+  {
+    "id": 46,
+    "category_id": 12,
+    "description": "Vibrant appliqué tote in dark indigo denim, showcasing a central green canvas pocket hand-painted with a bold blue-and-lime blossom motif for a cheerful focal point.",
+    "fabric": "Mixed reclaimed denim with canvas appliqué",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "lightgray"
+  }
+]

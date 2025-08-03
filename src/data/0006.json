@@ -1,0 +1,29 @@
+[
+  {
+    "id": 90,
+    "category_id": 6,
+    "description": "Simple bucket-style tote made from light blue denim with a central seam and finished with sturdy khaki webbing handles.",
+    "fabric": "Recycled denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "blue"
+  },
+  {
+    "id": 91,
+    "category_id": 6,
+    "description": "Denim tote featuring vertical orange floral embroidery on the front panel, repurposed jean waistband with button closure at top, and double denim shoulder straps.",
+    "fabric": "Upcycled jeans",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "blue"
+  },
+  {
+    "id": 92,
+    "category_id": 6,
+    "description": "Structured denim tote crafted from reclaimed jean legs, showcasing an authentic back-pocket patch, belt-loop waistband detail, and contrasting olive-green webbing straps.",
+    "fabric": "Recycled denim",
+    "price": 0,
+    "discount": 0,
+    "backgroundColor": "blue"
+  }
+]

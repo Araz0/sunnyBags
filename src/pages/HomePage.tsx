@@ -1,22 +1,22 @@
 import React from 'react'
 import { Article, HeroSection, PageContainer } from '../components'
+import { getFeaturedEach } from '../utils/getFeaturedEach'
 
 const HomePageRaw = () => {
+  const featuredItems = getFeaturedEach();
+
   return (
     <PageContainer>
       <HeroSection src="/hero.jpg" />
       <section>
-        <Article
-          title="Post Title 1"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing"
-          imgSrc="/front_150.jpg"
-        />
-        <Article
-          title="Post Title 2"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing"
-          imgSrc="/front_150.jpg"
-          flipped
-        />
+        {featuredItems.map(item => (
+          <Article
+            key={item.id}
+            title={'#'+item.id.toString().padStart(4, '0')}
+            content={item.description}
+            imgSrc={`/gallery/thumbnails/${item.category_id.toString().padStart(4, '0')}/${item.id}A.png`}
+          />
+        ))}
       </section>
     </PageContainer>
   )
