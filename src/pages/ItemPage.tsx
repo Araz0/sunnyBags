@@ -237,6 +237,10 @@ const ItemPageRaw = () => {
     }
   }, [item, frontMainImage])
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   if (!item) {
     return (
       <PageContainer>

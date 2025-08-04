@@ -64,6 +64,11 @@ const CategoryPageRaw = () => {
     bag.category_id === category?.id
   )
 
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   if (!category || !categoryName) {
     return (
       <PageContainer>

@@ -71,6 +71,11 @@ const HomePageRaw = () => {
     navigate(`/category/${categorySlug}`)
   }
 
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <PageContainer>
       <Logo src="/logo.png" alt="SunnyBags Logo" />
