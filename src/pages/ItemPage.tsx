@@ -159,6 +159,12 @@ const CategoryTag = styled.span`
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: #e0e0e0;
+  }
 `
 
 const RelatedSection = styled.div`
@@ -192,9 +198,9 @@ const ItemPageRaw = () => {
   const category = categories.find(cat => cat.id === item?.category_id)
   
   // Get related items (same category, excluding current item)
-  const relatedItems = allData.filter(bag => 
+  const relatedItems = allData.reverse().filter(bag =>
     bag.category_id === item?.category_id && bag.id !== item?.id
-  ).slice(0, 6)
+  ).slice(0, 4)
 
   // Generate image paths
   const getMainImagePath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
@@ -274,7 +280,9 @@ const ItemPageRaw = () => {
               <ItemTitle>{item.id}</ItemTitle>
               
               {category && (
-                <CategoryTag>{category.name}</CategoryTag>
+                <CategoryTag onClick={() => navigate(`/category/${category.id}`)}>
+                  {category.name}
+                </CategoryTag>
               )}
 
               <PriceSection>
