@@ -1,6 +1,7 @@
 import React from 'react'
 import { CategoryCard, HeroSection, PageContainer } from '../components'
 import styled from '@emotion/styled'
+import { useNavigate } from 'react-router-dom'
 import { categories } from '../data'
 
 
@@ -22,7 +23,13 @@ const StyledFeaturedCards = styled.div`
 `
 
 const HomePageRaw = () => {
+  const navigate = useNavigate()
 
+  const handleCategoryClick = (categoryName: string) => {
+    // Convert category name to URL-friendly slug
+    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, '-')
+    navigate(`/category/${categorySlug}`)
+  }
 
   return (
     <PageContainer>
@@ -40,7 +47,7 @@ const HomePageRaw = () => {
             thumbnail={item.thumbnail}
             // discount={item.discount}
             name={item.name}
-            onClick={() => alert(`Clicked on ${item.name}`)}
+            onClick={() => handleCategoryClick(item.name)}
           />
         ))}
       </StyledFeaturedCards>
