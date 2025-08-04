@@ -22,6 +22,11 @@ const StyledContentWrapper = styled.div`
 const StyledTagsContainer = styled.div`
   display: flex;
   gap: 5px;
+
+  // put the first child to the left and the rest to the right
+  & > :first-child {
+    margin-right: auto;
+  }
 `
 const StyledTag = styled.span<{bgcolor?: string, color?: string}>`
   border-radius: 2px;
@@ -42,7 +47,7 @@ export type CardProps = {
   price: number
   discount: number
   name: string
-  category: string
+  category?: string
 }
 const CardRaw = ({ thumbnail, name, discount, price, category }: CardProps) => {
   return (
@@ -50,9 +55,9 @@ const CardRaw = ({ thumbnail, name, discount, price, category }: CardProps) => {
       <StyledThumbnail src={thumbnail} alt="alt front img" />
       <StyledContentWrapper>
         <StyledTagsContainer>
+          {category && <StyledTag>{category}</StyledTag>}
           <StyledTag>{price - price * (discount / 100)}€</StyledTag>
-          <StyledTag bgcolor='#cc0e26' color='#ffcccc'>{discount}%</StyledTag>
-          <StyledTag>{category}</StyledTag>
+          {discount > 0 && <StyledTag bgcolor='#cc0e26' color='#ffcccc'>{discount}%</StyledTag>}
         </StyledTagsContainer>
         <StyledName>{name}</StyledName>
       </StyledContentWrapper>
