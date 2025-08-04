@@ -26,7 +26,8 @@ const BurgerButton = styled.button<{ isOpen: boolean }>`
   flex-direction: column;
   justify-content: center;
   gap: 4px;
-  z-index: 1001;
+  z-index: 1002;
+  position: relative;
 
   &:focus {
     outline: 2px solid #fff;
@@ -151,7 +152,11 @@ export const NavigationMenuRaw: React.FC = () => {
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        closeMenu()
+        const target = event.target as Element;
+        // Don't close if clicking on the burger button
+        if (!target.closest('button[aria-controls="navigation-menu"]')) {
+          closeMenu()
+        }
       }
     }
 
