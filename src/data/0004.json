@@ -6,7 +6,7 @@
     "fabric": "denim & cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 111,
@@ -15,7 +15,7 @@
     "fabric": "denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 112,
@@ -24,7 +24,7 @@
     "fabric": "denim & cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 113,
@@ -33,7 +33,7 @@
     "fabric": "denim & ribbon",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "dark blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 114,
@@ -42,7 +42,7 @@
     "fabric": "denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 115,
@@ -51,7 +51,7 @@
     "fabric": "denim & cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 116,
@@ -60,6 +60,6 @@
     "fabric": "denim & cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   }
 ]

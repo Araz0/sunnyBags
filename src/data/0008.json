@@ -6,7 +6,7 @@
     "fabric": "Printed cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "yellow"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 85,
@@ -15,7 +15,7 @@
     "fabric": "Cotton and denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "multicolor"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 86,
@@ -24,7 +24,7 @@
     "fabric": "Block-print cotton with canvas trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 87,
@@ -33,6 +33,6 @@
     "fabric": "Cotton and denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   }
 ]

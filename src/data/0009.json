@@ -6,7 +6,7 @@
     "fabric": "Printed cotton canvas",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 81,
@@ -15,7 +15,7 @@
     "fabric": "African wax-print cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "yellow"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 82,
@@ -24,7 +24,7 @@
     "fabric": "Canvas with block-print cotton panel",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "beige"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 83,
@@ -33,6 +33,6 @@
     "fabric": "Printed cotton canvas",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "navy"
+    "backgroundColor": "lightgray"
   }
 ]

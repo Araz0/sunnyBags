@@ -6,7 +6,7 @@
     "fabric": "Printed cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "purple"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 48,
@@ -15,7 +15,7 @@
     "fabric": "Cotton canvas with embroidered ribbon trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "gray"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 49,
@@ -24,7 +24,7 @@
     "fabric": "Cotton canvas with woven stripe trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "red"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 50,
@@ -51,7 +51,7 @@
     "fabric": "Printed cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "purple"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 53,
@@ -60,7 +60,7 @@
     "fabric": "Cotton canvas with woven stripe trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "red"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 54,
@@ -69,7 +69,7 @@
     "fabric": "Cotton canvas with multicolor embroidery",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "black"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 55,
@@ -78,7 +78,7 @@
     "fabric": "Linen blend with denim bottom",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 56,
@@ -87,7 +87,7 @@
     "fabric": "Silk blend with printed appliqués",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "orange"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 57,
@@ -96,7 +96,7 @@
     "fabric": "Linen with ikat-style panel",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 58,
@@ -105,7 +105,7 @@
     "fabric": "Denim and linen with jacquard trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 59,
@@ -114,7 +114,7 @@
     "fabric": "Canvas with embroidered trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "gray"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 60,
@@ -123,7 +123,7 @@
     "fabric": "Canvas with printed ribbon trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "gray"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 61,
@@ -132,7 +132,7 @@
     "fabric": "Quilted cotton with jacquard ribbon",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 62,
@@ -141,7 +141,7 @@
     "fabric": "Canvas with striped cotton-webbing straps",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 63,
@@ -150,7 +150,7 @@
     "fabric": "Cotton canvas with denim pocket",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 64,
@@ -159,7 +159,7 @@
     "fabric": "Chambray and dark denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 65,
@@ -168,7 +168,7 @@
     "fabric": "Cotton with embroidered trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 66,
@@ -177,7 +177,7 @@
     "fabric": "Linen blend with woven ribbons",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 67,
@@ -186,7 +186,7 @@
     "fabric": "Cotton with handwoven ikat trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 68,
@@ -195,7 +195,7 @@
     "fabric": "Cotton with ikat-patterned trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 69,
@@ -204,7 +204,7 @@
     "fabric": "Cotton canvas",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 70,
@@ -213,7 +213,7 @@
     "fabric": "Cotton canvas",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 71,
@@ -222,7 +222,7 @@
     "fabric": "Cotton canvas with plaid trim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 72,
@@ -231,7 +231,7 @@
     "fabric": "Satin with corded embroidery",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 73,
@@ -240,7 +240,7 @@
     "fabric": "Linen with jacquard ribbon",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "beige"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 74,
@@ -249,7 +249,7 @@
     "fabric": "Linen and canvas ticking",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "beige"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 75,
@@ -258,7 +258,7 @@
     "fabric": "Linen with mixed ribbon trims",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "gray"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 76,
@@ -267,7 +267,7 @@
     "fabric": "Cotton canvas with tapestry jacquard",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "beige"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 77,
@@ -276,7 +276,7 @@
     "fabric": "Herringbone weave with decorative stitching",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "beige"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 78,
@@ -285,7 +285,7 @@
     "fabric": "Printed cotton canvas",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "blue"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 79,
@@ -294,7 +294,7 @@
     "fabric": "Canvas with denim patch",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "green"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 80,
@@ -303,6 +303,6 @@
     "fabric": "Printed cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "pink"
+    "backgroundColor": "lightgray"
   }
 ]

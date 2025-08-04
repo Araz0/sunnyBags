@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const size = 175
 const CardContainer = styled.div`
@@ -10,6 +11,13 @@ const CardContainer = styled.div`
   border-radius: 5px;
   color: black;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 `
 const StyledThumbnail = styled.img`
   width: ${size}px;
@@ -43,15 +51,23 @@ const StyledName = styled.span`
 `
 
 export type CardProps = {
+  id: number
   thumbnail: string
   price: number
   discount: number
   name: string
   category?: string
 }
-const CardRaw = ({ thumbnail, name, discount, price, category }: CardProps) => {
+
+const CardRaw = ({ id, thumbnail, name, discount, price, category }: CardProps) => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate(`/item/${id}`)
+  }
+
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick}>
       <StyledThumbnail src={thumbnail} alt="alt front img" />
       <StyledContentWrapper>
         <StyledTagsContainer>

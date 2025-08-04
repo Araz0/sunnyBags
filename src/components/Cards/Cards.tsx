@@ -24,6 +24,7 @@ const CardsRaw = ({ bags }: CardsProps) => {
           price={bag.price}
           discount={bag.discount}
           name={bag.id.toString().padStart(4, '0')}
+          id={bag.id}
           category={bag.category_id.toString().padStart(4, '0')}
         />
       ))}

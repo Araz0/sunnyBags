@@ -6,7 +6,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 0,
-    "backgroundColor": "off-white"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 146,
@@ -15,7 +15,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 0,
-    "backgroundColor": "off-white"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 147,
@@ -24,7 +24,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 0,
-    "backgroundColor": "off-white"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 148,
@@ -33,7 +33,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 0,
-    "backgroundColor": "off-white"
+    "backgroundColor": "lightgray"
   },
   {
     "id": 149,
@@ -42,6 +42,6 @@
     "price": 0,
     "discount": 0,
     "category_id": 0,
-    "backgroundColor": "off-white"
+    "backgroundColor": "lightgray"
   }
 ]

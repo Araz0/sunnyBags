@@ -10,7 +10,7 @@ function App() {
         <Route path="about" element={<>about page</>} />
         <Route path="explore" element={<ExplorePage />} />
         <Route path="category/:categorySlug" element={<CategoryPage />} />
-        <Route path="item" element={<ItemPage />} />
+        <Route path="item/:itemId" element={<ItemPage />} />
       </Routes>
     </BrowserRouter>
   )
