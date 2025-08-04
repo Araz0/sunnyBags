@@ -36,6 +36,32 @@ const Logo = styled.img`
   }
 `
 
+const ExploreCard = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 175px;
+  height: 221px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+`
+
+const ExploreText = styled.span`
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+`
+
 const HomePageRaw = () => {
   const navigate = useNavigate()
 
@@ -64,6 +90,9 @@ const HomePageRaw = () => {
             onClick={() => handleCategoryClick(item.name)}
           />
         ))}
+        <ExploreCard onClick={() => navigate('/explore')}>
+          <ExploreText>Explore All<br/>Bags</ExploreText>
+        </ExploreCard>
       </StyledFeaturedCards>
     </PageContainer>
   )

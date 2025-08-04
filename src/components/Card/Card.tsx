@@ -30,11 +30,18 @@ const StyledContentWrapper = styled.div`
 const StyledTagsContainer = styled.div`
   display: flex;
   gap: 5px;
-
-  // put the first child to the left and the rest to the right
-  & > :first-child {
-    margin-right: auto;
-  }
+  align-items: center;
+  justify-content: space-between;
+`
+const StyledLeftTags = styled.div`
+  display: flex;
+  gap: 5px;
+  align-items: center;
+`
+const StyledRightTags = styled.div`
+  display: flex;
+  gap: 5px;
+  align-items: center;
 `
 const StyledTag = styled.span<{bgcolor?: string, color?: string}>`
   border-radius: 2px;
@@ -44,10 +51,6 @@ const StyledTag = styled.span<{bgcolor?: string, color?: string}>`
 
   ${({ bgcolor }) => bgcolor && `background-color: ${bgcolor};`}
   ${({ color }) => color && `color: ${color};`}
-`
-const StyledName = styled.span`
-  display: block;
-  text-align: left;
 `
 
 export type CardProps = {
@@ -68,14 +71,17 @@ const CardRaw = ({ id, thumbnail, name, discount, price, category }: CardProps) 
 
   return (
     <CardContainer onClick={handleClick}>
-      <StyledThumbnail src={thumbnail} alt="alt front img" />
+      <StyledThumbnail src={thumbnail} alt={`${name} - Thumbnail`} />
       <StyledContentWrapper>
         <StyledTagsContainer>
-          {category && <StyledTag>{category}</StyledTag>}
-          <StyledTag>{price - price * (discount / 100)}€</StyledTag>
-          {discount > 0 && <StyledTag bgcolor='#cc0e26' color='#ffcccc'>{discount}%</StyledTag>}
+          <StyledLeftTags>
+            <StyledTag>{category ? category : ''}{name}</StyledTag>
+          </StyledLeftTags>
+          <StyledRightTags>
+            <StyledTag>{(price - price * (discount / 100)).toFixed(2)}€</StyledTag>
+            {discount > 0 && <StyledTag bgcolor='#cc0e26' color='#ffcccc'>{discount}%</StyledTag>}
+          </StyledRightTags>
         </StyledTagsContainer>
-        <StyledName>{name}</StyledName>
       </StyledContentWrapper>
     </CardContainer>
   )

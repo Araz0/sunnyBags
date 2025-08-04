@@ -11,6 +11,13 @@ const CategoryCardContainer = styled.div`
   border-radius: 5px;
   color: black;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
 `
 const StyledThumbnail = styled.img`
   width: ${size}px;
@@ -49,7 +56,7 @@ export type CategoryCardProps = {
 const CategoryCardRaw = ({ thumbnail, name, discount, onClick }: CategoryCardProps) => {
   return (
     <CategoryCardContainer onClick={onClick}>
-      <StyledThumbnail src={thumbnail} alt="alt front img" />
+      <StyledThumbnail src={thumbnail} alt={`${name} - Thumbnail`} />
       {discount > 0 && <StyledDiscountTag>~{discount}%</StyledDiscountTag>}
       <StyledContentWrapper>
         <StyledName>{name}</StyledName>

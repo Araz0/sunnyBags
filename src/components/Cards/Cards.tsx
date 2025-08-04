@@ -23,7 +23,7 @@ const CardsRaw = ({ bags }: CardsProps) => {
           thumbnail={`/gallery/thumbnails/${bag.category_id.toString().padStart(4, '0')}/${bag.id}A.png`}
           price={bag.price}
           discount={bag.discount}
-          name={bag.id.toString().padStart(4, '0')}
+          name={'#' + bag.id}
           id={bag.id}
           category={bag.category_id.toString().padStart(4, '0')}
         />

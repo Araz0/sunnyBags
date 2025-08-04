@@ -48,14 +48,9 @@ const ImageSection = styled.div<{ backgroundColor?: string }>`
 
 const MainImage = styled.img`
   width: 100%;
-  height: 300px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
-
-  @media (min-width: 768px) {
-    height: 400px;
-  }
 `
 
 const ImageGrid = styled.div`
@@ -192,34 +187,52 @@ const ItemPageRaw = () => {
   const [selectedImage, setSelectedImage] = React.useState<string>('')
 
   // Find the item
-  const item = allData.find(bag => bag.id === Number(itemId))
+  const item = React.useMemo(() => 
+    allData.find(bag => bag.id === Number(itemId)), 
+    [itemId]
+  )
   
   // Find category
-  const category = categories.find(cat => cat.id === item?.category_id)
+  const category = React.useMemo(() => 
+    categories.find(cat => cat.id === item?.category_id), 
+    [item?.category_id]
+  )
   
   // Get related items (same category, excluding current item)
-  const relatedItems = allData.reverse().filter(bag =>
-    bag.category_id === item?.category_id && bag.id !== item?.id
-  ).slice(0, 4)
+  const relatedItems = React.useMemo(() => 
+    allData.reverse().filter(bag =>
+      bag.category_id === item?.category_id && bag.id !== item?.id
+    ).slice(0, 4),
+    [item?.category_id, item?.id]
+  )
 
   // Generate image paths
-  const getMainImagePath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
-    const paddedCategoryId = categoryId.toString().padStart(4, '0')
-    return `/gallery/images/${paddedCategoryId}/${itemId}${side}.png`
-  }
+  const { frontMainImage, backMainImage, frontThumbnail, backThumbnail } = React.useMemo(() => {
+    const getMainImagePath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
+      const paddedCategoryId = categoryId.toString().padStart(4, '0')
+      return `/gallery/images/${paddedCategoryId}/${itemId}${side}.png`
+    }
 
-  const getThumbnailPath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
-    const paddedCategoryId = categoryId.toString().padStart(4, '0')
-    return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`
-  }
+    const getThumbnailPath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
+      const paddedCategoryId = categoryId.toString().padStart(4, '0')
+      return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`
+    }
 
-  const frontMainImage = item ? getMainImagePath(item.category_id, item.id, 'A') : ''
-  const backMainImage = item ? getMainImagePath(item.category_id, item.id, 'B') : ''
-  const frontThumbnail = item ? getThumbnailPath(item.category_id, item.id, 'A') : ''
-  const backThumbnail = item ? getThumbnailPath(item.category_id, item.id, 'B') : ''
+    return {
+      frontMainImage: item ? getMainImagePath(item.category_id, item.id, 'A') : '',
+      backMainImage: item ? getMainImagePath(item.category_id, item.id, 'B') : '',
+      frontThumbnail: item ? getThumbnailPath(item.category_id, item.id, 'A') : '',
+      backThumbnail: item ? getThumbnailPath(item.category_id, item.id, 'B') : ''
+    }
+  }, [item])
+
+  const finalPrice = React.useMemo(() => 
+    item ? item.price - (item.price * (item.discount / 100)) : 0,
+    [item]
+  )
 
   React.useEffect(() => {
-    if (item) {
+    if (item && frontMainImage) {
       setSelectedImage(frontMainImage)
     }
   }, [item, frontMainImage])
@@ -240,7 +253,6 @@ const ItemPageRaw = () => {
     )
   }
 
-  const finalPrice = item.price - (item.price * (item.discount / 100))
   return (
     <PageContainer>
       <ItemContainer>
