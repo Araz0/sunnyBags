@@ -6,7 +6,7 @@
     "fabric": "wax cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 94,
@@ -15,7 +15,7 @@
     "fabric": "wax cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 95,
@@ -24,7 +24,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 96,
@@ -33,7 +33,7 @@
     "fabric": "satin & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 97,
@@ -42,7 +42,7 @@
     "fabric": "satin & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 98,
@@ -51,7 +51,7 @@
     "fabric": "cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 99,
@@ -60,7 +60,7 @@
     "fabric": "cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 100,
@@ -69,7 +69,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 101,
@@ -78,7 +78,7 @@
     "fabric": "cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 102,
@@ -87,7 +87,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 103,
@@ -96,7 +96,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 104,
@@ -105,7 +105,7 @@
     "fabric": "cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 105,
@@ -114,7 +114,7 @@
     "fabric": "cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 106,
@@ -123,7 +123,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 107,
@@ -132,7 +132,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 108,
@@ -141,7 +141,7 @@
     "fabric": "cotton & denim",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 109,
@@ -150,6 +150,6 @@
     "fabric": "cotton",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   }
 ]

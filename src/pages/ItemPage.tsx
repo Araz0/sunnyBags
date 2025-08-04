@@ -75,7 +75,7 @@ const ThumbnailContainer = styled.div`
 
 const ThumbnailImage = styled.img`
   width: 100%;
-  height: 60px;
+  background-color: lightgray;
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
@@ -277,7 +277,7 @@ const ItemPageRaw = () => {
 
           <InfoSection>
             <ItemHeader>
-              <ItemTitle>{item.id}</ItemTitle>
+              <ItemTitle>#{item.id}</ItemTitle>
               
               {category && (
                 <CategoryTag onClick={() => navigate(`/category/${category.id}`)}>

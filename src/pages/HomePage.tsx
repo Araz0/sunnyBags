@@ -27,6 +27,8 @@ const Logo = styled.img`
   margin: 2rem auto 3rem;
   height: 120px;
   width: auto;
+  background: lightgray;
+  border-radius: 2px;
   
   @media (min-width: 768px) {
     height: 160px;

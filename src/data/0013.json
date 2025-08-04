@@ -6,7 +6,7 @@
     "fabric": "Upcycled handwoven cotton blend with sturdy black nylon webbing strap",
     "price": 0,
     "discount": 0,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
   "id": 2,
@@ -15,7 +15,7 @@
   "fabric": "Upcycled wool-blend textile with sturdy black nylon webbing strap and metal accent",
   "price": 0,
   "discount": 0,
-  "backgroundColor": "lightgray"
+  "backgroundColor": "#eee"
 }
 ,
   {
@@ -25,7 +25,7 @@
   "fabric": "Upcycled handwoven cotton with sturdy black nylon webbing strap and natural wood button",
   "price": 0,
   "discount": 0,
-  "backgroundColor": "lightgray"
+  "backgroundColor": "#eee"
 },
   {
   "id": 4,
@@ -34,7 +34,7 @@
   "fabric": "Upcycled cotton print with durable black nylon strap and button detail",
   "price": 0,
   "discount": 0,
-  "backgroundColor": "lightgray"
+  "backgroundColor": "#eee"
 }
 
 ]

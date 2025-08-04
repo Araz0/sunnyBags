@@ -6,7 +6,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 137,
@@ -15,7 +15,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 138,
@@ -24,7 +24,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 139,
@@ -33,7 +33,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 140,
@@ -42,7 +42,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 141,
@@ -51,7 +51,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 142,
@@ -60,7 +60,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 143,
@@ -69,7 +69,7 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   },
   {
     "id": 144,
@@ -78,6 +78,6 @@
     "price": 0,
     "discount": 0,
     "category_id": 1,
-    "backgroundColor": "lightgray"
+    "backgroundColor": "#eee"
   }
 ]
