@@ -1,5 +1,5 @@
 import React from 'react'
-import { CategoryCard, HeroSection, PageContainer } from '../components'
+import { CategoryCard, PageContainer } from '../components'
 import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
 import { categories } from '../data'
@@ -22,6 +22,18 @@ const StyledFeaturedCards = styled.div`
   gap: 10px;
 `
 
+const Logo = styled.img`
+  display: block;
+  margin: 2rem auto 3rem;
+  height: 120px;
+  width: auto;
+  
+  @media (min-width: 768px) {
+    height: 160px;
+    margin: 3rem auto 4rem;
+  }
+`
+
 const HomePageRaw = () => {
   const navigate = useNavigate()
 
@@ -33,7 +45,7 @@ const HomePageRaw = () => {
 
   return (
     <PageContainer>
-      <HeroSection src="/hero.jpg" />
+      <Logo src="/logo.png" alt="SunnyBags Logo" />
       <StyledIntroText>
         We're thrilled to showcase our unique collection of handmade bags crafted with love from recycled materials. 
         Each bag tells a story of sustainability and creativity, transforming discarded materials into beautiful, 
