@@ -16,6 +16,14 @@ const darkTheme = createTheme({
   },
 })
 
+// Handle URL restoration from 404.html redirect
+const urlParams = new URLSearchParams(window.location.search);
+const redirectPath = urlParams.get('redirect');
+if (redirectPath) {
+    // Clean up the URL and navigate to the original path
+    window.history.replaceState({}, '', redirectPath);
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
