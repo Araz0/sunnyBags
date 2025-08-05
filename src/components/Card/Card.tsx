@@ -67,6 +67,7 @@ const CardRaw = ({ id, thumbnail, name, discount, price, category }: CardProps) 
 
   const handleClick = () => {
     navigate(`/item/${id}`)
+    window.scrollTo(0, 0)
   }
 
   return (
