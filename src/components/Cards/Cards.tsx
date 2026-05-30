@@ -9,6 +9,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 1rem;
 `
 
 type CardsProps = {
@@ -26,6 +27,7 @@ const CardsRaw = ({ bags }: CardsProps) => {
           name={'#' + bag.id}
           id={bag.id}
           category={bag.category_id.toString().padStart(4, '0')}
+          available={bag.available}
         />
       ))}
     </ContentWrapper>

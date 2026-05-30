@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 const NavigationWrapper = styled.nav`
   position: relative;
   z-index: 1000;
-  width: 100%;
   height: 42px;
   position: sticky;
   top: 0;
@@ -58,15 +57,18 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   { label: 'Home', path: '' },
-  { label: 'Explore', path: 'explore' }
+  { label: 'Explore', path: 'explore' },
 ]
 
 export const NavigationMenuRaw: React.FC = () => {
   const navigate = useNavigate()
 
-  const handleMenuItemClick = React.useCallback((path: string) => {
-    navigate('/' + path)
-  }, [navigate])
+  const handleMenuItemClick = React.useCallback(
+    (path: string) => {
+      navigate('/' + path)
+    },
+    [navigate],
+  )
 
   return (
     <NavigationWrapper>

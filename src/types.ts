@@ -20,4 +20,5 @@ export type Bag = {
     discount: number;
     category_id: number;
     backgroundColor: string;
+    available?: boolean;
 }

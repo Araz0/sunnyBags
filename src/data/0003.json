@@ -4,134 +4,149 @@
     "category_id": 3,
     "description": "Dark-denim cross-body phone pouch featuring diagonal patchwork of orange running-stitch (sashiko) embroidery, with a slim adjustable strap.",
     "fabric": "denim",
-    "price": 0,
-    "discount": 30,
-    "backgroundColor": "#eee"
+    "price": 4,
+    "discount": 0,
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 118,
     "category_id": 3,
     "description": "Deep-indigo denim phone pouch repurposing a jeans back-pocket, trimmed with tonal stitching and hung on a chunky braided strap.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 119,
     "category_id": 3,
     "description": "Indigo-denim cross-body phone pouch with vertical panels of pink floral sashiko stitching on the front, plus a simple matching strap.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 120,
     "category_id": 3,
     "description": "Black-denim phone pouch with cascading raindrop-style sashiko embroidery on one side, with a narrow black strap.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 122,
     "category_id": 3,
     "description": "Dark denim cross-body phone pouch adorned with golden flower sashiko embroidery scattered across the front, on a matching narrow strap.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 123,
     "category_id": 3,
     "description": "Denim cross-body phone pouch with a diagonal triangular inset of orange-and-white printed cotton fabric featuring circle motifs, topped with a slim orange trim.",
     "fabric": "denim, cotton",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 124,
     "category_id": 3,
     "description": "Silver faux-snakeskin phone pouch with a matching narrow silver strap and top-stitched detailing.",
     "fabric": "faux-snakeskin",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 125,
     "category_id": 3,
     "description": "Navy denim phone pouch featuring vertical bands of orange sashiko running-stitching and finished with navy rickrack trim along the sides and on the strap.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 126,
     "category_id": 3,
     "description": "Deep denim cross-body phone pouch with a vertical strip of patchwork featuring sequential printed circle motifs in green and yellow tones, on an adjustable denim strap.",
     "fabric": "denim, cotton",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 127,
     "category_id": 3,
     "description": "Dark denim cross-body phone pouch with white and lavender sashiko embroidery forming a graduated fringe of vertical stitches and arrow-loop accents cascading from the top edge.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 128,
     "category_id": 3,
     "description": "Deep indigo denim phone pouch featuring three narrow horizontal bands of pink-and-yellow diamond-patterned woven cotton across the bottom.",
     "fabric": "denim, cotton",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 129,
     "category_id": 3,
     "description": "Braided denim strap phone pouch with a front woven patchwork of small indigo denim squares, finished with a slim orange top trim.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 130,
     "category_id": 3,
     "description": "Dark denim phone pouch decorated with white chain-stitch embroidery: parallel horizontal bands near the top and a meandering curving line at the lower right.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 131,
     "category_id": 3,
     "description": "Black canvas cross-body phone pouch with white sashiko running stitches and tiny floral motifs cascading diagonally across the front.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 132,
     "category_id": 3,
     "description": "Dark indigo denim phone pouch with a chunky braided strap, featuring diagonal rows of white running stitches and scattered cobalt-blue satin-teardrop stitches along one corner.",
     "fabric": "denim",
-    "price": 0,
+    "price": 4,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   }
 ]

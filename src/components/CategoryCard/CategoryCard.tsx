@@ -12,7 +12,9 @@ const CategoryCardContainer = styled.div`
   color: black;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-5px);
@@ -46,20 +48,34 @@ const StyledName = styled.span`
   font-size: 14px;
   color: #333;
 `
+const StyledPrice = styled.span`
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #444;
+`
 
 export type CategoryCardProps = {
   thumbnail: string
   discount: number
   name: string
+  price?: number
   onClick?: () => void
 }
-const CategoryCardRaw = ({ thumbnail, name, discount, onClick }: CategoryCardProps) => {
+const CategoryCardRaw = ({
+  thumbnail,
+  name,
+  discount,
+  onClick,
+  price,
+}: CategoryCardProps) => {
   return (
     <CategoryCardContainer onClick={onClick}>
       <StyledThumbnail src={thumbnail} alt={`${name} - Thumbnail`} />
       {discount > 0 && <StyledDiscountTag>~{discount}%</StyledDiscountTag>}
       <StyledContentWrapper>
         <StyledName>{name}</StyledName>
+        {price !== undefined && <StyledPrice>€{price}</StyledPrice>}
       </StyledContentWrapper>
     </CategoryCardContainer>
   )

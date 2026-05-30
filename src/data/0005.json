@@ -4,152 +4,169 @@
     "category_id": 5,
     "description": "Drawstring backpack with vibrant yellow wax-cotton print featuring stylized leaf motifs, contrasted by a denim base and red-striped cotton drawcord straps.",
     "fabric": "wax cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 94,
     "category_id": 5,
     "description": "Drawstring backpack in bright yellow wax-cotton featuring bold peacock-inspired motifs and matching yellow cotton drawcord straps.",
     "fabric": "wax cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 95,
     "category_id": 5,
     "description": "Drawstring backpack with cheerful yellow floral-dot cotton print panel, set on a denim base and finished with white cotton drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 96,
     "category_id": 5,
     "description": "Drawstring backpack featuring an abstract watercolor brushstroke print in pastel hues on a satin panel, accented by vertical denim stripe details and a denim base with white cotton drawcord straps.",
     "fabric": "satin & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 97,
     "category_id": 5,
     "description": "Drawstring backpack with a soft pastel floral watercolor satin print, contrasted by a denim base and white cotton drawcord straps.",
     "fabric": "satin & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 98,
     "category_id": 5,
     "description": "Drawstring backpack featuring a playful cartoon puppy print on white cotton, with red-striped cotton drawcord straps.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 99,
     "category_id": 5,
     "description": "Drawstring backpack with bold abstract tribal-inspired motifs in yellow and red on cotton, accented by red-striped cotton drawcord straps.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 100,
     "category_id": 5,
     "description": "Drawstring backpack in red cotton with a large embroidered floral applique, contrasted by a denim base and white cotton drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 101,
     "category_id": 5,
     "description": "Drawstring backpack featuring a cute bear-and-heart patchwork print on cotton, finished with white cotton drawcord straps.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 102,
     "category_id": 5,
     "description": "Patchwork drawstring backpack with four cotton print panels—florals, ditsy blooms and stripes—set on a denim base with chambray drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 103,
     "category_id": 5,
     "description": "Drawstring backpack with black-and-white cotton patchwork panels (floral, gingham, polka dot, text print) set on a denim base and finished with white cotton drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 104,
     "category_id": 5,
     "description": "Child's drawstring backpack in bright yellow cotton featuring a stork-and-puppy cartoon panel, finished with red-striped cotton drawcord straps.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 105,
     "category_id": 5,
     "description": "Child's drawstring backpack in bright yellow cotton featuring a cow-and-turtle cartoon panel, finished with red-striped cotton drawcord straps.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 106,
     "category_id": 5,
     "description": "Drawstring backpack with green cotton patchwork panels (polka dot, ditsy floral, stripe, micro-floral) set on a denim base and finished with green-and-white cotton drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 107,
     "category_id": 5,
     "description": "Drawstring backpack with pink-and-white cotton patchwork panels (heart prints, gingham, tiny floral) set on a denim base and finished with white cotton drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 108,
     "category_id": 5,
     "description": "Drawstring backpack with black-and-white cotton patchwork panels (floral, gingham, polka dot, text print) set on a denim base and finished with white cotton drawcord straps.",
     "fabric": "cotton & denim",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 109,
     "category_id": 5,
     "description": "Child's drawstring backpack in bright yellow cotton featuring a stork-and-puppy cartoon panel, finished with red-striped cotton drawcord straps.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 5,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   }
 ]

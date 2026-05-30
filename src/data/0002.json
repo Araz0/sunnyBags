@@ -4,26 +4,29 @@
     "category_id": 2,
     "description": "Emerald-green cotton tote with a fold-over cuff in red and navy tartan plaid, detailed with a bright red satin bow on the front.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 3,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 134,
     "category_id": 2,
     "description": "Midnight-brown cotton top band atop a deep olive-green and black geometric block-print cotton body, forming a small open pouch.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 3,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   },
   {
     "id": 135,
     "category_id": 2,
     "description": "Olive-green cotton top border above an embroidered dark green and brown diamond-patterned cotton body, forming a flat zip pouch.",
     "fabric": "cotton",
-    "price": 0,
+    "price": 3,
     "discount": 0,
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "available": true
   }
 ]

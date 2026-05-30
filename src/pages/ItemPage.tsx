@@ -23,6 +23,7 @@ const BackButton = styled.button`
 const ItemContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 4rem;
 `
 
 const ItemHeader = styled.div`
@@ -41,7 +42,7 @@ const ItemHeader = styled.div`
 const ImageSection = styled.div<{ backgroundColor?: string }>`
   flex: 1;
   max-width: 500px;
-  background-color: ${props => props.backgroundColor || 'transparent'};
+  background-color: ${(props) => props.backgroundColor || 'transparent'};
   padding: 1rem;
   border-radius: 8px;
 `
@@ -74,7 +75,9 @@ const ThumbnailImage = styled.img`
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
     opacity: 0.8;
@@ -86,7 +89,7 @@ const ThumbnailLabel = styled.span`
   font-size: 0.8rem;
   font-weight: 500;
   padding: 0 0.5rem;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1)
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 `
 
 const InfoSection = styled.div`
@@ -102,11 +105,42 @@ const ItemTitle = styled.h1`
   }
 `
 
+const AvailabilityBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #cc0e26;
+  color: #fff;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(204, 14, 38, 0.2);
+`
+
+const AvailabilityBanner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: #cc0e26;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px rgba(204, 14, 38, 0.18);
+`
+
 const PriceSection = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-left: auto;
+  flex-wrap: wrap;
 `
 
 const CurrentPrice = styled.span`
@@ -187,49 +221,72 @@ const ItemPageRaw = () => {
   const [selectedImage, setSelectedImage] = React.useState<string>('')
 
   // Find the item
-  const item = React.useMemo(() => 
-    allData.find(bag => bag.id === Number(itemId)), 
-    [itemId]
+  const item = React.useMemo(
+    () => allData.find((bag) => bag.id === Number(itemId)),
+    [itemId],
   )
-  
+
   // Find category
-  const category = React.useMemo(() => 
-    categories.find(cat => cat.id === item?.category_id), 
-    [item?.category_id]
+  const category = React.useMemo(
+    () => categories.find((cat) => cat.id === item?.category_id),
+    [item?.category_id],
   )
-  
+
   // Get related items (same category, excluding current item)
-  const relatedItems = React.useMemo(() => 
-    allData.reverse().filter(bag =>
-      bag.category_id === item?.category_id && bag.id !== item?.id
-    ).slice(0, 4),
-    [item?.category_id, item?.id]
+  const relatedItems = React.useMemo(
+    () =>
+      allData
+        .reverse()
+        .filter(
+          (bag) => bag.category_id === item?.category_id && bag.id !== item?.id,
+        )
+        .slice(0, 4),
+    [item?.category_id, item?.id],
   )
 
   // Generate image paths
-  const { frontMainImage, backMainImage, frontThumbnail, backThumbnail } = React.useMemo(() => {
-    const getMainImagePath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
-      const paddedCategoryId = categoryId.toString().padStart(4, '0')
-      return `/gallery/images/${paddedCategoryId}/${itemId}${side}.png`
-    }
+  const { frontMainImage, backMainImage, frontThumbnail, backThumbnail } =
+    React.useMemo(() => {
+      const getMainImagePath = (
+        categoryId: number,
+        itemId: number,
+        side: 'A' | 'B',
+      ) => {
+        const paddedCategoryId = categoryId.toString().padStart(4, '0')
+        return `/gallery/images/${paddedCategoryId}/${itemId}${side}.png`
+      }
 
-    const getThumbnailPath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
-      const paddedCategoryId = categoryId.toString().padStart(4, '0')
-      return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`
-    }
+      const getThumbnailPath = (
+        categoryId: number,
+        itemId: number,
+        side: 'A' | 'B',
+      ) => {
+        const paddedCategoryId = categoryId.toString().padStart(4, '0')
+        return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`
+      }
 
-    return {
-      frontMainImage: item ? getMainImagePath(item.category_id, item.id, 'A') : '',
-      backMainImage: item ? getMainImagePath(item.category_id, item.id, 'B') : '',
-      frontThumbnail: item ? getThumbnailPath(item.category_id, item.id, 'A') : '',
-      backThumbnail: item ? getThumbnailPath(item.category_id, item.id, 'B') : ''
-    }
-  }, [item])
+      return {
+        frontMainImage: item
+          ? getMainImagePath(item.category_id, item.id, 'A')
+          : '',
+        backMainImage: item
+          ? getMainImagePath(item.category_id, item.id, 'B')
+          : '',
+        frontThumbnail: item
+          ? getThumbnailPath(item.category_id, item.id, 'A')
+          : '',
+        backThumbnail: item
+          ? getThumbnailPath(item.category_id, item.id, 'B')
+          : '',
+      }
+    }, [item])
 
-  const finalPrice = React.useMemo(() => 
-    item ? item.price - (item.price * (item.discount / 100)) : 0,
-    [item]
+  const finalPrice = React.useMemo(
+    () => (item ? item.price - item.price * (item.discount / 100) : 0),
+    [item],
   )
+
+  const isAvailable = item?.available !== false
 
   React.useEffect(() => {
     if (item && frontMainImage) {
@@ -248,9 +305,7 @@ const ItemPageRaw = () => {
           <ErrorMessage>
             <h2>Item not found</h2>
             <p>The item you're looking for doesn't exist.</p>
-            <BackButton onClick={() => navigate('/')}>
-              Back to Home
-            </BackButton>
+            <BackButton onClick={() => navigate('/')}>Back to Home</BackButton>
           </ErrorMessage>
         </ItemContainer>
       </PageContainer>
@@ -260,29 +315,27 @@ const ItemPageRaw = () => {
   return (
     <PageContainer>
       <ItemContainer>
-        <BackButton onClick={() => navigate(-1)}>
-          ← Back
-        </BackButton>
+        <BackButton onClick={() => navigate(-1)}>← Back</BackButton>
 
         <ItemHeader>
           <ImageSection backgroundColor={item.backgroundColor}>
-            <MainImage 
-              src={selectedImage || frontMainImage} 
+            <MainImage
+              src={selectedImage || frontMainImage}
               alt={item.id.toString() + ' - Main Image'}
             />
             <ImageGrid>
               <ThumbnailContainer>
-                <ThumbnailImage 
-                  src={frontThumbnail} 
+                <ThumbnailImage
+                  src={frontThumbnail}
                   alt={`${item.id} - Front`}
                   onClick={() => setSelectedImage(frontMainImage)}
                 />
                 <ThumbnailLabel>Front</ThumbnailLabel>
               </ThumbnailContainer>
-              
+
               <ThumbnailContainer>
-                <ThumbnailImage 
-                  src={backThumbnail} 
+                <ThumbnailImage
+                  src={backThumbnail}
                   alt={`${item.id} - Back`}
                   onClick={() => setSelectedImage(backMainImage)}
                 />
@@ -292,16 +345,20 @@ const ItemPageRaw = () => {
           </ImageSection>
 
           <InfoSection>
+            {!isAvailable && <AvailabilityBanner>Sold out</AvailabilityBanner>}
             <ItemHeader>
               <ItemTitle>#{item.id}</ItemTitle>
-              
+
               {category && (
-                <CategoryTag onClick={() => navigate(`/category/${category.id}`)}>
+                <CategoryTag
+                  onClick={() => navigate(`/category/${category.id}`)}
+                >
                   {category.name}
                 </CategoryTag>
               )}
 
               <PriceSection>
+                {!isAvailable && <AvailabilityBadge>Sold</AvailabilityBadge>}
                 <CurrentPrice>{finalPrice.toFixed(2)}€</CurrentPrice>
                 {item.discount > 0 && (
                   <>
@@ -313,7 +370,7 @@ const ItemPageRaw = () => {
             </ItemHeader>
 
             <Description>
-              <DescriptionTitle>About this bag</DescriptionTitle>
+              <DescriptionTitle>About this bag (AI Generated)</DescriptionTitle>
               <DescriptionText>
                 {item.description || 'No description available.'}
               </DescriptionText>
