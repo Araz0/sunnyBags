@@ -4,7 +4,7 @@
     "category_id": 9,
     "description": "Royal blue canvas tote with a bold, full-color toucan and tropical floral print on the front panel and solid blue canvas on the back.",
     "fabric": "Printed cotton canvas",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
@@ -14,7 +14,7 @@
     "category_id": 9,
     "description": "Mustard-yellow African wax-print shoulder bag featuring stylized peacock-feather motifs in black and magenta, with solid black canvas on the reverse.",
     "fabric": "African wax-print cotton",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
@@ -24,7 +24,7 @@
     "category_id": 9,
     "description": "Natural-canvas tote accented by a horizontal zebra block-print panel framed in black trim, blending safari style with neutral tones.",
     "fabric": "Canvas with block-print cotton panel",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
@@ -34,7 +34,7 @@
     "category_id": 9,
     "description": "Deep navy canvas shopper highlighted by a vibrant toucan and tropical bloom print inset, creating a striking contrast of dark and color-rich elements.",
     "fabric": "Printed cotton canvas",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true

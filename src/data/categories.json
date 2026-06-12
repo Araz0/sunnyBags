@@ -1,67 +1,67 @@
 [
   {
     "id": 0,
-    "price": 8,
+    "price": 20,
     "name": "Category 0",
     "thumbnail": "/gallery/thumbnails/0000/145A.png"
   },
   {
     "id": 1,
-    "price": 5,
+    "price": 10,
     "name": "Category 1",
     "thumbnail": "/gallery/thumbnails/0001/136A.png"
   },
   {
     "id": 2,
-    "price": 3,
+    "price": 2,
     "name": "Category 2",
     "thumbnail": "/gallery/thumbnails/0002/133A.png"
   },
   {
     "id": 3,
-    "price": 4,
+    "price": 5,
     "name": "Category 3",
     "thumbnail": "/gallery/thumbnails/0003/117A.png"
   },
   {
     "id": 4,
-    "price": 4,
+    "price": 5,
     "name": "Category 4",
     "thumbnail": "/gallery/thumbnails/0004/110A.png"
   },
   {
     "id": 5,
-    "price": 5,
+    "price": 10,
     "name": "Category 5",
     "thumbnail": "/gallery/thumbnails/0005/93A.png"
   },
   {
     "id": 6,
-    "price": 10,
+    "price": 25,
     "name": "Category 6",
     "thumbnail": "/gallery/thumbnails/0006/90A.png"
   },
   {
     "id": 7,
-    "price": 4,
+    "price": 10,
     "name": "Category 7",
     "thumbnail": "/gallery/thumbnails/0007/88A.png"
   },
   {
     "id": 8,
-    "price": 6,
+    "price": 10,
     "name": "Category 8",
     "thumbnail": "/gallery/thumbnails/0008/84A.png"
   },
   {
     "id": 9,
-    "price": 6,
+    "price": 10,
     "name": "Category 9",
     "thumbnail": "/gallery/thumbnails/0009/12A.png"
   },
   {
     "id": 10,
-    "price": 7,
+    "price": 10,
     "name": "Category 10",
     "thumbnail": "/gallery/thumbnails/0010/47A.png"
   },
@@ -73,13 +73,13 @@
   },
   {
     "id": 12,
-    "price": 8,
+    "price": 10,
     "name": "Category 12",
     "thumbnail": "/gallery/thumbnails/0012/5A.png"
   },
   {
     "id": 13,
-    "price": 5,
+    "price": 10,
     "name": "Category 13",
     "thumbnail": "/gallery/thumbnails/0013/1A.png"
   }

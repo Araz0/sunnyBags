@@ -4,7 +4,7 @@
     "category_id": 8,
     "description": "Ochre-yellow printed cotton slouch bag with indigo block-print motifs and scattered leopard-spot accents, secured by a matching fabric tab closure.",
     "fabric": "Printed cotton",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
@@ -14,7 +14,7 @@
     "category_id": 8,
     "description": "Vibrant checkerboard-print tote featuring neon pink, orange, white, and navy squares inset into a dark denim frame with matching strap.",
     "fabric": "Cotton and denim",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
@@ -24,7 +24,7 @@
     "category_id": 8,
     "description": "Forest-green canvas bag accented with a white floral block-print front panel and matching central closure strap.",
     "fabric": "Block-print cotton with canvas trim",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
@@ -34,7 +34,7 @@
     "category_id": 8,
     "description": "Dark-denim slouch tote with a vertical striped front panel in shades of blue, white, and black, featuring a buttoned tab closure.",
     "fabric": "Cotton and denim",
-    "price": 6,
+    "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
     "available": true
