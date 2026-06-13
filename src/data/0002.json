@@ -27,6 +27,6 @@
     "price": 2,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   }
 ]

@@ -147,7 +147,7 @@
     "price": 10,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 108,

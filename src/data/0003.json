@@ -17,7 +17,7 @@
     "price": 5,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 119,
@@ -27,7 +27,7 @@
     "price": 5,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 120,
@@ -37,7 +37,7 @@
     "price": 5,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 122,
@@ -67,7 +67,7 @@
     "price": 5,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 125,
@@ -87,7 +87,7 @@
     "price": 5,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 127,
@@ -137,7 +137,7 @@
     "price": 5,
     "discount": 0,
     "backgroundColor": "#eee",
-    "available": true
+    "available": false
   },
   {
     "id": 132,
