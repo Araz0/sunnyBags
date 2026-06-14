@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Cards, PageContainer } from '../components'
-import { allData, categories } from "../data"
+import { allBags, categories } from '../data'
 import styled from '@emotion/styled'
 
 const CategoryHeader = styled.div`
@@ -50,20 +50,19 @@ const CategoryPageRaw = () => {
   const navigate = useNavigate()
 
   // Convert slug back to category name
-  const categoryName = categorySlug?.split('-').map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(' ')
+  const categoryName = categorySlug
+    ?.split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 
   // Find the category data
-  const category = categories.find(cat => 
-    cat.name.toLowerCase() === categoryName?.toLowerCase()
+  const category = categories.find(
+    (cat) => cat.name.toLowerCase() === categoryName?.toLowerCase(),
   )
 
-  // Filter bags by category
-  const categoryBags = allData.filter(bag => 
-    bag.category_id === category?.id
-  )
-
+  const categoryBags = category
+    ? allBags[category.id.toString() as keyof typeof allBags]
+    : []
 
   React.useEffect(() => {
     window.scrollTo(0, 0)
@@ -75,9 +74,7 @@ const CategoryPageRaw = () => {
         <ErrorMessage>
           <h2>Category not found</h2>
           <p>The category you're looking for doesn't exist.</p>
-          <BackButton onClick={() => navigate('/')}>
-            Back to Home
-          </BackButton>
+          <BackButton onClick={() => navigate('/')}>Back to Home</BackButton>
         </ErrorMessage>
       </PageContainer>
     )
@@ -85,15 +82,13 @@ const CategoryPageRaw = () => {
 
   return (
     <PageContainer>
-      <BackButton onClick={() => navigate('/')}>
-        ← Back to Home
-      </BackButton>
-      
+      <BackButton onClick={() => navigate('/')}>← Back to Home</BackButton>
+
       <CategoryHeader>
         <CategoryTitle>{category.name}</CategoryTitle>
         <CategoryDescription>
-          Discover our collection of {category.name.toLowerCase()} bags, 
-          each crafted with care from recycled materials.
+          Discover our collection of {category.name.toLowerCase()} bags, each
+          crafted with care from recycled materials.
         </CategoryDescription>
       </CategoryHeader>
 

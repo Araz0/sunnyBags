@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { PageContainer, Cards } from '../components'
-import { allData, categories } from '../data'
+import { allBags, ExtendedBag } from '../data'
 import styled from '@emotion/styled'
 
 const BackButton = styled.button`
@@ -119,21 +119,21 @@ const AvailabilityBadge = styled.span`
   box-shadow: 0 6px 18px rgba(204, 14, 38, 0.2);
 `
 
-const AvailabilityBanner = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.9rem 1rem;
-  border-radius: 12px;
-  background: #cc0e26;
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  box-shadow: 0 10px 24px rgba(204, 14, 38, 0.18);
-`
+// const AvailabilityBanner = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   gap: 1rem;
+//   margin-bottom: 1rem;
+//   padding: 0.9rem 1rem;
+//   border-radius: 12px;
+//   background: #cc0e26;
+//   color: #fff;
+//   font-weight: 700;
+//   letter-spacing: 0.05em;
+//   text-transform: uppercase;
+//   box-shadow: 0 10px 24px rgba(204, 14, 38, 0.18);
+// `
 
 const PriceSection = styled.div`
   display: flex;
@@ -221,21 +221,16 @@ const ItemPageRaw = () => {
   const [selectedImage, setSelectedImage] = React.useState<string>('')
 
   // Find the item
-  const item = React.useMemo(
-    () => allData.find((bag) => bag.id === Number(itemId)),
+  const item: ExtendedBag | null = React.useMemo(
+    () =>
+      itemId ? allBags.all.find((bag) => bag.id === Number(itemId)) : null,
     [itemId],
-  )
-
-  // Find category
-  const category = React.useMemo(
-    () => categories.find((cat) => cat.id === item?.category_id),
-    [item?.category_id],
   )
 
   // Get related items (same category, excluding current item)
   const relatedItems = React.useMemo(
     () =>
-      allData
+      allBags.all
         .reverse()
         .filter(
           (bag) => bag.category_id === item?.category_id && bag.id !== item?.id,
@@ -280,13 +275,6 @@ const ItemPageRaw = () => {
           : '',
       }
     }, [item])
-
-  const finalPrice = React.useMemo(
-    () => (item ? item.price - item.price * (item.discount / 100) : 0),
-    [item],
-  )
-
-  const isAvailable = item?.available !== false
 
   React.useEffect(() => {
     if (item && frontMainImage) {
@@ -345,24 +333,28 @@ const ItemPageRaw = () => {
           </ImageSection>
 
           <InfoSection>
-            {!isAvailable && <AvailabilityBanner>Sold out</AvailabilityBanner>}
+            {/* {!isAvailable && <AvailabilityBanner>Sold out</AvailabilityBanner>} */}
             <ItemHeader>
               <ItemTitle>#{item.id}</ItemTitle>
 
-              {category && (
+              {item.category && (
                 <CategoryTag
-                  onClick={() => navigate(`/category/${category.id}`)}
+                  onClick={() => navigate(`/category/${item.category_id}`)}
                 >
-                  {category.name}
+                  {item.category}
                 </CategoryTag>
               )}
 
               <PriceSection>
-                {!isAvailable && <AvailabilityBadge>Sold</AvailabilityBadge>}
-                <CurrentPrice>{finalPrice.toFixed(2)}€</CurrentPrice>
+                {item.available ? (
+                  <CurrentPrice>{item.finalPrice}€</CurrentPrice>
+                ) : (
+                  <AvailabilityBadge>Sold out</AvailabilityBadge>
+                )}
+
                 {item.discount > 0 && (
                   <>
-                    <OriginalPrice>{item.price.toFixed(2)}€</OriginalPrice>
+                    <OriginalPrice>{item.price}€</OriginalPrice>
                     <DiscountBadge>{item.discount}% OFF</DiscountBadge>
                   </>
                 )}
@@ -380,7 +372,7 @@ const ItemPageRaw = () => {
 
         {relatedItems.length > 0 && (
           <RelatedSection>
-            <SectionTitle>More {category?.name}</SectionTitle>
+            <SectionTitle>More {item.category}</SectionTitle>
             <Cards bags={relatedItems} />
           </RelatedSection>
         )}
