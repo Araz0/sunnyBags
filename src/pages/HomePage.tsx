@@ -1,5 +1,5 @@
 import React from 'react'
-import { CategoryCard, PageContainer } from '../components'
+import { CategoryCard, HeroSection, PageContainer } from '../components'
 import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
 import { categories } from '../data'
@@ -13,6 +13,11 @@ const StyledIntroText = styled.p`
   padding: 0 2rem;
 `
 
+const StyledCategoriesHeader = styled.h3`
+  text-align: center;
+  margin: 2rem 0;
+`
+
 const StyledFeaturedCards = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -21,19 +26,19 @@ const StyledFeaturedCards = styled.div`
   gap: 10px;
 `
 
-const Logo = styled.img`
-  display: block;
-  margin: 2rem auto 3rem;
-  height: 120px;
-  width: auto;
-  background: lightgray;
-  border-radius: 2px;
+// const Logo = styled.img`
+//   display: block;
+//   margin: 2rem auto 3rem;
+//   height: 120px;
+//   width: auto;
+//   background: lightgray;
+//   border-radius: 2px;
 
-  @media (min-width: 768px) {
-    height: 160px;
-    margin: 3rem auto 4rem;
-  }
-`
+//   @media (min-width: 768px) {
+//     height: 160px;
+//     margin: 3rem auto 4rem;
+//   }
+// `
 
 const ExploreCard = styled.div`
   position: relative;
@@ -78,7 +83,8 @@ const HomePageRaw = () => {
 
   return (
     <PageContainer>
-      <Logo src="/logo.png" alt="SunnyBags Logo" />
+      <HeroSection highlightedBag="/gallery/images/0008/85B.png" />
+      {/* <Logo src="/logo.png" alt="SunnyBags Logo" /> */}
       <StyledIntroText>
         We're thrilled to showcase our unique collection of handmade bags
         crafted with love from recycled materials. Each bag tells a story of
@@ -87,6 +93,9 @@ const HomePageRaw = () => {
         range of eco-friendly bags that combine style with environmental
         consciousness.
       </StyledIntroText>
+      <StyledCategoriesHeader>
+        Our Categories
+      </StyledCategoriesHeader>
       <StyledFeaturedCards>
         {categories.map((item) => (
           <CategoryCard
@@ -106,6 +115,8 @@ const HomePageRaw = () => {
           </ExploreText>
         </ExploreCard>
       </StyledFeaturedCards>
+      <br />
+      <br />
     </PageContainer>
   )
 }
