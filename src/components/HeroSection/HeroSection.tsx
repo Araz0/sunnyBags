@@ -10,7 +10,6 @@ const HeroWrapper = styled.section`
   margin-bottom: 20px;
   overflow-x: hidden; /* Fixes potential horizontal scrollbar */
   box-sizing: border-box;
-  color: black;
 `
 
 const HeroContainer = styled.div`
@@ -84,8 +83,7 @@ export const HeroSectionRaw = ({ highlightedBag }: HeroSectionProps) => {
       <HeroContainer>
         <LeftContent>
           <h1>SunnyBags☀️</h1>
-          <p>Upcycled Bags by a Mom</p>
-          <h3>Made to Last, Made with Love</h3>
+          <p>Upcycled Bags, made by a Mom</p>
         </LeftContent>
 
         <CenterContent>
