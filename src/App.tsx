@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { CategoryPage, ExplorePage, HomePage, ItemPage } from './pages'
+import { CategoryPage, ExplorePage, HomePage, ItemPage, ItemStudio } from './pages'
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
         <Route path="explore" element={<ExplorePage />} />
         <Route path="category/:categorySlug" element={<CategoryPage />} />
         <Route path="item/:itemId" element={<ItemPage />} />
+        <Route path="item/:itemId/studio" element={<ItemStudio />} />
       </Routes>
     </BrowserRouter>
   )

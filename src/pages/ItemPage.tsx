@@ -71,7 +71,7 @@ const ThumbnailContainer = styled.div`
 
 const ThumbnailImage = styled.img`
   width: 100%;
-  background-color: lightgray;
+  background-color: #5e5e5e62;
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
@@ -119,21 +119,6 @@ const AvailabilityBadge = styled.span`
   box-shadow: 0 6px 18px rgba(204, 14, 38, 0.2);
 `
 
-// const AvailabilityBanner = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   gap: 1rem;
-//   margin-bottom: 1rem;
-//   padding: 0.9rem 1rem;
-//   border-radius: 12px;
-//   background: #cc0e26;
-//   color: #fff;
-//   font-weight: 700;
-//   letter-spacing: 0.05em;
-//   text-transform: uppercase;
-//   box-shadow: 0 10px 24px rgba(204, 14, 38, 0.18);
-// `
 
 const PriceSection = styled.div`
   display: flex;
@@ -226,6 +211,7 @@ const ItemPageRaw = () => {
       itemId ? allBags.all.find((bag) => bag.id === Number(itemId)) : null,
     [itemId],
   )
+
 
   // Get related items (same category, excluding current item)
   const relatedItems = React.useMemo(
