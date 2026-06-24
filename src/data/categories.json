@@ -57,7 +57,8 @@
     "id": 9,
     "price": 10,
     "name": "Shopper Bags",
-    "thumbnail": "/gallery/thumbnails/0009/12A.png"
+    "thumbnail": "/gallery/thumbnails/0009/12A.png",
+    "soldOut": true
   },
   {
     "id": 10,

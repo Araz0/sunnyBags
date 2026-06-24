@@ -6,8 +6,7 @@
     "fabric": "cotton",
     "price": 2,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 134,
@@ -16,8 +15,7 @@
     "fabric": "cotton",
     "price": 2,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 135,
@@ -26,7 +24,6 @@
     "fabric": "cotton",
     "price": 2,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   }
 ]

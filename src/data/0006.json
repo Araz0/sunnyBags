@@ -6,8 +6,7 @@
     "fabric": "Recycled denim",
     "price": 25,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 91,
@@ -16,8 +15,7 @@
     "fabric": "Upcycled jeans",
     "price": 25,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 92,
@@ -26,7 +24,6 @@
     "fabric": "Recycled denim",
     "price": 25,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   }
 ]

@@ -18,6 +18,7 @@ import { Bag } from '../types'
 const soldItems: number[] = [
   147, 135, 118, 119, 120, 124, 126, 131, 107, 90, 87, 81, 82, 83, 47, 49, 52,
   56, 62, 63, 64, 67, 75, 79, 16, 17, 23, 27, 32, 34, 37, 43, 44, 45, 6, 9, 1,
+  12,
 ]
 
 const getCategoryPrice = (categoryId: number) => {
@@ -25,7 +26,7 @@ const getCategoryPrice = (categoryId: number) => {
   return category ? category.price : null
 }
 
-export type ExtendedBag = Bag & { category: string | null, finalPrice: number }
+export type ExtendedBag = Bag & { category: string | null; finalPrice: number }
 
 const overrideBagData = (bag: Bag): ExtendedBag => {
   const categoryPrice = getCategoryPrice(bag.category_id)

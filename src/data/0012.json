@@ -6,8 +6,7 @@
     "fabric": "Upcycled cotton canvas with metallic ribbon and plaid cotton lining",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 6,
@@ -16,8 +15,7 @@
     "fabric": "Upcycled linen-cotton blend",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 7,
@@ -26,8 +24,7 @@
     "fabric": "Upcycled linen with cotton paisley fabric patches",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 8,
@@ -36,8 +33,7 @@
     "fabric": "Upcycled cotton sari fabric with stitched detailing",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 9,
@@ -46,8 +42,7 @@
     "fabric": "Hand-painted cotton canvas",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 10,
@@ -56,8 +51,7 @@
     "fabric": "Upcycled red cotton canvas with jacquard ribbon and printed cotton trim",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 11,
@@ -66,7 +60,6 @@
     "fabric": "Upcycled plum cotton-linen blend with assorted printed fabric scraps",
     "price": 10,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   }
 ]

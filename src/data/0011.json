@@ -6,8 +6,7 @@
     "fabric": "Upcycled medium-wash denim with original jean pocket",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 14,
@@ -16,8 +15,7 @@
     "fabric": "Mixed reclaimed denim scraps",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 15,
@@ -26,8 +24,7 @@
     "fabric": "Recycled dark indigo denim with rivet & fly hardware",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 16,
@@ -36,8 +33,7 @@
     "fabric": "Upcycled light-wash denim with button & belt-loop trim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 17,
@@ -46,8 +42,7 @@
     "fabric": "Recycled dark denim jeans",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 18,
@@ -56,8 +51,7 @@
     "fabric": "Indigo jacquard fabric with recycled denim trim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 19,
@@ -66,8 +60,7 @@
     "fabric": "Upcycled blue denim with lace and hardware",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 20,
@@ -76,8 +69,7 @@
     "fabric": "Navy printed jacquard",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 21,
@@ -86,8 +78,7 @@
     "fabric": "Reclaimed denim with jean hardware",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 22,
@@ -96,8 +87,7 @@
     "fabric": "Mixed reclaimed denim with leather accents",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 23,
@@ -106,8 +96,7 @@
     "fabric": "Recycled dark-wash denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 24,
@@ -116,8 +105,7 @@
     "fabric": "Upcycled light-wash denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 25,
@@ -126,8 +114,7 @@
     "fabric": "Reclaimed mid-wash jeans",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 26,
@@ -136,8 +123,7 @@
     "fabric": "Mixed denim panels",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 27,
@@ -146,8 +132,7 @@
     "fabric": "Recycled dark-blue denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 28,
@@ -156,8 +141,7 @@
     "fabric": "Reclaimed dark-wash denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 29,
@@ -166,8 +150,7 @@
     "fabric": "Upcycled mid-wash jeans with recycled fabric trim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 30,
@@ -176,8 +159,7 @@
     "fabric": "Recycled dark-blue denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 31,
@@ -186,8 +168,7 @@
     "fabric": "Mixed reclaimed jean panels",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 32,
@@ -196,8 +177,7 @@
     "fabric": "Upcycled light- and mid-wash jeans",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 33,
@@ -206,8 +186,7 @@
     "fabric": "Upcycled mid-wash jeans",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 34,
@@ -216,8 +195,7 @@
     "fabric": "Reclaimed dark denim with bleach-washed panel",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 35,
@@ -226,8 +204,7 @@
     "fabric": "Upcycled light- and dark-wash denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 36,
@@ -236,8 +213,7 @@
     "fabric": "Reclaimed jeans with decorative trim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 37,
@@ -246,8 +222,7 @@
     "fabric": "Mixed reclaimed denim panels",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 38,
@@ -256,8 +231,7 @@
     "fabric": "Upcycled dark-wash denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 39,
@@ -266,8 +240,7 @@
     "fabric": "Reclaimed dark denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 40,
@@ -276,8 +249,7 @@
     "fabric": "Reclaimed denim with leather trim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 41,
@@ -286,8 +258,7 @@
     "fabric": "Reclaimed denim with decorative ribbon",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 42,
@@ -296,8 +267,7 @@
     "fabric": "Mixed upcycled denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   },
   {
     "id": 43,
@@ -306,8 +276,7 @@
     "fabric": "Upcycled light-wash denim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 44,
@@ -316,8 +285,7 @@
     "fabric": "Reclaimed black denim with sequin trim",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 45,
@@ -326,8 +294,7 @@
     "fabric": "Upcycled black denim with patterned lining",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": false
+    "backgroundColor": "#eee"
   },
   {
     "id": 46,
@@ -336,7 +303,6 @@
     "fabric": "Mixed reclaimed denim with canvas appliqué",
     "price": 15,
     "discount": 0,
-    "backgroundColor": "#eee",
-    "available": true
+    "backgroundColor": "#eee"
   }
 ]
