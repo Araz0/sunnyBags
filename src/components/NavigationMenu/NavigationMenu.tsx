@@ -95,14 +95,22 @@ export const NavigationMenuRaw: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const navigate = useNavigate()
 
+  // Improved navigation path builder
   const handleNavigate = (path: string) => {
-    navigate('/' + path);
+    // Strips potential double slashes and navigates
+    const cleanPath = path ? `/${path.replace(/^\//, '')}` : '/';
+    navigate(cleanPath);
     setIsOpen(false);
   }
 
+  // Optional: Prevent body scroll when menu is open
+  React.useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+  }, [isOpen]);
+
   return (
     <NavigationWrapper>
-      <LogoContainer onClick={() => navigate('/')}>
+      <LogoContainer onClick={() => handleNavigate('')}>
         <img src="/logo.png" alt="Logo" />
         <span>SunnyBags</span>
       </LogoContainer>
@@ -117,11 +125,14 @@ export const NavigationMenuRaw: React.FC = () => {
         <span /> <span /> <span />
       </Hamburger>
 
-      <MobileMenu isOpen={isOpen}>
-        {menuItems.map((item) => (
-          <MenuLink key={item.label} onClick={() => handleNavigate(item.path)}>{item.label}</MenuLink>
-        ))}
-      </MobileMenu>
+      {/* FIX: Conditional rendering ensures it's not present when closed */}
+      {isOpen && (
+        <MobileMenu isOpen={isOpen}>
+          {menuItems.map((item) => (
+            <MenuLink key={item.label} onClick={() => handleNavigate(item.path)}>{item.label}</MenuLink>
+          ))}
+        </MobileMenu>
+      )}
     </NavigationWrapper>
   )
 }
