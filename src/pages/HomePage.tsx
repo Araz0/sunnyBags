@@ -47,7 +47,7 @@ const ExploreCard = styled.div`
   align-items: center;
   justify-content: center;
   width: 175px;
-  height: 221px;
+  height: 241px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 5px;
   color: white;
@@ -105,6 +105,7 @@ const HomePageRaw = () => {
             name={item.name}
             onClick={() => handleCategoryClick(item.name)}
             price={item.price}
+            soldOut={item.soldOut}
           />
         ))}
         <ExploreCard onClick={() => navigate('/explore')}>

@@ -7,6 +7,7 @@ const CategoryCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: ${size}px;
+  height: ${size + 66}px;
   background-color: #fff;
   border-radius: 5px;
   color: black;
@@ -21,14 +22,21 @@ const CategoryCardContainer = styled.div`
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 `
+
 const StyledThumbnail = styled.img`
   width: ${size}px;
   height: ${size}px;
   object-fit: cover;
 `
+
 const StyledContentWrapper = styled.div`
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 `
+
 const StyledDiscountTag = styled.span`
   position: absolute;
   top: 10px;
@@ -37,9 +45,22 @@ const StyledDiscountTag = styled.span`
   background-color: #cc0e26;
   border-radius: 2px;
   padding: 5px;
-
   font-size: 12px;
 `
+
+const SoldOutBanner = styled.div`
+  width: 100%;
+  background-color: #cc0e26;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 0;
+  margin-top: 5px;
+  border-radius: 2px;
+  text-transform: uppercase;
+`
+
 const StyledName = styled.span`
   display: block;
   text-align: center;
@@ -48,6 +69,7 @@ const StyledName = styled.span`
   font-size: 14px;
   color: #333;
 `
+
 const StyledPrice = styled.span`
   display: block;
   text-align: center;
@@ -60,22 +82,34 @@ export type CategoryCardProps = {
   discount: number
   name: string
   price?: number
+  soldOut?: boolean
   onClick?: () => void
 }
+
 const CategoryCardRaw = ({
   thumbnail,
   name,
   discount,
   onClick,
   price,
+  soldOut = false,
 }: CategoryCardProps) => {
   return (
     <CategoryCardContainer onClick={onClick}>
       <StyledThumbnail src={thumbnail} alt={`${name} - Thumbnail`} />
-      {discount > 0 && <StyledDiscountTag>~{discount}%</StyledDiscountTag>}
+      
+      {/* Discount Tag stays absolute on the image */}
+      {!soldOut && discount > 0 && <StyledDiscountTag>~{discount}%</StyledDiscountTag>}
+      
       <StyledContentWrapper>
         <StyledName>{name}</StyledName>
-        {price !== undefined && <StyledPrice>€{price}</StyledPrice>}
+        
+        {/* If sold out, show the banner, otherwise show the price */}
+        {soldOut ? (
+          <SoldOutBanner>Sold Out</SoldOutBanner>
+        ) : (
+          price !== undefined && <StyledPrice>€{price}</StyledPrice>
+        )}
       </StyledContentWrapper>
     </CategoryCardContainer>
   )
