@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { allBags } from '../data';
+import { allBags, categories, ExtendedBag } from '../data';
+import { suggestBag, resetSuggestionHistory, getSuggestionStats } from '../utils/suggest';
 
 // --- STYLES (Full Light & Dark Mode Compliance + Fluid Mobile Adaptation) ---
 const StudioWrapper = styled.div`
@@ -19,6 +20,8 @@ const StudioWrapper = styled.div`
   --input-border: #cccccc;
   --accent-color: #df4b4b;
   --accent-hover: #c03939;
+  --success-color: #27ae60;
+  --success-hover: #229954;
 
   @media (prefers-color-scheme: dark) {
     --bg-color: #121212;
@@ -89,7 +92,7 @@ const ControlsColumn = styled.div`
   gap: 20px;
 
   @media (max-width: 800px) {
-    grid-row: 2; /* Shifts controls underneath the sticky live preview on mobile */
+    grid-row: 2;
   }
 `;
 
@@ -109,7 +112,7 @@ const PreviewColumn = styled.div`
   @media (max-width: 800px) {
     position: relative;
     top: 0;
-    grid-row: 1; /* Places the visual output matrix right at the top for immediate mobile feedback */
+    grid-row: 1;
     padding: 12px;
   }
 `;
@@ -152,6 +155,14 @@ const Button = styled.button`
 
   &:hover {
     background: var(--accent-hover);
+  }
+`;
+
+const SuggestionButton = styled(Button)`
+  background: var(--success-color);
+  
+  &:hover {
+    background: var(--success-hover);
   }
 `;
 
@@ -303,6 +314,71 @@ const CheckboxLabel = styled.label`
   font-weight: 500;
 `;
 
+const SuggestionCard = styled.div`
+  background: var(--bg-color);
+  border: 2px solid var(--success-color);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  display: ${(props: { visible: boolean }) => props.visible ? 'block' : 'none'};
+  
+  h3 {
+    margin: 0 0 8px 0;
+    color: var(--success-color);
+    font-size: 1.1rem;
+  }
+  
+  p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  .highlight {
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+  
+  .view-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent-color);
+    text-decoration: underline;
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .thumbnail-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .thumbnail-image {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    object-fit: contain;
+  }
+`;
+
+const SuggestionStats = styled.div`
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+  
+  span {
+    display: inline-block;
+    margin-right: 15px;
+  }
+`;
+
 // --- DYNAMIC PATTERN GENERATION FACTORY ---
 const generatePresetPatterns = (invertColor: boolean) => {
   const fill = invertColor ? 'white' : 'black';
@@ -329,8 +405,21 @@ export const ItemStudio = () => {
   const { itemId } = useParams<{ itemId: string }>();
   const navigate = useNavigate();
 
-  const item = useMemo(() => {
+  // Current item state - can be updated without navigation
+  const [currentItem, setCurrentItem] = useState(() => {
     return allBags.all.find((b) => b.id === Number(itemId));
+  });
+
+  // Update current item when URL param changes
+  useEffect(() => {
+    const newItem = allBags.all.find((b) => b.id === Number(itemId));
+    if (newItem) {
+      setCurrentItem(newItem);
+      // Reset background color to new item's default
+      if (newItem.backgroundColor) {
+        setBgColor(newItem.backgroundColor);
+      }
+    }
   }, [itemId]);
 
   // Persistent Custom Sizing Arrays via Storage APIs
@@ -354,12 +443,17 @@ export const ItemStudio = () => {
   const [isTransparent, setIsTransparent] = useState(false);
   const [format, setFormat] = useState<'image/jpeg' | 'image/png' | 'image/webp'>('image/jpeg');
 
+  // Suggestion States
+  const [suggestedBag, setSuggestedBag] = useState<any>(null);
+  const [suggestionStats, setSuggestionStats] = useState<any>(null);
+  const [showSuggestion, setShowSuggestion] = useState(false);
+
   // Fallback default asset extraction configuration logic
   useEffect(() => {
-    if (item?.backgroundColor) {
-      setBgColor(item.backgroundColor);
+    if (currentItem?.backgroundColor) {
+      setBgColor(currentItem.backgroundColor);
     }
-  }, [item]);
+  }, [currentItem]);
 
   useEffect(() => {
     localStorage.setItem('studio_custom_w', customW.toString());
@@ -388,7 +482,64 @@ export const ItemStudio = () => {
     return resolutionDirectory.find((r: typeof resolutionDirectory[0]) => r.id === previewSizeId) || resolutionDirectory[0];
   }, [previewSizeId, resolutionDirectory]);
 
-  if (!item) {
+  const getThumbnailPath = (
+        categoryId: number,
+        itemId: number,
+        side: 'A' | 'B',
+      ) => {
+          const paddedCategoryId = categoryId.toString().padStart(4, '0')
+          return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`
+      }
+
+  // Helper to get thumbnail for a bag
+  const getBagThumbnail = (bag: ExtendedBag) => {
+    const category = categories.find(cat => cat.id === bag.category_id);
+    return getThumbnailPath(category?.id || 0, bag.id, 'A');
+  };
+
+  // Suggestion Handlers
+  const handleGetSuggestion = () => {
+    const bag = suggestBag();
+    if (bag) {
+      setSuggestedBag(bag);
+      setShowSuggestion(true);
+      
+      // Update stats
+      const stats = getSuggestionStats();
+      setSuggestionStats(stats);
+    } else {
+      alert('No unsold items available!');
+    }
+  };
+
+  const handleResetHistory = () => {
+    resetSuggestionHistory();
+    setSuggestionStats(getSuggestionStats());
+    setShowSuggestion(false);
+  };
+
+  const handleViewSuggestion = (id: number) => {
+    // Find the suggested bag in the data
+    const bag = allBags.all.find((b) => b.id === id);
+    if (bag) {
+      // Update the current item without navigation
+      setCurrentItem(bag);
+      // Update background color to match the new item
+      if (bag.backgroundColor) {
+        setBgColor(bag.backgroundColor);
+      }
+      // Update URL to reflect the new item without full reload
+      navigate(`/item/${id}/studio`, { replace: true });
+      // Hide the suggestion card after viewing
+      setShowSuggestion(false);
+    }
+  };
+
+  const goToItemPage = (id: number) => {
+    navigate(`/item/${id}`, { replace: true });
+  }
+
+  if (!currentItem) {
     return (
       <StudioWrapper>
         <StudioContainer>
@@ -401,8 +552,8 @@ export const ItemStudio = () => {
     );
   }
 
-  const paddedCategoryId = item.category_id.toString().padStart(4, '0');
-  const previewImgSrc = `/gallery/images/${paddedCategoryId}/${item.id}${previewSide}.png`;
+  const paddedCategoryId = currentItem.category_id.toString().padStart(4, '0');
+  const previewImgSrc = `/gallery/images/${paddedCategoryId}/${currentItem.id}${previewSide}.png`;
 
   const downloadFile = (dataUrl: string, filename: string) => {
     const link = document.createElement('a');
@@ -478,7 +629,7 @@ export const ItemStudio = () => {
 
         const img = new Image();
         img.crossOrigin = 'anonymous';
-        img.src = `/gallery/images/${paddedCategoryId}/${item.id}${side}.png`;
+        img.src = `/gallery/images/${paddedCategoryId}/${currentItem.id}${side}.png`;
         await new Promise((r) => { img.onload = r; });
 
         const maxDimW = canvas.width * bagScale;
@@ -501,7 +652,7 @@ export const ItemStudio = () => {
         
         downloadFile(
           canvas.toDataURL(format, 0.95),
-          `${item.id}_${sideName}_${transparencyLabel}${target.id}.${extension === 'jpeg' ? 'jpg' : extension}`
+          `${currentItem.id}_${sideName}_${transparencyLabel}${target.id}.${extension === 'jpeg' ? 'jpg' : extension}`
         );
       }
     }
@@ -511,11 +662,70 @@ export const ItemStudio = () => {
     <StudioWrapper>
       <StudioContainer>
         <Header>
-          <BackButton onClick={() => navigate(`/item/${item.id}`)}>← Return to Catalog</BackButton>
-          <h1>Studio Frame Control · Bag #{item.id}</h1>
+          <BackButton onClick={() => navigate(`/item/${currentItem.id}`)}>← Return to Catalog</BackButton>
+          <h1>Studio Frame Control · Bag #{currentItem.id}</h1>
         </Header>
 
         <ControlsColumn>
+          {/* SUGGESTION ENGINE SECTION */}
+          <ControlGroup>
+            <label><strong>🎯 Smart Suggestion Engine</strong></label>
+            <p style={{ margin: '0 0 5px 0', fontSize: '0.85rem', opacity: 0.7 }}>
+              Get personalized recommendations based on variety, price, and availability
+            </p>
+            
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <SuggestionButton onClick={handleGetSuggestion} style={{ flex: 2 }}>
+                ✨ Suggest a Bag
+              </SuggestionButton>
+              <Button onClick={handleResetHistory} style={{ flex: 1, background: 'var(--border-color)', color: 'var(--text-color)' }}>
+                Reset History
+              </Button>
+            </div>
+
+            {suggestionStats && (
+              <SuggestionStats>
+                <span>📊 Total: {suggestionStats.totalSuggestions}</span>
+                <span>🏷️ Categories: {suggestionStats.uniqueCategoriesSuggested}</span>
+                <span>💰 Avg: ${suggestionStats.averagePrice.toFixed(2)}</span>
+              </SuggestionStats>
+            )}
+
+            <SuggestionCard visible={showSuggestion && !!suggestedBag}>
+              <h3>🎁 Suggested Bag #{suggestedBag?.id}</h3>
+              
+              {/* Thumbnail Image */}
+              {suggestedBag && (
+                <div className="thumbnail-container">
+                  <img 
+                    src={getBagThumbnail(suggestedBag)} 
+                    alt={`Bag ${suggestedBag.id}`}
+                    className="thumbnail-image"
+                    onError={(e) => {
+                      // Fallback if thumbnail fails to load
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+              
+              <p><strong>Category:</strong> {suggestedBag?.category}</p>
+              <p><strong>Price:</strong> <span className="highlight">${suggestedBag?.finalPrice?.toFixed(2)}</span></p>
+              {suggestedBag?.discount > 0 && (
+                <p><strong>Discount:</strong> {suggestedBag.discount}% off!</p>
+              )}
+              <p style={{ fontSize: '0.85rem', opacity: 0.8, marginTop: '8px' }}>
+                {suggestedBag?.description?.substring(0, 100)}...
+              </p>
+              <div 
+                className="view-link" 
+                onClick={() => suggestedBag && handleViewSuggestion(suggestedBag.id)}
+              >
+                View this bag →
+              </div>
+            </SuggestionCard>
+          </ControlGroup>
+
           {/* BATCH TARGET SELECTION RESOLUTION LIST */}
           <ControlGroup>
             <label><strong>Batch Targets & Monitor Frame Size:</strong></label>
@@ -597,8 +807,8 @@ export const ItemStudio = () => {
                   />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                     <span style={{ fontSize: '0.9rem' }}>Canvas Base Fill Color</span>
-                    {item.backgroundColor && (
-                      <InlineButton onClick={() => setBgColor(item.backgroundColor || '#ffffff')} type="button">
+                    {currentItem.backgroundColor && (
+                      <InlineButton onClick={() => setBgColor(currentItem.backgroundColor || '#ffffff')} type="button">
                         Reset to Bag Default
                       </InlineButton>
                     )}
@@ -713,6 +923,9 @@ export const ItemStudio = () => {
             Compositor Output Matrix Monitor <br />
             Resolution Mapping: {livePreviewResolution.w} x {livePreviewResolution.h} px ({livePreviewResolution.name})
           </p>
+          <button onClick={() => goToItemPage(currentItem.id)} style={{ marginTop: '10px', width: '100%' }}>
+            🔗 Return to Bag #{currentItem.id} Catalog Page
+          </button>
         </PreviewColumn>
 
       </StudioContainer>
