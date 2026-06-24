@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { allBags, categories, ExtendedBag } from '../data';
@@ -314,13 +314,13 @@ const CheckboxLabel = styled.label`
   font-weight: 500;
 `;
 
-const SuggestionCard = styled.div`
+const SuggestionCard = styled.div<{ visible: boolean }>`
   background: var(--bg-color);
   border: 2px solid var(--success-color);
   border-radius: 8px;
   padding: 15px;
   margin-top: 10px;
-  display: ${(props: { visible: boolean }) => props.visible ? 'block' : 'none'};
+  display: ${(props) => props.visible ? 'block' : 'none'};
   
   h3 {
     margin: 0 0 8px 0;
@@ -401,74 +401,79 @@ const generatePresetPatterns = (invertColor: boolean) => {
   ];
 };
 
+// --- TYPES ---
+interface ResolutionEntry {
+  id: string;
+  w: number;
+  h: number;
+  name: string;
+}
+
+interface SideState {
+  front: boolean;
+  back: boolean;
+}
+
 export const ItemStudio = () => {
   const { itemId } = useParams<{ itemId: string }>();
   const navigate = useNavigate();
 
-  // Current item state - can be updated without navigation
-  const [currentItem, setCurrentItem] = useState(() => {
+  const [currentItem, setCurrentItem] = React.useState(() => {
     return allBags.all.find((b) => b.id === Number(itemId));
   });
 
-  // Update current item when URL param changes
-  useEffect(() => {
+  React.useEffect(() => {
     const newItem = allBags.all.find((b) => b.id === Number(itemId));
     if (newItem) {
       setCurrentItem(newItem);
-      // Reset background color to new item's default
       if (newItem.backgroundColor) {
         setBgColor(newItem.backgroundColor);
       }
     }
   }, [itemId]);
 
-  // Persistent Custom Sizing Arrays via Storage APIs
-  const [customW, setCustomW] = useState<number>(() => Number(localStorage.getItem('studio_custom_w')) || 1200);
-  const [customH, setCustomH] = useState<number>(() => Number(localStorage.getItem('studio_custom_h')) || 1200);
+  const [customW, setCustomW] = React.useState<number>(() => Number(localStorage.getItem('studio_custom_w')) || 1200);
+  const [customH, setCustomH] = React.useState<number>(() => Number(localStorage.getItem('studio_custom_h')) || 1200);
 
-  // Styling States
-  const [bgColor, setBgColor] = useState<string>('#ffffff');
-  const [patternIndex, setPatternIndex] = useState<number | null>(null);
-  const [customPattern, setCustomPattern] = useState<string | null>(null);
-  const [invertPattern, setInvertPattern] = useState<boolean>(false);
-  const [patternOpacity, setPatternOpacity] = useState<number>(0.12);
-  const [bagScale, setBagScale] = useState<number>(0.80);
-  const [previewSide, setPreviewSide] = useState<'A' | 'B'>('A');
+  const [bgColor, setBgColor] = React.useState<string>('#ffffff');
+  const [patternIndex, setPatternIndex] = React.useState<number | null>(null);
+  const [customPattern, setCustomPattern] = React.useState<string | null>(null);
+  const [invertPattern, setInvertPattern] = React.useState<boolean>(false);
+  const [patternOpacity, setPatternOpacity] = React.useState<number>(0.12);
+  const [bagScale, setBagScale] = React.useState<number>(0.80);
+  const [previewSide, setPreviewSide] = React.useState<'A' | 'B'>('A');
 
-  // Resolution Handling Toggles
-  const [checkedSizes, setCheckedSizes] = useState<Record<string, boolean>>({ insta_feed: true });
-  const [previewSizeId, setPreviewSizeId] = useState<string>('insta_feed');
+  const [checkedSizes, setCheckedSizes] = React.useState<Record<string, boolean>>({ insta_feed: true });
+  const [previewSizeId, setPreviewSizeId] = React.useState<string>('insta_feed');
   
-  const [sides, setSides] = useState({ front: true, back: true });
-  const [isTransparent, setIsTransparent] = useState(false);
-  const [format, setFormat] = useState<'image/jpeg' | 'image/png' | 'image/webp'>('image/jpeg');
+  const [sides, setSides] = React.useState<SideState>({ front: true, back: true });
+  const [isTransparent, setIsTransparent] = React.useState(false);
+  const [format, setFormat] = React.useState<'image/jpeg' | 'image/png' | 'image/webp'>('image/jpeg');
 
-  // Suggestion States
-  const [suggestedBag, setSuggestedBag] = useState<any>(null);
-  const [suggestionStats, setSuggestionStats] = useState<any>(null);
-  const [showSuggestion, setShowSuggestion] = useState(false);
+  const [suggestedBag, setSuggestedBag] = React.useState<ExtendedBag | null>(null);
+  const [suggestionStats, setSuggestionStats] = React.useState<ReturnType<typeof getSuggestionStats> | null>(null);
+  const [showSuggestion, setShowSuggestion] = React.useState(false);
 
-  // Fallback default asset extraction configuration logic
-  useEffect(() => {
+  React.useEffect(() => {
     if (currentItem?.backgroundColor) {
       setBgColor(currentItem.backgroundColor);
     }
   }, [currentItem]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem('studio_custom_w', customW.toString());
     localStorage.setItem('studio_custom_h', customH.toString());
   }, [customW, customH]);
 
-  const presetPatterns = useMemo(() => generatePresetPatterns(invertPattern), [invertPattern]);
+  const presetPatterns = React.useMemo(() => generatePresetPatterns(invertPattern), [invertPattern]);
 
-  const activePatternValue = useMemo(() => {
+  const activePatternValue = React.useMemo(() => {
     if (customPattern) return customPattern;
     if (patternIndex !== null && presetPatterns[patternIndex]) return presetPatterns[patternIndex].value;
     return null;
   }, [customPattern, patternIndex, presetPatterns]);
 
-  const resolutionDirectory = useMemo(() => {
+  const resolutionDirectory = React.useMemo<ResolutionEntry[]>(() => {
     return [
       { id: 'insta_feed', w: 1080, h: 1350, name: 'Instagram Feed (4:5)' },
       { id: 'insta_story', w: 1080, h: 1920, name: 'Story / Vertical Reel (9:16)' },
@@ -478,33 +483,25 @@ export const ItemStudio = () => {
     ];
   }, [customW, customH]);
 
-  const livePreviewResolution = useMemo(() => {
-    return resolutionDirectory.find((r: typeof resolutionDirectory[0]) => r.id === previewSizeId) || resolutionDirectory[0];
+  const livePreviewResolution = React.useMemo<ResolutionEntry>(() => {
+    return resolutionDirectory.find((r: ResolutionEntry) => r.id === previewSizeId) || resolutionDirectory[0];
   }, [previewSizeId, resolutionDirectory]);
 
-  const getThumbnailPath = (
-        categoryId: number,
-        itemId: number,
-        side: 'A' | 'B',
-      ) => {
-          const paddedCategoryId = categoryId.toString().padStart(4, '0')
-          return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`
-      }
+  const getThumbnailPath = (categoryId: number, itemId: number, side: 'A' | 'B') => {
+    const paddedCategoryId = categoryId.toString().padStart(4, '0');
+    return `/gallery/thumbnails/${paddedCategoryId}/${itemId}${side}.png`;
+  };
 
-  // Helper to get thumbnail for a bag
   const getBagThumbnail = (bag: ExtendedBag) => {
-    const category = categories.find(cat => cat.id === bag.category_id);
+    const category = categories.find((cat) => cat.id === bag.category_id);
     return getThumbnailPath(category?.id || 0, bag.id, 'A');
   };
 
-  // Suggestion Handlers
   const handleGetSuggestion = () => {
     const bag = suggestBag();
     if (bag) {
       setSuggestedBag(bag);
       setShowSuggestion(true);
-      
-      // Update stats
       const stats = getSuggestionStats();
       setSuggestionStats(stats);
     } else {
@@ -519,25 +516,20 @@ export const ItemStudio = () => {
   };
 
   const handleViewSuggestion = (id: number) => {
-    // Find the suggested bag in the data
     const bag = allBags.all.find((b) => b.id === id);
     if (bag) {
-      // Update the current item without navigation
       setCurrentItem(bag);
-      // Update background color to match the new item
       if (bag.backgroundColor) {
         setBgColor(bag.backgroundColor);
       }
-      // Update URL to reflect the new item without full reload
       navigate(`/item/${id}/studio`, { replace: true });
-      // Hide the suggestion card after viewing
       setShowSuggestion(false);
     }
   };
 
   const goToItemPage = (id: number) => {
     navigate(`/item/${id}`, { replace: true });
-  }
+  };
 
   if (!currentItem) {
     return (
@@ -585,7 +577,7 @@ export const ItemStudio = () => {
   };
 
   const toggleSizeCheckbox = (id: string, checked: boolean) => {
-    setCheckedSizes(prev => ({ ...prev, [id]: checked }));
+    setCheckedSizes((prev: Record<string, boolean>) => ({ ...prev, [id]: checked }));
   };
 
   const generateAssets = async () => {
@@ -593,7 +585,7 @@ export const ItemStudio = () => {
     if (sides.front) sidesToProcess.push('A');
     if (sides.back) sidesToProcess.push('B');
 
-    const selectedTargets = resolutionDirectory.filter(res => checkedSizes[res.id]);
+    const selectedTargets = resolutionDirectory.filter((res: ResolutionEntry) => checkedSizes[res.id]);
 
     if (selectedTargets.length === 0) {
       alert("Please select at least one output resolution mapping target checkbox.");
@@ -620,8 +612,8 @@ export const ItemStudio = () => {
             ctx.globalAlpha = patternOpacity;
             const repeatPattern = ctx.createPattern(patImg, 'repeat');
             if (repeatPattern) {
-                ctx.fillStyle = repeatPattern;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+              ctx.fillStyle = repeatPattern;
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
             }
             ctx.globalAlpha = 1.0;
           }
@@ -694,7 +686,6 @@ export const ItemStudio = () => {
             <SuggestionCard visible={showSuggestion && !!suggestedBag}>
               <h3>🎁 Suggested Bag #{suggestedBag?.id}</h3>
               
-              {/* Thumbnail Image */}
               {suggestedBag && (
                 <div className="thumbnail-container">
                   <img 
@@ -702,7 +693,6 @@ export const ItemStudio = () => {
                     alt={`Bag ${suggestedBag.id}`}
                     className="thumbnail-image"
                     onError={(e) => {
-                      // Fallback if thumbnail fails to load
                       (e.target as HTMLImageElement).style.display = 'none';
                     }}
                   />
@@ -733,7 +723,7 @@ export const ItemStudio = () => {
               Check boxes to export multiple items at once. Select radio to change live preview.
             </p>
             <SizeMatrixTable>
-              {resolutionDirectory.map((res) => (
+              {resolutionDirectory.map((res: ResolutionEntry) => (
                 <SizeRow key={res.id}>
                   <input 
                     type="checkbox" 
@@ -755,7 +745,6 @@ export const ItemStudio = () => {
               ))}
             </SizeMatrixTable>
 
-            {/* PERSISTENT STORAGE CUSTOM SIZING PANEL */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '5px' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', display: 'block', marginBottom: '4px' }}>Custom Width (px):</label>
@@ -779,10 +768,18 @@ export const ItemStudio = () => {
 
             <div style={{ display: 'flex', gap: '20px', marginTop: '5px', borderTop: '1px solid var(--border-color)', paddingTop: '10px' }}>
               <CheckboxLabel>
-                <input type="checkbox" checked={sides.front} onChange={(e) => setSides((prev) => ({ ...prev, front: e.target.checked }))} /> Batch Front Asset
+                <input
+                  type="checkbox"
+                  checked={sides.front}
+                  onChange={(e) => setSides((prev: SideState) => ({ ...prev, front: e.target.checked }))}
+                /> Batch Front Asset
               </CheckboxLabel>
               <CheckboxLabel>
-                <input type="checkbox" checked={sides.back} onChange={(e) => setSides((prev) => ({ ...prev, back: e.target.checked }))} /> Batch Back Asset
+                <input
+                  type="checkbox"
+                  checked={sides.back}
+                  onChange={(e) => setSides((prev: SideState) => ({ ...prev, back: e.target.checked }))}
+                /> Batch Back Asset
               </CheckboxLabel>
             </div>
           </ControlGroup>
@@ -828,7 +825,7 @@ export const ItemStudio = () => {
                   </div>
 
                   <PatternGrid>
-                    {presetPatterns.map((p, idx) => (
+                    {presetPatterns.map((p: { name: string; value: string }, idx: number) => (
                       <PatternOption
                         key={p.name}
                         bg={p.value}
@@ -896,7 +893,7 @@ export const ItemStudio = () => {
             <label style={{ marginTop: '10px' }}><strong>Container Mime Type Target:</strong></label>
             <select 
               value={format} 
-              onChange={(e) => setFormat(e.target.value as string)}
+              onChange={(e) => setFormat(e.target.value as 'image/jpeg' | 'image/png' | 'image/webp')}
             >
               {!isTransparent && <option value="image/jpeg">JPEG Baseline Optimization</option>}
               <option value="image/png">PNG-24 Lossless Array Structure</option>
@@ -919,7 +916,7 @@ export const ItemStudio = () => {
             <PreviewImage src={previewImgSrc} scale={bagScale} alt="Dynamic Live Preview Frame" />
           </PreviewContainer>
           
-          <p style={{ marginTop: '15px', color: 'var(--text-color)', opacity: 0.6, fontSize: '0.9rem', textAlign: 'center', marginGrid: '0' }}>
+          <p style={{ marginTop: '15px', color: 'var(--text-color)', opacity: 0.6, fontSize: '0.9rem', textAlign: 'center', margin: '0' }}>
             Compositor Output Matrix Monitor <br />
             Resolution Mapping: {livePreviewResolution.w} x {livePreviewResolution.h} px ({livePreviewResolution.name})
           </p>
