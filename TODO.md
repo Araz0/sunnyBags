@@ -1,0 +1,4 @@
+- make items and cateogires, as well as the menu items, able to open in new tab.
+- make better explore all bags cateogory.
+- make better category cards.
+- make better item cards.
