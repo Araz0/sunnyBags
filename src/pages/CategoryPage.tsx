@@ -46,18 +46,13 @@ const ErrorMessage = styled.div`
 `
 
 const CategoryPageRaw = () => {
-  const { categorySlug } = useParams<{ categorySlug: string }>()
+  const { categoryId } = useParams<{ categoryId: string }>()
   const navigate = useNavigate()
 
-  // Convert slug back to category name
-  const categoryName = categorySlug
-    ?.split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
 
   // Find the category data
   const category = categories.find(
-    (cat) => cat.name.toLowerCase() === categoryName?.toLowerCase(),
+    (cat) => cat.id.toString() === categoryId,
   )
 
   const categoryBags = category
@@ -68,7 +63,7 @@ const CategoryPageRaw = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  if (!category || !categoryName) {
+  if (!category) {
     return (
       <PageContainer>
         <ErrorMessage>
@@ -87,8 +82,13 @@ const CategoryPageRaw = () => {
       <CategoryHeader>
         <CategoryTitle>{category.name}</CategoryTitle>
         <CategoryDescription>
-          Discover our collection of {category.name.toLowerCase()} bags, each
-          crafted with care from recycled materials.
+          {
+          category.description ||
+           (
+            `Discover our collection of ${category.name} bags, each
+              crafted with care from recycled materials.`
+        )
+          }
         </CategoryDescription>
       </CategoryHeader>
 

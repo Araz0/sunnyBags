@@ -272,6 +272,41 @@ const ItemPageRaw = () => {
     window.scrollTo(0, 0)
   }, [])
 
+// Custom hook for triple click detection
+const useTripleClick = (callback: ()=> void, delay = 1000) => {
+  const countRef = React.useRef(0);
+  const timerRef = React.useRef(null);
+
+  return React.useCallback(() => {
+    countRef.current += 1;
+    
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    
+    timerRef.current = setTimeout(() => {
+      countRef.current = 0;
+      timerRef.current = null;
+    }, delay);
+    
+    if (countRef.current >= 3) {
+      countRef.current = 0;
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+      callback();
+    }
+  }, [callback, delay]);
+};
+
+// Usage in your component
+const handleAdminClick = useTripleClick(() => {
+  if (item) {
+    navigate(`/item/${item.id}/studio`);
+  }
+}, 1000);
+
   if (!item) {
     return (
       <PageContainer>
@@ -333,7 +368,9 @@ const ItemPageRaw = () => {
 
               <PriceSection>
                 {item.available ? (
-                  <CurrentPrice>{item.finalPrice}€</CurrentPrice>
+                  <CurrentPrice onClick={handleAdminClick}>
+                    {item.finalPrice}€
+                  </CurrentPrice>
                 ) : (
                   <AvailabilityBadge>Sold out</AvailabilityBadge>
                 )}

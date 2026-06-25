@@ -440,7 +440,7 @@ export const ItemStudio = () => {
   const [customPattern, setCustomPattern] = React.useState<string | null>(null);
   const [invertPattern, setInvertPattern] = React.useState<boolean>(false);
   const [patternOpacity, setPatternOpacity] = React.useState<number>(0.12);
-  const [bagScale, setBagScale] = React.useState<number>(0.80);
+  const [bagScale, setBagScale] = React.useState<number>(1.00);
   const [previewSide, setPreviewSide] = React.useState<'A' | 'B'>('A');
 
   const [checkedSizes, setCheckedSizes] = React.useState<Record<string, boolean>>({ insta_feed: true });

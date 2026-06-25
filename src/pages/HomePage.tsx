@@ -103,7 +103,7 @@ const HomePageRaw = () => {
             thumbnail={item.thumbnail}
             // discount={item.discount}
             name={item.name}
-            onClick={() => handleCategoryClick(item.name)}
+            onClick={() => handleCategoryClick(item.id.toString())}
             price={item.price}
             soldOut={item.soldOut}
           />
