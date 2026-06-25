@@ -1,16 +1,21 @@
 import React from 'react'
-import { CategoryCard, HeroSection, PageContainer } from '../components'
+import { CategoryCard, HeroSection, PageContainer, Windows } from '../components'
 import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
 import { categories } from '../data'
 
-const StyledIntroText = styled.p`
+const StyledIntroWrapper = styled.p`
   text-align: center;
   line-height: 1.6;
-  color: lightgray;
-  max-width: 800px;
-  margin: 3rem auto;
+  background-color: #f4f5f6;
+  color: #121212;
   padding: 0 2rem;
+  margin: 0;
+   p {
+    margin: 0;
+    max-width: 800px;
+    margin: 0 auto;
+   }
 `
 
 const StyledCategoriesHeader = styled.h3`
@@ -25,20 +30,6 @@ const StyledFeaturedCards = styled.div`
   justify-content: center;
   gap: 10px;
 `
-
-// const Logo = styled.img`
-//   display: block;
-//   margin: 2rem auto 3rem;
-//   height: 120px;
-//   width: auto;
-//   background: lightgray;
-//   border-radius: 2px;
-
-//   @media (min-width: 768px) {
-//     height: 160px;
-//     margin: 3rem auto 4rem;
-//   }
-// `
 
 const ExploreCard = styled.div`
   position: relative;
@@ -85,14 +76,31 @@ const HomePageRaw = () => {
     <PageContainer>
       <HeroSection highlightedBag="/gallery/images/0008/85B.png" />
       {/* <Logo src="/logo.png" alt="SunnyBags Logo" /> */}
-      <StyledIntroText>
-        We're thrilled to showcase our unique collection of handmade bags
-        crafted with love from recycled materials. Each bag tells a story of
-        sustainability and creativity, transforming discarded materials into
-        beautiful, functional accessories. Scroll down to explore our diverse
-        range of eco-friendly bags that combine style with environmental
-        consciousness.
-      </StyledIntroText>
+      <StyledIntroWrapper>
+        <p>
+          We're thrilled to showcase our unique collection of handmade bags
+          crafted with love from recycled materials. Each bag tells a story of
+          sustainability and creativity, transforming discarded materials into
+          beautiful, functional accessories. Scroll down to explore our diverse
+          range of eco-friendly bags that combine style with environmental
+          consciousness.
+        </p>
+      </StyledIntroWrapper>
+        <Windows 
+          headerText="Crafted with Love, Worn with Purpose"
+          portrait={"/gallery/images/0008/85B.png"}
+          squares={[
+            "/gallery/images/0012/7A.png" ,
+            "/gallery/images/0007/88A.png" ,
+            "/gallery/images/0010/51A.png" ,
+            "/gallery/images/0005/109A.png" ,
+          ]}
+          landscapes={[
+            "/gallery/images/0004/115A.png" ,
+            "/gallery/images/0003/126A.png" ,
+          ]}
+        />
+      
       <StyledCategoriesHeader>
         Our Categories
       </StyledCategoriesHeader>

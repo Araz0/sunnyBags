@@ -6,33 +6,39 @@ const HeroWrapper = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
-  margin-bottom: 20px;
-  overflow-x: hidden; /* Fixes potential horizontal scrollbar */
+  padding: 32px 20px;
+  overflow-x: hidden;
   box-sizing: border-box;
 `
 
 const HeroContainer = styled.div`
   max-width: 1440px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "text"
+    "image";
+  gap: 24px;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "text image";
     gap: 40px;
+    align-items: center;
+    min-height: 420px;
   }
 `
 
 const LeftContent = styled.div`
-  flex: 1;
+  grid-area: text;
   text-align: center;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @media (min-width: 768px) {
     text-align: left;
@@ -40,36 +46,40 @@ const LeftContent = styled.div`
 
   h1 {
     color: #1a1a1a;
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 6vw, 4rem);
     font-weight: 800;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
     line-height: 1.1;
-
-    @media (min-width: 1024px) {
-      font-size: 4rem;
-    }
   }
 
   p {
     color: #4a4a4a;
-    font-size: 1.2rem;
-    margin: 0 0 8px 0;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin: 0;
   }
 `
 
 const CenterContent = styled.div`
-  flex: 1.2; /* Allows more space for the bag */
+  grid-area: image;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 
   img {
-    width: 90%; /* Responsive sizing */
-    max-width: 650px; /* Made the bag larger as requested */
+    width: 100%;
+    /* On mobile, cap height so it doesn't dominate the screen */
+    max-height: 52vw;
+    max-width: 340px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 16px 24px rgba(0, 0, 0, 0.2));
+
+    @media (min-width: 768px) {
+      max-height: none;
+      max-width: 650px;
+      width: 90%;
+      filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.25));
+    }
   }
 `
 
@@ -83,7 +93,7 @@ export const HeroSectionRaw = ({ highlightedBag }: HeroSectionProps) => {
       <HeroContainer>
         <LeftContent>
           <h1>SunnyBags☀️</h1>
-          <p>Upcycled Bags, made by a Mom</p>
+          <p>Upcycled Bags, Mom made</p>
         </LeftContent>
 
         <CenterContent>
