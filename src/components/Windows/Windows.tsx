@@ -2,12 +2,16 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const StyledWindowsSection = styled.section`
-  background-color: #f4f5f6;
   padding-block: 2rem;
   h2 {
     color: #121212;
     text-align: center;
     margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+  h2 {
+    font-size: 1rem;
   }
 `
 
@@ -18,8 +22,10 @@ const StyledWindowsWrapper = styled.div`
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  width: 100%;
   max-width: 920px;
   margin-inline: auto;
+  box-sizing: border-box;
 
   > * {
     width: min(18vw, 175px);
@@ -46,6 +52,7 @@ const StyledWindowsWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
+    gap: 5px;
     img {
       border-radius: 5px;
     }

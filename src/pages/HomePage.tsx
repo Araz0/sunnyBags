@@ -1,5 +1,10 @@
 import React from 'react'
-import { CategoryCard, HeroSection, PageContainer, Windows } from '../components'
+import {
+  CategoryCard,
+  HeroSection,
+  PageContainer,
+  Windows,
+} from '../components'
 import styled from '@emotion/styled'
 import { useNavigate } from 'react-router-dom'
 import { categories } from '../data'
@@ -7,15 +12,13 @@ import { categories } from '../data'
 const StyledIntroWrapper = styled.p`
   text-align: center;
   line-height: 1.6;
-  background-color: #f4f5f6;
   color: #121212;
-  padding: 0 2rem;
+  padding: 2rem;
   margin: 0;
-   p {
-    margin: 0;
+  p {
     max-width: 800px;
     margin: 0 auto;
-   }
+  }
 `
 
 const StyledCategoriesHeader = styled.h3`
@@ -74,36 +77,35 @@ const HomePageRaw = () => {
 
   return (
     <PageContainer>
-      <HeroSection highlightedBag="/gallery/images/0008/85B.png" />
-      {/* <Logo src="/logo.png" alt="SunnyBags Logo" /> */}
-      <StyledIntroWrapper>
-        <p>
-          We're thrilled to showcase our unique collection of handmade bags
-          crafted with love from recycled materials. Each bag tells a story of
-          sustainability and creativity, transforming discarded materials into
-          beautiful, functional accessories. Scroll down to explore our diverse
-          range of eco-friendly bags that combine style with environmental
-          consciousness.
-        </p>
-      </StyledIntroWrapper>
-        <Windows 
+      <div style={{ backgroundColor: '#f4f5f6' }}>
+        <HeroSection highlightedBag="/gallery/images/0008/85B.png" />
+        {/* <Logo src="/logo.png" alt="SunnyBags Logo" /> */}
+        <StyledIntroWrapper>
+          <p>
+            We're thrilled to showcase our unique collection of handmade bags
+            crafted with love from recycled materials. Each bag tells a story of
+            sustainability and creativity, transforming discarded materials into
+            beautiful, functional accessories. Scroll down to explore our
+            diverse range of eco-friendly bags that combine style with
+            environmental consciousness.
+          </p>
+        </StyledIntroWrapper>
+        <Windows
           headerText="Crafted with Love, Worn with Purpose"
-          portrait={"/gallery/images/0008/85B.png"}
+          portrait={'/gallery/images/0008/85B.png'}
           squares={[
-            "/gallery/images/0012/7A.png" ,
-            "/gallery/images/0007/88A.png" ,
-            "/gallery/images/0010/51A.png" ,
-            "/gallery/images/0005/109A.png" ,
+            '/gallery/images/0012/7A.png',
+            '/gallery/images/0007/88A.png',
+            '/gallery/images/0010/51A.png',
+            '/gallery/images/0005/109A.png',
           ]}
           landscapes={[
-            "/gallery/images/0004/115A.png" ,
-            "/gallery/images/0003/126A.png" ,
+            '/gallery/images/0004/115A.png',
+            '/gallery/images/0003/126A.png',
           ]}
         />
-      
-      <StyledCategoriesHeader>
-        Our Categories
-      </StyledCategoriesHeader>
+      </div>
+      <StyledCategoriesHeader>Our Categories</StyledCategoriesHeader>
       <StyledFeaturedCards>
         {categories.map((item) => (
           <CategoryCard

@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 const HeroWrapper = styled.section`
-  background-color: #f4f5f6;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -18,15 +17,15 @@ const HeroContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   grid-template-areas:
-    "text"
-    "image";
+    'image'
+    'text';
   gap: 24px;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1.2fr;
     grid-template-rows: 1fr;
-    grid-template-areas: "text image";
+    grid-template-areas: 'text image';
     gap: 40px;
     align-items: center;
     min-height: 420px;
@@ -42,6 +41,7 @@ const LeftContent = styled.div`
 
   @media (min-width: 768px) {
     text-align: left;
+    margin-left: 10%;
   }
 
   h1 {
