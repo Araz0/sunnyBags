@@ -144,11 +144,14 @@ Error generating stack: `+o.message+`
   flex-direction: column;
   max-width: ${Po}px;
   height: ${Po+66}px;
-  background-color: #fff;
+  background-color: #e5e5e5;
   border-radius: 5px;
   color: black;
   overflow: hidden;
   cursor: pointer;
+
+  border: 1px solid #ccc;
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -167,6 +170,7 @@ Error generating stack: `+o.message+`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  background-color: #fff;
 `,v1=_.span`
   position: absolute;
   top: 10px;
@@ -189,14 +193,12 @@ Error generating stack: `+o.message+`
   text-transform: uppercase;
 `,x1=_.span`
   display: block;
-  text-align: center;
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 14px;
   color: #333;
 `,k1=_.span`
   display: block;
-  text-align: center;
   font-size: 13px;
   color: #444;
 `,b1=({thumbnail:e,name:t,discount:n,onClick:r,price:i,soldOut:o=!1})=>d.jsxs(g1,{onClick:r,children:[d.jsx(m1,{src:e,alt:`${t} - Thumbnail`}),!o&&n>0&&d.jsxs(v1,{children:["~",n,"%"]}),d.jsxs(y1,{children:[d.jsx(x1,{children:t}),o?d.jsx(w1,{children:"Sold Out"}):i!==void 0&&d.jsxs(k1,{children:["€",i]})]})]}),S1=R.memo(b1),C1=_.nav`
@@ -471,9 +473,10 @@ Error generating stack: `+o.message+`
     max-width: 800px;
     margin: 0 auto;
   }
-`,uv=_.h3`
+`,uv=_.h2`
   text-align: center;
   margin: 2rem 0;
+  color: #121212;
 `,dv=_.div`
   display: flex;
   flex-wrap: wrap;
@@ -504,7 +507,7 @@ Error generating stack: `+o.message+`
   font-weight: bold;
   font-size: 16px;
   text-align: center;
-`,hv=()=>{const e=cr(),t=n=>{const r=n.toLowerCase().replace(/\s+/g,"-");e(`/category/${r}`)};return R.useEffect(()=>{window.scrollTo(0,0)},[]),d.jsxs(ir,{children:[d.jsxs("div",{style:{backgroundColor:"#f4f5f6"},children:[d.jsx(M1,{highlightedBag:"/gallery/images/0008/85B.png"}),d.jsx(cv,{children:d.jsx("p",{children:"We're thrilled to showcase our unique collection of handmade bags crafted with love from recycled materials. Each bag tells a story of sustainability and creativity, transforming discarded materials into beautiful, functional accessories. Scroll down to explore our diverse range of eco-friendly bags that combine style with environmental consciousness."})}),d.jsx(W1,{headerText:"Crafted with Love, Worn with Purpose",portrait:"/gallery/images/0008/85B.png",squares:["/gallery/images/0012/7A.png","/gallery/images/0007/88A.png","/gallery/images/0010/51A.png","/gallery/images/0005/109A.png"],landscapes:["/gallery/images/0004/115A.png","/gallery/images/0003/126A.png"]})]}),d.jsx(uv,{children:"Our Categories"}),d.jsxs(dv,{children:[gi.map(n=>d.jsx(S1,{thumbnail:n.thumbnail,name:n.name,onClick:()=>t(n.id.toString()),price:n.price,soldOut:n.soldOut},n.id)),d.jsx(fv,{onClick:()=>e("/explore"),children:d.jsxs(pv,{children:["Explore All",d.jsx("br",{}),"Bags"]})})]}),d.jsx("br",{}),d.jsx("br",{})]})},gv=R.memo(hv),mv=_.div`
+`,hv=()=>{const e=cr(),t=n=>{const r=n.toLowerCase().replace(/\s+/g,"-");e(`/category/${r}`)};return R.useEffect(()=>{window.scrollTo(0,0)},[]),d.jsx(ir,{children:d.jsxs("div",{style:{backgroundColor:"#f4f5f6"},children:[d.jsx(M1,{highlightedBag:"/gallery/images/0008/85B.png"}),d.jsx(cv,{children:d.jsx("p",{children:"We're thrilled to showcase our unique collection of handmade bags crafted with love from recycled materials. Each bag tells a story of sustainability and creativity, transforming discarded materials into beautiful, functional accessories. Scroll down to explore our diverse range of eco-friendly bags that combine style with environmental consciousness."})}),d.jsx(W1,{headerText:"Crafted with Love, Worn with Purpose",portrait:"/gallery/images/0008/85B.png",squares:["/gallery/images/0012/7A.png","/gallery/images/0007/88A.png","/gallery/images/0010/51A.png","/gallery/images/0005/109A.png"],landscapes:["/gallery/images/0004/115A.png","/gallery/images/0003/126A.png"]}),d.jsx(uv,{children:"Our Categories"}),d.jsxs(dv,{children:[gi.map(n=>d.jsx(S1,{thumbnail:n.thumbnail,name:n.name,onClick:()=>t(n.id.toString()),price:n.price,soldOut:n.soldOut},n.id)),d.jsx(fv,{onClick:()=>e("/explore"),children:d.jsx(pv,{children:"Explore All"})})]}),d.jsx("br",{}),d.jsx("br",{})]})})},gv=R.memo(hv),mv=_.div`
   text-align: center;
   margin: 2rem 0;
 `,yv=_.h1`

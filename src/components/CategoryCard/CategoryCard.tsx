@@ -8,11 +8,14 @@ const CategoryCardContainer = styled.div`
   flex-direction: column;
   max-width: ${size}px;
   height: ${size + 66}px;
-  background-color: #fff;
+  background-color: #e5e5e5;
   border-radius: 5px;
   color: black;
   overflow: hidden;
   cursor: pointer;
+
+  border: 1px solid #ccc;
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -35,6 +38,7 @@ const StyledContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  background-color: #fff;
 `
 
 const StyledDiscountTag = styled.span`
@@ -63,7 +67,6 @@ const SoldOutBanner = styled.div`
 
 const StyledName = styled.span`
   display: block;
-  text-align: center;
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 14px;
@@ -72,7 +75,6 @@ const StyledName = styled.span`
 
 const StyledPrice = styled.span`
   display: block;
-  text-align: center;
   font-size: 13px;
   color: #444;
 `

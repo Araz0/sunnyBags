@@ -21,9 +21,10 @@ const StyledIntroWrapper = styled.p`
   }
 `
 
-const StyledCategoriesHeader = styled.h3`
+const StyledCategoriesHeader = styled.h2`
   text-align: center;
   margin: 2rem 0;
+  color: #121212;
 `
 
 const StyledFeaturedCards = styled.div`
@@ -104,30 +105,27 @@ const HomePageRaw = () => {
             '/gallery/images/0003/126A.png',
           ]}
         />
+        <StyledCategoriesHeader>Our Categories</StyledCategoriesHeader>
+        <StyledFeaturedCards>
+          {categories.map((item) => (
+            <CategoryCard
+              key={item.id}
+              thumbnail={item.thumbnail}
+              name={item.name}
+              onClick={() => handleCategoryClick(item.id.toString())}
+              price={item.price}
+              soldOut={item.soldOut}
+            />
+          ))}
+          <ExploreCard onClick={() => navigate('/explore')}>
+            <ExploreText>
+              Explore All
+            </ExploreText>
+          </ExploreCard>
+        </StyledFeaturedCards>
+        <br />
+        <br />
       </div>
-      <StyledCategoriesHeader>Our Categories</StyledCategoriesHeader>
-      <StyledFeaturedCards>
-        {categories.map((item) => (
-          <CategoryCard
-            key={item.id}
-            thumbnail={item.thumbnail}
-            // discount={item.discount}
-            name={item.name}
-            onClick={() => handleCategoryClick(item.id.toString())}
-            price={item.price}
-            soldOut={item.soldOut}
-          />
-        ))}
-        <ExploreCard onClick={() => navigate('/explore')}>
-          <ExploreText>
-            Explore All
-            <br />
-            Bags
-          </ExploreText>
-        </ExploreCard>
-      </StyledFeaturedCards>
-      <br />
-      <br />
     </PageContainer>
   )
 }
