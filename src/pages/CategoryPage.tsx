@@ -23,18 +23,16 @@ const CategoryDescription = styled.p`
 `
 
 const BackButton = styled.button`
-  background: #333;
-  color: white;
+  color: #333333;
+  background-color: transparent;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  padding-inline: 1.5rem;
+  margin-block: 0.5rem;
+  transition: color 0.2s ease;
   cursor: pointer;
-  font-size: 1rem;
-  margin: 1rem 0;
-  transition: background-color 0.2s ease;
 
   &:hover {
-    background: #555;
+    color: #000000;
   }
 `
 
@@ -69,7 +67,7 @@ const CategoryPageRaw = () => {
         <ErrorMessage>
           <h2>Category not found</h2>
           <p>The category you're looking for doesn't exist.</p>
-          <BackButton onClick={() => navigate('/')}>Back to Home</BackButton>
+          <BackButton onClick={() => navigate('/')}>Home</BackButton>
         </ErrorMessage>
       </PageContainer>
     )
@@ -77,7 +75,7 @@ const CategoryPageRaw = () => {
 
   return (
     <PageContainer>
-      <BackButton onClick={() => navigate('/')}>← Back to Home</BackButton>
+      <BackButton onClick={() => navigate('/')}>← Home</BackButton>
 
       <CategoryHeader>
         <CategoryTitle>{category.name}</CategoryTitle>

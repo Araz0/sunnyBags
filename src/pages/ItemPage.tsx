@@ -5,26 +5,19 @@ import { allBags, ExtendedBag } from '../data'
 import styled from '@emotion/styled'
 
 const BackButton = styled.button`
-  background: #333;
-  color: white;
+  color: #333333;
+  background-color: transparent;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  padding-inline: 1.5rem;
+  margin-block: 0.5rem;
+  transition: color 0.2s ease;
   cursor: pointer;
-  font-size: 1rem;
-  margin: 1rem 0;
-  transition: background-color 0.2s ease;
 
   &:hover {
-    background: #555;
+    color: #000000;
   }
 `
 
-const ItemContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 4rem;
-`
 
 const ItemHeader = styled.div`
   display: flex;
@@ -212,7 +205,6 @@ const ItemPageRaw = () => {
     [itemId],
   )
 
-
   // Get related items (same category, excluding current item)
   const relatedItems = React.useMemo(
     () =>
@@ -310,21 +302,18 @@ const handleAdminClick = useTripleClick(() => {
   if (!item) {
     return (
       <PageContainer>
-        <ItemContainer>
           <ErrorMessage>
             <h2>Item not found</h2>
             <p>The item you're looking for doesn't exist.</p>
             <BackButton onClick={() => navigate('/')}>Back to Home</BackButton>
           </ErrorMessage>
-        </ItemContainer>
       </PageContainer>
     )
   }
 
   return (
     <PageContainer>
-      <ItemContainer>
-        <BackButton onClick={() => navigate(-1)}>← Back</BackButton>
+        <BackButton onClick={() => navigate(-1)}>← {item.category}</BackButton>
 
         <ItemHeader>
           <ImageSection backgroundColor={item.backgroundColor}>
@@ -399,7 +388,6 @@ const handleAdminClick = useTripleClick(() => {
             <Cards bags={relatedItems} />
           </RelatedSection>
         )}
-      </ItemContainer>
     </PageContainer>
   )
 }
