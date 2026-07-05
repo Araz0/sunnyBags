@@ -66,12 +66,6 @@ const ExploreText = styled.span`
 const HomePageRaw = () => {
   const navigate = useNavigate()
 
-  const handleCategoryClick = (categoryName: string) => {
-    // Convert category name to URL-friendly slug
-    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, '-')
-    navigate(`/category/${categorySlug}`)
-  }
-
   React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -79,7 +73,7 @@ const HomePageRaw = () => {
   return (
     <PageContainer>
       <div style={{ backgroundColor: '#f4f5f6' }}>
-        <HeroSection highlightedBag="/gallery/images/0008/85B.png" />
+        <HeroSection />
         {/* <Logo src="/logo.png" alt="SunnyBags Logo" /> */}
         <StyledIntroWrapper>
           <p>
@@ -110,9 +104,9 @@ const HomePageRaw = () => {
           {categories.map((item) => (
             <CategoryCard
               key={item.id}
+              id={item.id}
               thumbnail={item.thumbnail}
               name={item.name}
-              onClick={() => handleCategoryClick(item.id.toString())}
               price={item.price}
               soldOut={item.soldOut}
             />

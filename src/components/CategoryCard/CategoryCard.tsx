@@ -1,8 +1,10 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const size = 175
-const CategoryCardContainer = styled.div`
+
+const CategoryCardContainer = styled.a`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,15 +13,13 @@ const CategoryCardContainer = styled.div`
   background-color: #e5e5e5;
   border-radius: 5px;
   color: black;
+  text-decoration: none;
   overflow: hidden;
   cursor: pointer;
-
   border: 1px solid #ccc;
-
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -80,32 +80,43 @@ const StyledPrice = styled.span`
 `
 
 export type CategoryCardProps = {
+  id: string
   thumbnail: string
   discount: number
   name: string
   price?: number
   soldOut?: boolean
-  onClick?: () => void
 }
 
 const CategoryCardRaw = ({
+  id,
   thumbnail,
   name,
   discount,
-  onClick,
   price,
   soldOut = false,
 }: CategoryCardProps) => {
+  const navigate = useNavigate()
+  const href = `/category/${id}`
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Let the browser handle new-tab / new-window / download shortcuts natively
+    // (middle click, ctrl/cmd+click, shift+click) — only intercept a plain left click
+    // so it becomes a fast client-side SPA navigation instead of a full page reload.
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return
+    }
+    e.preventDefault()
+    navigate(href)
+  }
+
   return (
-    <CategoryCardContainer onClick={onClick}>
+    <CategoryCardContainer href={href} onClick={handleClick}>
       <StyledThumbnail src={thumbnail} alt={`${name} - Thumbnail`} />
-      
       {/* Discount Tag stays absolute on the image */}
       {!soldOut && discount > 0 && <StyledDiscountTag>~{discount}%</StyledDiscountTag>}
-      
       <StyledContentWrapper>
         <StyledName>{name}</StyledName>
-        
         {/* If sold out, show the banner, otherwise show the price */}
         {soldOut ? (
           <SoldOutBanner>Sold Out</SoldOutBanner>

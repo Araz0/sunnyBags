@@ -6,7 +6,7 @@ const SIZE = 180
 const IMG_SIZE = 180
 const CARD_HEIGHT = 260
 
-const CardContainer = styled.div`
+const CardContainer = styled.a`
   position: relative;
   width: ${SIZE}px;
   height: ${CARD_HEIGHT}px;
@@ -18,8 +18,9 @@ const CardContainer = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
   transition: border-color 0.18s ease, transform 0.18s ease;
-
   &:hover {
     border-color: var(--border-strong, #ccc);
     transform: translateY(-2px);
@@ -133,14 +134,22 @@ export type CardProps = {
 const CardRaw = ({ id, thumbnail, name, discount, price, category, available = true }: CardProps) => {
   const navigate = useNavigate()
   const finalPrice = price - price * (discount / 100)
+  const href = `/item/${id}`
 
-  const handleClick = () => {
-    navigate(`/item/${id}`)
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Let the browser handle new-tab / new-window / download shortcuts natively
+    // (middle click, ctrl/cmd+click, shift+click) — only intercept a plain left click
+    // so it becomes a fast client-side SPA navigation instead of a full page reload.
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return
+    }
+    e.preventDefault()
+    navigate(href)
     window.scrollTo(0, 0)
   }
 
   return (
-    <CardContainer onClick={handleClick}>
+    <CardContainer href={href} onClick={handleClick}>
       {!available && (
         <SoldOverlay aria-label="Sold — no longer available">
           <SoldLabel>Sold</SoldLabel>

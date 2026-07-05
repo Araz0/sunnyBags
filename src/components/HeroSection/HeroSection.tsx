@@ -83,11 +83,7 @@ const CenterContent = styled.div`
   }
 `
 
-type HeroSectionProps = {
-  highlightedBag: string
-}
-
-export const HeroSectionRaw = ({ highlightedBag }: HeroSectionProps) => {
+export const HeroSectionRaw = () => {
   return (
     <HeroWrapper>
       <HeroContainer>
@@ -97,7 +93,7 @@ export const HeroSectionRaw = ({ highlightedBag }: HeroSectionProps) => {
         </LeftContent>
 
         <CenterContent>
-          <img src={highlightedBag} alt="Featured Artisanal Bag" />
+          <img src="/gallery/images/0008/85B.png" alt="Featured Artisanal Bag" />
         </CenterContent>
       </HeroContainer>
     </HeroWrapper>
