@@ -11,6 +11,8 @@ import {
   IconButton,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
@@ -52,6 +54,7 @@ const dataUrlToFile = async (url: string, name: string) => {
 
 export const PublishDialog: React.FC<Props> = ({ postId, onClose, onDone }) => {
   const { posts } = useStudioData()
+  const fullScreen = useMediaQuery(useTheme().breakpoints.down('sm'))
   const post = posts.find((p) => p.id === postId)
   const bag = post ? getBag(post.bagId) : undefined
 
@@ -139,7 +142,7 @@ export const PublishDialog: React.FC<Props> = ({ postId, onClose, onDone }) => {
   }
 
   return (
-    <Dialog open={!!postId} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog open={!!postId} onClose={onClose} maxWidth="md" fullWidth fullScreen={fullScreen}>
       <DialogTitle sx={{ pr: 6 }}>
         Publish assistant · Bag #{post.bagId}
         <Typography variant="body2" color="text.secondary">
@@ -272,7 +275,7 @@ export const PublishDialog: React.FC<Props> = ({ postId, onClose, onDone }) => {
           </Stack>
         </Stack>
       </DialogContent>
-      <DialogActions sx={{ px: 3, py: 2 }}>
+      <DialogActions sx={{ px: { xs: 2, sm: 3 }, py: 2, pb: 'calc(16px + env(safe-area-inset-bottom))', flexWrap: 'wrap', gap: 1, '& > :not(style) ~ :not(style)': { ml: 0 } }}>
         <Button color="inherit" onClick={skip} sx={{ mr: 'auto' }}>
           Skip this one
         </Button>

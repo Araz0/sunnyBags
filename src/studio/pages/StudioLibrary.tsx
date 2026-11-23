@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Button, Checkbox, Chip, Grid, MenuItem, Paper, Stack, TextField, Tooltip, Typography } from '@mui/material'
+import { Box, Button, Checkbox, Chip, Grid, IconButton, MenuItem, Paper, Stack, TextField, Tooltip, Typography } from '@mui/material'
 import DoneAllIcon from '@mui/icons-material/DoneAll'
 import RemoveDoneIcon from '@mui/icons-material/RemoveDone'
+import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined'
 import { allBags, categories } from '../../data'
 import { bagThumb, fmtRelative } from '../helpers'
 import { setAlreadyPosted } from '../planner'
@@ -115,7 +116,7 @@ export const StudioLibrary: React.FC = () => {
         variant="outlined"
         sx={{
           position: 'sticky',
-          top: { xs: 0, md: 8 },
+          top: { xs: 'calc(58px + env(safe-area-inset-top))', md: 8 },
           zIndex: 3,
           mb: 2,
           px: 1.5,
@@ -124,7 +125,6 @@ export const StudioLibrary: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           gap: 1,
-          flexWrap: 'wrap',
           borderColor: selected.size ? 'primary.main' : 'divider',
         }}
       >
@@ -134,15 +134,22 @@ export const StudioLibrary: React.FC = () => {
           indeterminate={selected.size > 0 && !allVisibleSelected}
           onChange={(e) => setSelected(e.target.checked ? new Set(list.map((b) => b.id)) : new Set())}
         />
-        <Typography variant="body2" fontWeight={600} flex={1}>
-          {selected.size ? `${selected.size} selected` : `${list.length} bag${list.length === 1 ? '' : 's'} — select to bulk-mark`}
+        <Typography variant="body2" fontWeight={600} flex={1} noWrap>
+          {selected.size ? `${selected.size} selected` : `${list.length} bag${list.length === 1 ? '' : 's'}`}
+          <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' }, color: 'text.secondary', fontWeight: 400 }}>
+            {selected.size ? '' : ' — select to bulk-mark'}
+          </Box>
         </Typography>
-        <Button size="small" variant="contained" color="success" startIcon={<DoneAllIcon />} disabled={!selected.size} onClick={() => mark([...selected], true)}>
-          Mark as already posted
+        <Button size="small" variant="contained" color="success" startIcon={<DoneAllIcon />} disabled={!selected.size} onClick={() => mark([...selected], true)} sx={{ whiteSpace: 'nowrap' }}>
+          <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>Mark as already&nbsp;</Box>posted
         </Button>
-        <Button size="small" color="inherit" startIcon={<RemoveDoneIcon />} disabled={!selected.size} onClick={() => mark([...selected], false)}>
-          Unmark
-        </Button>
+        <Tooltip title="Unmark">
+          <span>
+            <IconButton size="small" disabled={!selected.size} onClick={() => mark([...selected], false)}>
+              <RemoveDoneIcon fontSize="small" />
+            </IconButton>
+          </span>
+        </Tooltip>
       </Paper>
 
       <Grid container spacing={2}>
@@ -197,7 +204,7 @@ export const StudioLibrary: React.FC = () => {
                   </Typography>
                   <Box flex={1} />
                   <Stack direction="row" spacing={0.75} pt={1}>
-                    <Button size="small" variant="contained" disabled={sold} onClick={() => ui.openEditor({ bagId: b.id })} sx={{ flex: 1 }}>
+                    <Button size="small" variant="contained" disabled={sold} onClick={() => ui.openEditor({ bagId: b.id })} sx={{ flex: 1, minWidth: 0, px: 1 }}>
                       Schedule
                     </Button>
                     <Tooltip title={s?.imported ? 'Unmark “already posted”' : 'Mark as already posted'}>
@@ -205,9 +212,11 @@ export const StudioLibrary: React.FC = () => {
                         {s?.imported ? <RemoveDoneIcon fontSize="small" /> : <DoneAllIcon fontSize="small" />}
                       </Button>
                     </Tooltip>
-                    <Button size="small" variant="outlined" onClick={() => navigate(`/item/${b.id}/studio`)} sx={{ minWidth: 0 }}>
-                      Edit
-                    </Button>
+                    <Tooltip title="Open in bag studio">
+                      <Button size="small" variant="outlined" onClick={() => navigate(`/item/${b.id}/studio`)} sx={{ minWidth: 0, px: 1 }}>
+                        <BrushOutlinedIcon fontSize="small" />
+                      </Button>
+                    </Tooltip>
                   </Stack>
                 </Stack>
               </Paper>

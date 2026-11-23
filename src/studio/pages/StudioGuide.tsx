@@ -146,6 +146,11 @@ export const StudioGuide: React.FC = () => {
           </Section>
 
           <Section id="routine" title="Daily routine (2 minutes)">
+            <P>
+              The studio is built for your phone: tabs at the bottom, a <strong>Post to Instagram</strong> bar in the bag editor, and a list view in the calendar.
+              Open <Code>/studio</Code> in your phone browser and use <em>Add to Home Screen</em> to launch it like an app. Tokens and your plan are stored per browser,
+              so on a new phone, restore a backup (Settings) and re-enter the tokens (Connections).
+            </P>
             <P>When a post is due, your calendar or the browser pings you and the queue shows it as <strong>Due now</strong>.</P>
             <ol>
               <li>Click <strong>Post now</strong> to open the publish assistant.</li>
@@ -169,7 +174,8 @@ export const StudioGuide: React.FC = () => {
                 Click a slide in the studio to leave it out. If a bag has no back photo, that slide is skipped.
               </li>
               <li>
-                <strong>Sync from Instagram</strong> (Queue → History) reads your feed. Every post whose caption contains <Code>Bag #123</Code> is recorded as
+                <strong>Instagram sync runs automatically</strong> when you open the studio and every 30 minutes (Connections → Automation). Posted something by hand
+                in the Instagram app? The matching planned post is checked off by itself. <strong>Sync from Instagram</strong> (Queue → History) re-reads the whole feed on demand. Every post whose caption contains <Code>Bag #123</Code> is recorded as
                 posted, with its link and likes, so the scheduler won't repeat it. Bags in older posts without that text can be marked by hand in the library.
               </li>
               <li>

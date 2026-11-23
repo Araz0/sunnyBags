@@ -361,33 +361,95 @@ interface IgMedia {
  * Read your Instagram feed and record every post whose caption mentions
  * "Bag #123" as posted — so the scheduler knows what's already out there.
  */
-export const syncFromInstagram = async (c: Connections, posts: ScheduledPost[]) => {
+const SYNC_KEY = 'sunnybags_studio_ig_sync_at'
+
+export const lastInstagramSync = (): number => {
+  try {
+    return Number(localStorage.getItem(SYNC_KEY)) || 0
+  } catch {
+    return 0
+  }
+}
+
+const DAY_MS = 86400000
+
+/**
+ * Read your Instagram feed and bring the studio in line with it:
+ * - a planned post for that bag (due, or at most 2 days ahead) is checked off as posted
+ * - otherwise the Instagram post is added to the history
+ * - likes, comments and links are refreshed for posts already known
+ * - "already posted" markers and future auto picks for those bags are cleared
+ * Matches captions containing "Bag #123" or "Tasche #123".
+ * Stops paging at the first page it already knows, unless `full` is set.
+ */
+export const syncFromInstagram = async (c: Connections, posts: ScheduledPost[], opts: { full?: boolean } = {}) => {
+  const known = new Map<string, ScheduledPost>()
+  posts.forEach((p) => p.publishLog?.forEach((l) => l.ref && l.platform === 'instagram' && known.set(l.ref, p)))
+  const incremental = !opts.full && known.size > 0
+
   const media: IgMedia[] = []
-  let next: string | undefined
   let page = await graph(c, `${c.meta.igUserId}/media`, { fields: 'id,caption,permalink,timestamp,like_count,comments_count', limit: '50' }, 'GET')
   for (let i = 0; i < 20; i++) {
-    media.push(...(page.data ?? []))
-    next = page.paging?.next
-    if (!next) break
+    const batch: IgMedia[] = page.data ?? []
+    media.push(...batch)
+    const next: string | undefined = page.paging?.next
+    if (!next || (incremental && batch.some((m) => known.has(m.id)))) break
     const res = await fetch(next)
     page = await res.json()
     if (page.error) throw new Error(page.error.message)
   }
 
-  const known = new Set(posts.flatMap((p) => p.publishLog?.map((l) => l.ref) ?? []))
   const now = new Date().toISOString()
   const added: ScheduledPost[] = []
-  const bagIds = new Set<number>()
+  const patches = new Map<string, Partial<ScheduledPost>>()
+  const postedBags = new Set<number>()
+  const claimed = new Set<string>()
+  let checkedOff = 0
   let unmatched = 0
+
   for (const m of media) {
+    const stats = { likes: m.like_count ?? 0, comments: m.comments_count ?? 0, fetchedAt: now }
+    const logEntry = { platform: 'instagram' as const, ok: true, via: 'meta' as const, at: m.timestamp, ref: m.id, url: m.permalink }
+
+    const existing = known.get(m.id)
+    if (existing) {
+      patches.set(existing.id, { ...patches.get(existing.id), stats })
+      postedBags.add(existing.bagId)
+      continue
+    }
+
     const match = m.caption?.match(/(?:bag|tasche)\s*#\s*(\d+)/i)
     const bag = match ? getBag(Number(match[1])) : undefined
     if (!bag) {
       unmatched++
       continue
     }
-    bagIds.add(bag.id)
-    if (known.has(m.id)) continue
+    postedBags.add(bag.id)
+
+    // Was this one of our planned posts, posted by hand? Check it off.
+    const t = new Date(m.timestamp).getTime()
+    const planned = posts
+      .filter(
+        (p) =>
+          p.bagId === bag.id &&
+          (p.status === 'scheduled' || p.status === 'draft') &&
+          !claimed.has(p.id) &&
+          new Date(p.scheduledAt).getTime() <= t + 2 * DAY_MS,
+      )
+      .sort((a, b) => Math.abs(new Date(a.scheduledAt).getTime() - t) - Math.abs(new Date(b.scheduledAt).getTime() - t))[0]
+
+    if (planned) {
+      claimed.add(planned.id)
+      checkedOff++
+      patches.set(planned.id, {
+        status: 'posted',
+        postedAt: m.timestamp,
+        stats,
+        publishLog: [...(planned.publishLog ?? []), logEntry],
+      })
+      continue
+    }
+
     added.push({
       id: `ig_${m.id}`,
       bagId: bag.id,
@@ -398,19 +460,36 @@ export const syncFromInstagram = async (c: Connections, posts: ScheduledPost[]) 
       caption: m.caption ?? '',
       status: 'posted',
       design: { sizeId: 'insta_feed', sizeName: 'Instagram', w: 1080, h: 1350, side: 'A', bgColor: '#ffffff', isTransparent: false, bagScale: 1, format: 'image/jpeg' },
-      publishLog: [{ platform: 'instagram', ok: true, via: 'meta', at: m.timestamp, ref: m.id, url: m.permalink }],
-      stats: { likes: m.like_count ?? 0, comments: m.comments_count ?? 0, fetchedAt: now },
+      publishLog: [logEntry],
+      stats,
     })
   }
 
+  let removedPicks = 0
   studioActions.mutatePosts((all) => [
-    // drop "already posted" markers and future auto picks for bags now known to be posted
-    ...all.filter(
-      (p) =>
-        !(bagIds.has(p.bagId) && p.imported) &&
-        !(bagIds.has(p.bagId) && p.auto && p.status === 'scheduled' && new Date(p.scheduledAt).getTime() > Date.now()),
-    ),
+    ...all
+      .map((p) => (patches.has(p.id) ? { ...p, ...patches.get(p.id) } : p))
+      .filter((p) => {
+        if (!postedBags.has(p.bagId)) return true
+        if (p.imported) return false // replaced by the real Instagram post
+        const futureAutoPick = p.auto && p.status === 'scheduled' && new Date(p.scheduledAt).getTime() > Date.now()
+        if (futureAutoPick) removedPicks++
+        return !futureAutoPick
+      }),
     ...added,
   ])
-  return { scanned: media.length, added: added.length, bags: bagIds.size, unmatched }
+  try {
+    localStorage.setItem(SYNC_KEY, String(Date.now()))
+  } catch {
+    /* ignore */
+  }
+  return { scanned: media.length, added: added.length, checkedOff, removedPicks, bags: postedBags.size, unmatched }
+}
+
+export const describeSync = (r: Awaited<ReturnType<typeof syncFromInstagram>>) => {
+  const parts: string[] = []
+  if (r.checkedOff) parts.push(`${r.checkedOff} planned post${r.checkedOff > 1 ? 's' : ''} checked off`)
+  if (r.added) parts.push(`${r.added} added to history`)
+  if (r.removedPicks) parts.push(`${r.removedPicks} repeat pick${r.removedPicks > 1 ? 's' : ''} removed from the queue`)
+  return parts.length ? `Instagram sync: ${parts.join(', ')}` : ''
 }

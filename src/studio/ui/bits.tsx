@@ -117,11 +117,11 @@ export const Stat: React.FC<{ label: string; value: React.ReactNode; hint?: stri
   hint,
   tone,
 }) => (
-  <Paper variant="outlined" sx={{ p: 2.25, borderRadius: 3, flex: 1, minWidth: 150 }}>
+  <Paper variant="outlined" sx={{ p: { xs: 1.75, sm: 2.25 }, borderRadius: 3, boxSizing: 'border-box', flex: { xs: '1 1 calc(50% - 10px)', sm: 1 }, minWidth: { xs: 'calc(50% - 10px)', sm: 150 } }}>
     <Typography variant="body2" color="text.secondary" fontWeight={600}>
       {label}
     </Typography>
-    <Typography sx={{ fontSize: '1.9rem', fontWeight: 750, lineHeight: 1.2, mt: 0.5, color: tone }}>{value}</Typography>
+    <Typography sx={{ fontSize: { xs: '1.5rem', sm: '1.9rem' }, fontWeight: 750, lineHeight: 1.2, mt: 0.5, color: tone }}>{value}</Typography>
     {hint && (
       <Typography variant="caption" color="text.secondary">
         {hint}

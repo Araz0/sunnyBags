@@ -127,7 +127,15 @@ export const StudioConnections: React.FC = () => {
               </Typography>
             </Panel>
 
-            <Panel title="Auto-publish">
+            <Panel title="Automation">
+              <FormControlLabel
+                control={<Switch checked={c.autoSync} onChange={(e) => setConnections({ autoSync: e.target.checked })} />}
+                label="Sync with my Instagram feed automatically"
+              />
+              <Typography variant="body2" color="text.secondary" mb={2}>
+                Every 30 minutes while the studio is open: planned posts you posted by hand are checked off, older feed posts are added to the
+                history, bags already on your feed are taken out of the queue, and likes and comments are refreshed.
+              </Typography>
               <FormControlLabel
                 control={<Switch checked={c.autoPublish} onChange={(e) => setConnections({ autoPublish: e.target.checked })} />}
                 label="Publish due posts automatically"

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, IconButton, Paper, Stack, Typography } from '@mui/material'
+import { Box, Button, IconButton, Paper, Stack, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import AddIcon from '@mui/icons-material/Add'
@@ -9,6 +9,7 @@ import { studioActions, useNow, useStudioData } from '../store'
 import { ScheduledPost } from '../types'
 import { BagThumb, PageHead } from '../ui/bits'
 import { useStudioUi } from '../ui/context'
+import { PostRow } from '../ui/PostRow'
 
 const MON_FIRST = [1, 2, 3, 4, 5, 6, 0]
 
@@ -30,6 +31,8 @@ export const StudioCalendar: React.FC = () => {
     return new Date(d.getFullYear(), d.getMonth(), 1)
   })
   const [dragOver, setDragOver] = React.useState<number | null>(null)
+  const isPhone = useMediaQuery(useTheme().breakpoints.down('md'))
+  const [view, setView] = React.useState<'month' | 'agenda'>(isPhone ? 'agenda' : 'month')
 
   const gridStart = startOfWeek(month)
   const days = Array.from({ length: 42 }, (_, i) => {
@@ -57,13 +60,17 @@ export const StudioCalendar: React.FC = () => {
     <>
       <PageHead
         title="Calendar"
-        subtitle="Drag posts between days to reschedule. Click a day to add a post."
+        subtitle={view === 'month' ? 'Drag posts between days to reschedule. Click a day to add a post.' : 'Your posting days, one after another.'}
         actions={
-          <Stack direction="row" alignItems="center" spacing={0.5}>
+          <Stack direction="row" alignItems="center" spacing={0.5} flexWrap="wrap" useFlexGap>
+            <ToggleButtonGroup size="small" exclusive value={view} onChange={(_, v) => v && setView(v)} sx={{ mr: 1 }}>
+              <ToggleButton value="agenda">List</ToggleButton>
+              <ToggleButton value="month">Month</ToggleButton>
+            </ToggleButtonGroup>
             <IconButton onClick={() => shift(-1)} aria-label="Previous month">
               <ChevronLeftIcon />
             </IconButton>
-            <Typography fontWeight={700} sx={{ minWidth: 150, textAlign: 'center' }}>
+            <Typography fontWeight={700} sx={{ minWidth: { xs: 110, sm: 150 }, textAlign: 'center' }}>
               {month.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}
             </Typography>
             <IconButton onClick={() => shift(1)} aria-label="Next month">
@@ -83,6 +90,51 @@ export const StudioCalendar: React.FC = () => {
         }
       />
 
+      {view === 'agenda' && (
+        <Stack spacing={2}>
+          {days
+            .filter((d) => d.getMonth() === month.getMonth())
+            .filter((d) => {
+              const has = posts.some((p) => !p.imported && sameDay(new Date(p.scheduledAt), d))
+              return has || (settings.postingDays.includes(d.getDay()) && d >= today)
+            })
+            .map((d) => {
+              const dayPosts = posts
+                .filter((p) => !p.imported && sameDay(new Date(p.scheduledAt), d))
+                .sort((a, b) => a.scheduledAt.localeCompare(b.scheduledAt))
+              const isToday = sameDay(d, today)
+              return (
+                <Box key={d.toISOString()}>
+                  <Stack direction="row" alignItems="baseline" spacing={1} mb={0.75}>
+                    <Typography fontWeight={800} color={isToday ? 'primary.main' : 'text.primary'}>
+                      {isToday ? 'Today' : d.toLocaleDateString(undefined, { weekday: 'long' })}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                    </Typography>
+                  </Stack>
+                  <Stack spacing={1}>
+                    {dayPosts.map((p) => (
+                      <PostRow key={p.id} post={p} now={now} compact />
+                    ))}
+                    {!dayPosts.length && (
+                      <Button
+                        variant="outlined"
+                        startIcon={<AddIcon />}
+                        onClick={() => ui.openEditor({ date: d })}
+                        sx={{ borderStyle: 'dashed', justifyContent: 'flex-start', color: 'text.secondary', borderColor: 'divider', py: 1.25 }}
+                      >
+                        Open slot · {settings.postingTime}
+                      </Button>
+                    )}
+                  </Stack>
+                </Box>
+              )
+            })}
+        </Stack>
+      )}
+
+      {view === 'month' && (
       <Paper variant="outlined" sx={{ borderRadius: 3, overflow: 'hidden' }}>
         <Box sx={{ overflowX: 'auto' }}>
           <Box sx={{ minWidth: 720, display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)' }}>
@@ -210,6 +262,7 @@ export const StudioCalendar: React.FC = () => {
           </Box>
         </Box>
       </Paper>
+      )}
 
       <Stack direction="row" spacing={2.5} mt={2} flexWrap="wrap" useFlexGap>
         {[

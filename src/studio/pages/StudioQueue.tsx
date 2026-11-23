@@ -4,7 +4,8 @@ import EventIcon from '@mui/icons-material/Event'
 import SyncIcon from '@mui/icons-material/Sync'
 import InsightsIcon from '@mui/icons-material/Insights'
 import { getConnections, useConnections } from '../connections'
-import { refreshInstagramStats, syncFromInstagram } from '../publish'
+import { describeSync, lastInstagramSync, refreshInstagramStats, syncFromInstagram } from '../publish'
+import { fmtRelative } from '../helpers'
 import { studioActions } from '../store'
 import { buildIcs, downloadBlob } from '../ics'
 import { isDue, startOfWeek } from '../helpers'
@@ -30,11 +31,8 @@ export const StudioQueue: React.FC = () => {
   const sync = async () => {
     setSyncing('sync')
     try {
-      const r = await syncFromInstagram(getConnections(), studioActions.exportData().posts)
-      ui.toast(
-        `Scanned ${r.scanned} Instagram posts: ${r.added} added, ${r.bags} bags marked as posted` +
-          (r.unmatched ? `, ${r.unmatched} without “Bag #” in the caption` : ''),
-      )
+      const r = await syncFromInstagram(getConnections(), studioActions.exportData().posts, { full: true })
+      ui.toast(describeSync(r) || `Instagram sync: ${r.scanned} posts checked, everything was already up to date`)
     } catch (e) {
       ui.toast(`Sync failed: ${(e as Error).message}`)
     } finally {
@@ -154,7 +152,7 @@ export const StudioQueue: React.FC = () => {
             </Button>
             <Typography variant="caption" color="text.secondary">
               {igReady
-                ? 'Sync reads your feed and marks every post whose caption contains “Bag #123” as posted.'
+                ? `Syncs automatically every 30 min while the studio is open${lastInstagramSync() ? ` · last sync ${fmtRelative(new Date(lastInstagramSync()).toISOString(), now)}` : ''}. This button re-reads the whole feed.`
                 : 'Connect Instagram in Connections to sync your feed and load stats.'}
             </Typography>
           </Stack>

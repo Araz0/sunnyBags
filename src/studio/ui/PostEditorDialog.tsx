@@ -20,6 +20,8 @@ import {
   ToggleButtonGroup,
   Tooltip,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
@@ -48,6 +50,7 @@ interface Props {
 export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved }) => {
   const { settings, posts } = useStudioData()
   const editing = request?.post
+  const fullScreen = useMediaQuery(useTheme().breakpoints.down('sm'))
   const chipProps = usePlatformChip()
   const { publishNow, busyId, progress } = usePublishNow()
 
@@ -157,7 +160,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
   const previewSide: 'A' | 'B' = design.side === 'B' ? 'B' : 'A'
 
   return (
-    <Dialog open={!!request} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog open={!!request} onClose={onClose} maxWidth="md" fullWidth fullScreen={fullScreen}>
       <DialogTitle sx={{ pr: 6 }}>
         {editing ? 'Edit post' : 'New post'}
         <IconButton onClick={onClose} sx={{ position: 'absolute', right: 12, top: 12 }} aria-label="Close">
@@ -410,7 +413,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
           </Grid>
         </Grid>
       </DialogContent>
-      <DialogActions sx={{ px: 3, py: 2 }}>
+      <DialogActions sx={{ px: { xs: 2, sm: 3 }, py: 2, pb: 'calc(16px + env(safe-area-inset-bottom))', flexWrap: 'wrap', gap: 1, '& > :not(style) ~ :not(style)': { ml: 0 } }}>
         {editing && (
           <Button color="inherit" startIcon={<DeleteOutlineIcon />} onClick={remove} sx={{ mr: 'auto' }}>
             Delete

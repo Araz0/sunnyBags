@@ -49,8 +49,10 @@ export const PostRow: React.FC<{ post: ScheduledPost; now: number; compact?: boo
   return (
     <Stack
       direction="row"
-      spacing={1.25}
+      columnGap={1.25}
+      rowGap={0.5}
       alignItems="center"
+      flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
       sx={{
         p: 1,
         pl: 0.5,
@@ -77,7 +79,7 @@ export const PostRow: React.FC<{ post: ScheduledPost; now: number; compact?: boo
         </Tooltip>
       )}
       <BagThumb bag={bag} size={compact ? 40 : 52} />
-      <Box flex={1} minWidth={0}>
+      <Box flex={1} minWidth={0} sx={{ flexBasis: { xs: 'calc(100% - 110px)', sm: 'auto' } }}>
         <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
           <Typography fontWeight={700} fontSize="0.92rem" sx={{ textDecoration: posted ? 'line-through' : 'none' }}>
             Bag #{post.bagId}
@@ -115,7 +117,14 @@ export const PostRow: React.FC<{ post: ScheduledPost; now: number; compact?: boo
           </Typography>
         )}
       </Box>
-      <Stack direction="row" spacing={0.25} alignItems="center" onClick={(e) => e.stopPropagation()}>
+      <Stack
+        direction="row"
+        spacing={0.25}
+        alignItems="center"
+        justifyContent="flex-end"
+        onClick={(e) => e.stopPropagation()}
+        sx={{ width: { xs: '100%', sm: 'auto' }, pl: { xs: 0.5, sm: 0 } }}
+      >
         {isReshufflable(post, now) && (
           <Tooltip title="Suggest a different bag for this slot">
             <IconButton size="small" onClick={shuffle}>
@@ -147,7 +156,7 @@ export const PostRow: React.FC<{ post: ScheduledPost; now: number; compact?: boo
             color={due ? 'warning' : 'primary'}
             startIcon={<SendOutlinedIcon />}
             onClick={() => ui.openPublish(post.id)}
-            sx={{ whiteSpace: 'nowrap', display: { xs: compact ? 'none' : 'inline-flex', sm: 'inline-flex' } }}
+            sx={{ whiteSpace: 'nowrap' }}
           >
             {due ? 'Post now' : 'Publish'}
           </Button>

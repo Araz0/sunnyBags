@@ -23,6 +23,8 @@ export interface Connections {
   }
   /** Publish due posts automatically while the studio is open. */
   autoPublish: boolean
+  /** Sync the Instagram feed into the studio automatically. */
+  autoSync: boolean
 }
 
 export const DEFAULT_CONNECTIONS: Connections = {
@@ -30,6 +32,7 @@ export const DEFAULT_CONNECTIONS: Connections = {
   cloudinary: { cloudName: '', uploadPreset: '' },
   webhook: { url: '', secret: '', platforms: ['tiktok', 'pinterest'] },
   autoPublish: false,
+  autoSync: true,
 }
 
 const KEY = 'sunnybags_studio_connections_v1'
@@ -49,6 +52,7 @@ const load = (): Connections => {
         cloudinary: { ...DEFAULT_CONNECTIONS.cloudinary, ...p.cloudinary },
         webhook: { ...DEFAULT_CONNECTIONS.webhook, ...p.webhook },
         autoPublish: !!p.autoPublish,
+        autoSync: p.autoSync !== false,
       }
     }
   } catch {

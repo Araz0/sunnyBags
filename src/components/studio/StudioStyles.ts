@@ -179,6 +179,10 @@ export const PreviewCanvas = styled.div<{
   border: 1px solid var(--border);
   box-sizing: border-box;
   transition: background 0.3s;
+
+  @media (max-width: 900px) {
+    max-width: min(100%, ${(p) => ((p.w / p.h) * 52).toFixed(2)}vh);
+  }
 `
 
 export const BagImage = styled.img<{ scale: number }>`

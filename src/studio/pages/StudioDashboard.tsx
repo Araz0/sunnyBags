@@ -88,7 +88,7 @@ export const StudioDashboard: React.FC = () => {
 
       <Stack direction="row" gap={2} flexWrap="wrap" mb={3}>
         <Paper2 label="This week's goal">
-          <Typography sx={{ fontSize: '1.9rem', fontWeight: 750, lineHeight: 1.2, mt: 0.5 }}>
+          <Typography sx={{ fontSize: { xs: '1.5rem', sm: '1.9rem' }, fontWeight: 750, lineHeight: 1.2, mt: 0.5 }}>
             {postedThisWeek}
             <Typography component="span" color="text.secondary" fontWeight={600}>
               {' '}
@@ -261,7 +261,7 @@ export const StudioDashboard: React.FC = () => {
 }
 
 const Paper2: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
-  <Box sx={{ p: 2.25, borderRadius: 3, flex: 1, minWidth: 150, border: 1, borderColor: 'divider', bgcolor: 'background.paper' }}>
+  <Box sx={{ p: { xs: 1.75, sm: 2.25 }, borderRadius: 3, boxSizing: 'border-box', flex: { xs: '1 1 calc(50% - 10px)', sm: 1 }, minWidth: { xs: 'calc(50% - 10px)', sm: 150 }, border: 1, borderColor: 'divider', bgcolor: 'background.paper' }}>
     <Typography variant="body2" color="text.secondary" fontWeight={600}>
       {label}
     </Typography>

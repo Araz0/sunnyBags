@@ -155,9 +155,10 @@ export const ItemStudio: React.FC = () => {
           <Button variant="outlined" startIcon={<FileDownloadOutlinedIcon />} onClick={s.handleExport}>
             Export images
           </Button>
-          <Button variant="outlined" startIcon={<EventIcon />} onClick={schedule} disabled={item.available === false}>
+          <Button variant="outlined" startIcon={<EventIcon />} onClick={schedule} disabled={item.available === false} sx={{ display: { xs: 'none', md: 'inline-flex' } }}>
             Schedule
           </Button>
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
           <PublishNowButton
             platforms={platforms}
             onPublish={publishImmediately}
@@ -165,8 +166,37 @@ export const ItemStudio: React.FC = () => {
             progress={progress}
             disabled={!caption.trim() || item.available === false}
           />
+          </Box>
         </Stack>
       </Stack>
+
+      {/* Phone: actions stay in reach above the tab bar */}
+      <Paper
+        elevation={6}
+        sx={{
+          display: { xs: 'flex', md: 'none' },
+          position: 'fixed',
+          left: 8,
+          right: 8,
+          bottom: 'calc(72px + env(safe-area-inset-bottom))',
+          zIndex: 15,
+          p: 1,
+          gap: 1,
+          borderRadius: 3,
+          '& > *': { flex: 1 },
+        }}
+      >
+        <Button variant="outlined" startIcon={<EventIcon />} onClick={schedule} disabled={item.available === false}>
+          Schedule
+        </Button>
+        <PublishNowButton
+          platforms={platforms}
+          onPublish={publishImmediately}
+          busy={!!busyId}
+          progress={progress}
+          disabled={!caption.trim() || item.available === false}
+        />
+      </Paper>
 
       <StudioContainer>
         <ControlsColumn>
@@ -347,6 +377,7 @@ export const ItemStudio: React.FC = () => {
           onSideChange={s.setPreviewSide}
         />
       </StudioContainer>
+      <Box sx={{ display: { xs: 'block', md: 'none' }, height: 72 }} />
     </StudioWrapper>
   )
 }
