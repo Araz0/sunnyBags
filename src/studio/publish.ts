@@ -380,7 +380,7 @@ export const syncFromInstagram = async (c: Connections, posts: ScheduledPost[]) 
   const bagIds = new Set<number>()
   let unmatched = 0
   for (const m of media) {
-    const match = m.caption?.match(/bag\s*#\s*(\d+)/i)
+    const match = m.caption?.match(/(?:bag|tasche)\s*#\s*(\d+)/i)
     const bag = match ? getBag(Number(match[1])) : undefined
     if (!bag) {
       unmatched++

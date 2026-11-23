@@ -51,7 +51,7 @@ export const SchedulerActions: React.FC = () => {
     studioActions.mutatePosts((all) =>
       all.map((p) => {
         const bag = isReshufflable(p) ? getBag(p.bagId) : undefined
-        return bag ? { ...p, caption: generateCaption(bag, settings.captionTone, settings) } : p
+        return bag ? { ...p, caption: generateCaption(bag, settings.captionTone, settings), language: settings.captionLanguage } : p
       }),
     )
     ui.toast(`Rewrote ${n} caption${n > 1 ? 's' : ''}`)
@@ -90,7 +90,7 @@ export const SchedulerActions: React.FC = () => {
         </MenuItem>
         <MenuItem onClick={refreshCaptions}>
           <ListItemIcon><NotesIcon fontSize="small" /></ListItemIcon>
-          <ListItemText primary="Rewrite upcoming captions" secondary="Apply current tone, sign-off & hashtags" />
+          <ListItemText primary="Rewrite upcoming captions" secondary="Apply current language, tone, sign-off & hashtags" />
         </MenuItem>
       </Menu>
       <Button variant="outlined" startIcon={<ShuffleIcon />} onClick={shuffleAll} disabled={!reshufflable}>

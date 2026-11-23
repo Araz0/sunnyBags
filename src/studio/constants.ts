@@ -1,4 +1,4 @@
-import { CaptionTone, Platform, PostDesign, StudioSettings } from './types'
+import { CaptionLanguage, CaptionTone, Platform, PostDesign, StudioSettings } from './types'
 
 export const PRESET_SIZES = [
   { id: 'insta_feed', w: 1080, h: 1350, name: 'Instagram Feed (4:5)' },
@@ -22,6 +22,12 @@ export const TONES: { id: CaptionTone; label: string }[] = [
   { id: 'minimal', label: 'Minimal' },
 ]
 
+export const LANGUAGES: { id: CaptionLanguage; label: string }[] = [
+  { id: 'en', label: 'English' },
+  { id: 'de', label: 'Deutsch' },
+  { id: 'both', label: 'DE + EN' },
+]
+
 export const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 export const DEFAULT_SETTINGS: StudioSettings = {
@@ -34,6 +40,9 @@ export const DEFAULT_SETTINGS: StudioSettings = {
     '#SunnyBags #Handmade #Upcycled #DenimArt #Stitch #Thread #VintageStyle #SlowFashion',
   signature: 'DM us to make it yours.',
   notifications: false,
+  captionLanguage: 'en',
+  signatureDe: 'Schreib uns eine DM, wenn du sie haben möchtest.',
+  hashtagsDe: '#SunnyBags #Handgemacht #Upcycling #Nachhaltig #Unikat #Taschenliebe #DenimArt #SlowFashion',
   autoFillWeeks: 0,
   includePosted: false,
 }

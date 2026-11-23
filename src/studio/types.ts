@@ -3,6 +3,8 @@ import { ImageFormat } from '../types/studio'
 export type Platform = 'instagram' | 'facebook' | 'tiktok' | 'pinterest'
 export type PostStatus = 'draft' | 'scheduled' | 'posted' | 'skipped'
 export type CaptionTone = 'friendly' | 'minimal' | 'story' | 'sale'
+/** Caption language. 'both' = German first, then English. */
+export type CaptionLanguage = 'en' | 'de' | 'both'
 export type PostSide = 'A' | 'B' | 'both'
 
 export interface PostDesign {
@@ -37,6 +39,7 @@ export interface ScheduledPost {
   autoAttemptedAt?: string
   publishLog?: PublishLogEntry[]
   stats?: PostStats
+  language?: CaptionLanguage
 }
 
 export interface PublishLogEntry {
@@ -65,6 +68,9 @@ export interface StudioSettings {
   hashtags: string
   signature: string
   notifications: boolean
+  captionLanguage: CaptionLanguage
+  signatureDe: string
+  hashtagsDe: string
   /** Keep the queue filled this many weeks ahead automatically (0 = off). */
   autoFillWeeks: number
   /** Allow the scheduler to pick bags that were already posted. */

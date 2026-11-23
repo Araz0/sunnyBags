@@ -1,6 +1,7 @@
 import { allBags, categories, ExtendedBag } from '../data'
 import { DEFAULT_SETTINGS, PLATFORMS } from './constants'
-import { CaptionTone, Platform, ScheduledPost, StudioSettings } from './types'
+import { CaptionLanguage, CaptionTone, Platform, ScheduledPost, StudioSettings } from './types'
+import de from '../data/de.json'
 
 // ── Bags ────────────────────────────────────────────────────────────────────
 
@@ -110,38 +111,81 @@ const cleanDesc = (d?: string) => (d ?? '').trim().replace(/\.+$/, '')
 
 const capitalize = (t: string) => t.charAt(0).toUpperCase() + t.slice(1)
 
-/** Plain captions: no prices, no labels, no emoji. */
-export const generateCaption = (
-  bag: ExtendedBag,
-  tone: CaptionTone,
-  settings: Pick<StudioSettings, 'hashtags' | 'signature'> = DEFAULT_SETTINGS,
-): string => {
+type CaptionSettings = Pick<StudioSettings, 'hashtags' | 'signature'> &
+  Partial<Pick<StudioSettings, 'signatureDe' | 'hashtagsDe' | 'captionLanguage'>>
+
+const germanDescription = (bag: ExtendedBag) => (de.descriptions as Record<string, string>)[bag.id]
+const germanFabric = (fabric: string) => (de.fabrics as Record<string, string>)[fabric.trim().toLowerCase()]
+
+/** Whether a real German description exists for this bag. */
+export const hasGerman = (bag: ExtendedBag) => !!germanDescription(bag)
+
+const bodyLines = (bag: ExtendedBag, tone: CaptionTone, lang: 'en' | 'de'): string[] => {
+  if (lang === 'de') {
+    const desc = cleanDesc(germanDescription(bag) ?? bag.description)
+    const fabric = bag.fabric?.trim() ? germanFabric(bag.fabric) ?? capitalize(bag.fabric.trim()) : ''
+    switch (tone) {
+      case 'minimal':
+        return [`Tasche #${bag.id}`, `${desc}.`]
+      case 'story':
+        return [`Tasche #${bag.id}`, `${desc}.`, [fabric, 'Von Hand zugeschnitten, zusammengesetzt und genäht. Es gibt sie nur einmal.'].filter(Boolean).join('. ')]
+      case 'sale':
+        return [`Tasche #${bag.id} ist zu haben.`, `${desc}.`, [fabric, 'Ein Unikat.'].filter(Boolean).join('. ')]
+      default:
+        return [`Tasche #${bag.id}`, `${desc}.`, [fabric, 'Handgemacht, ein Unikat.'].filter(Boolean).join('. ')]
+    }
+  }
   const desc = cleanDesc(bag.description)
   const fabric = bag.fabric?.trim() ? capitalize(bag.fabric.trim()) : ''
-  const sig = settings.signature?.trim()
-  const tags = settings.hashtags?.trim()
-
-  let lines: string[]
   switch (tone) {
     case 'minimal':
-      lines = [`Bag #${bag.id}`, `${desc}.`]
-      break
+      return [`Bag #${bag.id}`, `${desc}.`]
     case 'story':
-      lines = [
+      return [
         `Bag #${bag.id}`,
         `${desc}.`,
         `Cut, pieced and stitched by hand${fabric ? ` from ${fabric.toLowerCase()}` : ''}. There is only one.`,
       ]
-      break
     case 'sale':
-      lines = [`Bag #${bag.id} is available.`, `${desc}.`, [fabric, 'One of a kind.'].filter(Boolean).join('. ')]
-      break
-    case 'friendly':
+      return [`Bag #${bag.id} is available.`, `${desc}.`, [fabric, 'One of a kind.'].filter(Boolean).join('. ')]
     default:
-      lines = [`Bag #${bag.id}`, `${desc}.`, [fabric, 'Handmade, one of a kind.'].filter(Boolean).join('. ')]
+      return [`Bag #${bag.id}`, `${desc}.`, [fabric, 'Handmade, one of a kind.'].filter(Boolean).join('. ')]
   }
+}
 
-  return [...lines, sig, tags].filter(Boolean).join('\n\n')
+const mergeTags = (...sets: (string | undefined)[]) => {
+  const seen = new Set<string>()
+  const out: string[] = []
+  sets
+    .flatMap((s) => (s ?? '').split(/\s+/))
+    .filter((t) => t.startsWith('#'))
+    .forEach((t) => {
+      const k = t.toLowerCase()
+      if (!seen.has(k) && out.length < 30) {
+        seen.add(k)
+        out.push(t)
+      }
+    })
+  return out.join(' ')
+}
+
+/** Plain captions: no prices, no labels, no emoji. English, German, or both. */
+export const generateCaption = (
+  bag: ExtendedBag,
+  tone: CaptionTone,
+  settings: CaptionSettings = DEFAULT_SETTINGS,
+  lang: CaptionLanguage = settings.captionLanguage ?? 'en',
+): string => {
+  const sigEn = settings.signature?.trim()
+  const sigDe = (settings.signatureDe ?? DEFAULT_SETTINGS.signatureDe).trim()
+  const tagsEn = settings.hashtags?.trim()
+  const tagsDe = (settings.hashtagsDe ?? DEFAULT_SETTINGS.hashtagsDe).trim()
+
+  const join = (parts: (string | undefined)[]) => parts.filter(Boolean).join('\n\n')
+  if (lang === 'de') return join([...bodyLines(bag, tone, 'de'), sigDe, tagsDe])
+  if (lang === 'both')
+    return join([...bodyLines(bag, tone, 'de'), sigDe, '—', ...bodyLines(bag, tone, 'en'), sigEn, mergeTags(tagsDe, tagsEn)])
+  return join([...bodyLines(bag, tone, 'en'), sigEn, tagsEn])
 }
 
 export const copyText = (text: string) => navigator.clipboard.writeText(text)

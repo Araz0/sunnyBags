@@ -177,7 +177,7 @@ export const StudioGuide: React.FC = () => {
                 <em> Refresh likes &amp; comments</em>. The dashboard shows your best-performing posts.
               </li>
               <li>
-                Captions are plain text: number, description, fabric, sign-off and hashtags. Changed your hashtags or sign-off? Use{' '}
+                Captions are plain text: number, description, fabric, sign-off and hashtags, in <strong>English, Deutsch or DE + EN</strong>. Set the default in Settings, or switch per post in the editor or bag studio. All 148 bag descriptions have hand-written German versions, and German sign-off and hashtags are set separately. Sync from Instagram recognises both “Bag #12” and “Tasche #12”. Changed your hashtags or sign-off? Use{' '}
                 <strong>Auto-schedule → Rewrite upcoming captions</strong>.
               </li>
             </ul>

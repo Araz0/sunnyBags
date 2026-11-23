@@ -26,11 +26,11 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import CloseIcon from '@mui/icons-material/Close'
 import { allBags } from '../../data'
-import { defaultDesign, PLATFORMS, PRESET_SIZES, TONES } from '../constants'
+import { defaultDesign, LANGUAGES, PLATFORMS, PRESET_SIZES, TONES } from '../constants'
 import { bagImage, generateCaption, getBag, toLocalInput, withTime } from '../helpers'
 import { nextFreeSlots } from '../planner'
 import { studioActions, useStudioData } from '../store'
-import { CaptionTone, Platform, PostDesign, PostSide, PostStatus, ScheduledPost } from '../types'
+import { CaptionLanguage, CaptionTone, Platform, PostDesign, PostSide, PostStatus, ScheduledPost } from '../types'
 import { BagThumb, bagLabel, usePlatformChip } from './bits'
 import { EditorRequest } from './context'
 import { usePublishNow } from './usePublishNow'
@@ -56,6 +56,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
   const [status, setStatus] = React.useState<PostStatus>('scheduled')
   const [platforms, setPlatforms] = React.useState<Platform[]>([])
   const [tone, setTone] = React.useState<CaptionTone>(settings.captionTone)
+  const [lang, setLang] = React.useState<CaptionLanguage>(settings.captionLanguage)
   const [caption, setCaption] = React.useState('')
   const [notes, setNotes] = React.useState('')
   const [design, setDesign] = React.useState<PostDesign>(defaultDesign())
@@ -70,6 +71,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
       setStatus(p.status)
       setPlatforms(p.platforms)
       setCaption(p.caption)
+      setLang(p.language ?? settings.captionLanguage)
       setNotes(p.notes ?? '')
       setDesign(p.design)
       return
@@ -83,6 +85,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
     setStatus('scheduled')
     setPlatforms(settings.defaultPlatforms)
     setTone(settings.captionTone)
+    setLang(settings.captionLanguage)
     setCaption(request.caption ?? (bag ? generateCaption(bag, settings.captionTone, settings) : ''))
     setNotes('')
     setDesign(request.design ?? defaultDesign(bag?.backgroundColor || '#ffffff'))
@@ -97,12 +100,12 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
     setBagId(id)
     const b = id != null ? getBag(id) : undefined
     if (b) {
-      setCaption(generateCaption(b, tone, settings))
+      setCaption(generateCaption(b, tone, settings, lang))
       setDesign((d) => ({ ...d, bgColor: b.backgroundColor || d.bgColor }))
     }
   }
 
-  const regenerate = (t = tone) => bag && setCaption(generateCaption(bag, t, settings))
+  const regenerate = (t = tone, l = lang) => bag && setCaption(generateCaption(bag, t, settings, l))
 
   const useNextSlot = () => {
     const others = posts.filter((p) => p.id !== editing?.id)
@@ -121,6 +124,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
       design,
       notes: notes || undefined,
       auto: false,
+      language: lang,
       ...overrides,
     }
     if (editing) {
@@ -239,6 +243,23 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
                     {TONES.map((t) => (
                       <ToggleButton key={t.id} value={t.id} sx={{ px: 1.5 }}>
                         {t.label}
+                      </ToggleButton>
+                    ))}
+                  </ToggleButtonGroup>
+                  <ToggleButtonGroup
+                    size="small"
+                    exclusive
+                    value={lang}
+                    onChange={(_, v: CaptionLanguage | null) => {
+                      if (v) {
+                        setLang(v)
+                        regenerate(tone, v)
+                      }
+                    }}
+                  >
+                    {LANGUAGES.map((l) => (
+                      <ToggleButton key={l.id} value={l.id} sx={{ px: 1.25 }}>
+                        {l.label}
                       </ToggleButton>
                     ))}
                   </ToggleButtonGroup>

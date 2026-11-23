@@ -25,7 +25,7 @@ import { CompositionPanel } from '../components/studio/CompositionPanel'
 import { PreviewMonitor } from '../components/studio/PreviewMonitor'
 import { StudioWrapper, StudioContainer, ControlsColumn } from '../components/studio/StudioStyles'
 
-import { PLATFORMS, TONES } from '../studio/constants'
+import { LANGUAGES, PLATFORMS, TONES } from '../studio/constants'
 import { useConnections } from '../studio/connections'
 import { automatedPlatforms } from '../studio/publish'
 import { studioActions } from '../studio/store'
@@ -36,7 +36,7 @@ import { bagImage, copyText, fmtRelative, formatPrice, generateCaption, platform
 import { compressPhoto, removeExtraPhoto, setExtraPhoto, useExtraPhoto } from '../studio/extras'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import { useStudioData } from '../studio/store'
-import { CaptionTone, Platform, PostDesign, ScheduledPost } from '../studio/types'
+import { CaptionLanguage, CaptionTone, Platform, PostDesign, ScheduledPost } from '../studio/types'
 import { useStudioUi } from '../studio/ui/context'
 
 export const ItemStudio: React.FC = () => {
@@ -48,6 +48,7 @@ export const ItemStudio: React.FC = () => {
 
   const [tone, setTone] = React.useState<CaptionTone>(settings.captionTone)
   const [caption, setCaption] = React.useState('')
+  const [lang, setLang] = React.useState<CaptionLanguage>(settings.captionLanguage)
   const [platforms, setPlatforms] = React.useState<Platform[]>(settings.defaultPlatforms)
   const connections = useConnections()
   const chipProps = usePlatformChip()
@@ -57,10 +58,10 @@ export const ItemStudio: React.FC = () => {
   const extraInput = React.useRef<HTMLInputElement>(null)
 
   React.useEffect(() => {
-    if (item) setCaption(generateCaption(item, tone, settings))
+    if (item) setCaption(generateCaption(item, tone, settings, lang))
     // regenerate when the bag or tone changes, not on every settings keystroke
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item?.id, tone])
+  }, [item?.id, tone, lang])
 
   if (!item) {
     return (
@@ -126,6 +127,7 @@ export const ItemStudio: React.FC = () => {
       status: 'scheduled',
       design: currentDesign(),
       auto: false,
+      language: lang,
     })
     await publishNow(post.id, { confirm: false })
   }
@@ -240,6 +242,13 @@ export const ItemStudio: React.FC = () => {
           <Paper variant="outlined" sx={{ p: 2.5, borderRadius: 3.5 }}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1.5} gap={1} flexWrap="wrap">
               <Typography variant="h3">Caption</Typography>
+              <ToggleButtonGroup size="small" exclusive value={lang} onChange={(_, v: CaptionLanguage | null) => v && setLang(v)}>
+                {LANGUAGES.map((l) => (
+                  <ToggleButton key={l.id} value={l.id} sx={{ px: 1.25, py: 0.4 }}>
+                    {l.label}
+                  </ToggleButton>
+                ))}
+              </ToggleButtonGroup>
               <ToggleButtonGroup size="small" exclusive value={tone} onChange={(_, v: CaptionTone | null) => v && setTone(v)}>
                 {TONES.map((t) => (
                   <ToggleButton key={t.id} value={t.id} sx={{ px: 1.25, py: 0.4 }}>
@@ -276,7 +285,7 @@ export const ItemStudio: React.FC = () => {
               >
                 Copy
               </Button>
-              <Button size="small" onClick={() => setCaption(generateCaption(item, tone, settings))}>
+              <Button size="small" onClick={() => setCaption(generateCaption(item, tone, settings, lang))}>
                 Reset
               </Button>
               <Box flex={1} />

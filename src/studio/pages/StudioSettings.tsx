@@ -17,11 +17,11 @@ import {
 import DownloadIcon from '@mui/icons-material/Download'
 import UploadIcon from '@mui/icons-material/Upload'
 import { allBags } from '../../data'
-import { PLATFORMS, TONES, WEEKDAYS } from '../constants'
+import { LANGUAGES, PLATFORMS, TONES, WEEKDAYS } from '../constants'
 import { generateCaption } from '../helpers'
 import { downloadBlob } from '../ics'
 import { studioActions, useStudioData } from '../store'
-import { CaptionTone, StudioData } from '../types'
+import { CaptionLanguage, CaptionTone, StudioData } from '../types'
 import { PageHead, Panel, usePlatformChip } from '../ui/bits'
 import { useStudioUi } from '../ui/context'
 
@@ -197,6 +197,21 @@ export const StudioSettings: React.FC = () => {
                   })}
                 </Stack>
               </div>
+              <div>
+                <Typography variant="body2" fontWeight={600} mb={1}>
+                  Caption language
+                </Typography>
+                <ToggleButtonGroup size="small" exclusive value={settings.captionLanguage} onChange={(_, v: CaptionLanguage | null) => v && set({ captionLanguage: v })}>
+                  {LANGUAGES.map((l) => (
+                    <ToggleButton key={l.id} value={l.id} sx={{ px: 1.75 }}>
+                      {l.label}
+                    </ToggleButton>
+                  ))}
+                </ToggleButtonGroup>
+                <Typography variant="caption" color="text.secondary" display="block" mt={0.5}>
+                  Used for new and auto-planned posts. You can still change it per post. DE + EN puts the German text first.
+                </Typography>
+              </div>
               <TextField select label="Default tone" value={settings.captionTone} onChange={(e) => set({ captionTone: e.target.value as CaptionTone })} size="small" sx={{ maxWidth: 240 }}>
                 {TONES.map((t) => (
                   <MenuItem key={t.id} value={t.id}>
@@ -204,8 +219,18 @@ export const StudioSettings: React.FC = () => {
                   </MenuItem>
                 ))}
               </TextField>
-              <TextField label="Sign-off line" value={settings.signature} onChange={(e) => set({ signature: e.target.value })} size="small" />
-              <TextField label="Hashtags" value={settings.hashtags} onChange={(e) => set({ hashtags: e.target.value })} multiline minRows={2} size="small" />
+              <TextField label="Sign-off line (English)" value={settings.signature} onChange={(e) => set({ signature: e.target.value })} size="small" />
+              <TextField label="Hashtags (English)" value={settings.hashtags} onChange={(e) => set({ hashtags: e.target.value })} multiline minRows={2} size="small" />
+              <TextField label="Sign-off line (Deutsch)" value={settings.signatureDe} onChange={(e) => set({ signatureDe: e.target.value })} size="small" />
+              <TextField
+                label="Hashtags (Deutsch)"
+                value={settings.hashtagsDe}
+                onChange={(e) => set({ hashtagsDe: e.target.value })}
+                multiline
+                minRows={2}
+                size="small"
+                helperText="DE + EN posts combine both sets, without duplicates and up to the Instagram limit of 30."
+              />
               <div>
                 <Typography variant="body2" fontWeight={600} mb={1}>
                   Preview
