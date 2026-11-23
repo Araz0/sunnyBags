@@ -2,6 +2,9 @@ import React from 'react'
 import { Box, Button, Checkbox, IconButton, Link, Stack, Tooltip, Typography } from '@mui/material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined'
 import ReplayIcon from '@mui/icons-material/Replay'
@@ -99,9 +102,25 @@ export const PostRow: React.FC<{ post: ScheduledPost; now: number; compact?: boo
         {(links.length > 0 || post.stats) && (
           <Stack direction="row" spacing={1.5} alignItems="center" onClick={(e) => e.stopPropagation()} sx={{ mt: 0.25 }}>
             {post.stats && (
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexWrap: 'wrap' }}>
+                {post.stats.views != null && (
+                  <>
+                    <VisibilityOutlinedIcon sx={{ fontSize: 14 }} /> <b>{post.stats.views.toLocaleString()}</b>
+                    <Box component="span" sx={{ mr: 1 }} />
+                  </>
+                )}
                 <FavoriteBorderIcon sx={{ fontSize: 14 }} /> {post.stats.likes}
                 <ChatBubbleOutlineIcon sx={{ fontSize: 14, ml: 1 }} /> {post.stats.comments}
+                {post.stats.saved != null && (
+                  <>
+                    <BookmarkBorderIcon sx={{ fontSize: 14, ml: 1 }} /> {post.stats.saved}
+                  </>
+                )}
+                {post.stats.shares != null && (
+                  <>
+                    <ShareOutlinedIcon sx={{ fontSize: 14, ml: 1 }} /> {post.stats.shares}
+                  </>
+                )}
               </Typography>
             )}
             {links.map((l) => (

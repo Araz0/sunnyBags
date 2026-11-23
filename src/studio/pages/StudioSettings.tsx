@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Alert,
   Button,
+  Checkbox,
   Chip,
   FormControlLabel,
   Grid,
@@ -212,6 +213,14 @@ export const StudioSettings: React.FC = () => {
                   Used for new and auto-planned posts. You can still change it per post. DE + EN puts the German text first.
                 </Typography>
               </div>
+              <FormControlLabel
+                control={<Checkbox checked={settings.includeFabric} onChange={(e) => set({ includeFabric: e.target.checked })} />}
+                label="Mention material (fabric) in captions"
+              />
+              <Typography variant="caption" color="text.secondary" sx={{ mt: -2 }}>
+                Off: words like cotton, canvas, linen or Baumwolle are left out of the description. Colours, patterns and details stay. You can
+                still switch it on per post.
+              </Typography>
               <TextField select label="Default tone" value={settings.captionTone} onChange={(e) => set({ captionTone: e.target.value as CaptionTone })} size="small" sx={{ maxWidth: 240 }}>
                 {TONES.map((t) => (
                   <MenuItem key={t.id} value={t.id}>

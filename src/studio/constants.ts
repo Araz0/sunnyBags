@@ -41,6 +41,7 @@ export const DEFAULT_SETTINGS: StudioSettings = {
   signature: 'DM us to make it yours.',
   notifications: false,
   captionLanguage: 'en',
+  includeFabric: false,
   signatureDe: 'Schreib uns eine DM, wenn du sie haben möchtest.',
   hashtagsDe: '#SunnyBags #Handgemacht #Upcycling #Nachhaltig #Unikat #Taschenliebe #DenimArt #SlowFashion',
   autoFillWeeks: 0,

@@ -3,6 +3,7 @@ import {
   Autocomplete,
   Box,
   Button,
+  Checkbox,
   Chip,
   Dialog,
   DialogActions,
@@ -60,6 +61,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
   const [platforms, setPlatforms] = React.useState<Platform[]>([])
   const [tone, setTone] = React.useState<CaptionTone>(settings.captionTone)
   const [lang, setLang] = React.useState<CaptionLanguage>(settings.captionLanguage)
+  const [withFabric, setWithFabric] = React.useState(settings.includeFabric)
   const [caption, setCaption] = React.useState('')
   const [notes, setNotes] = React.useState('')
   const [design, setDesign] = React.useState<PostDesign>(defaultDesign())
@@ -75,6 +77,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
       setPlatforms(p.platforms)
       setCaption(p.caption)
       setLang(p.language ?? settings.captionLanguage)
+      setWithFabric(p.includeFabric ?? settings.includeFabric)
       setNotes(p.notes ?? '')
       setDesign(p.design)
       return
@@ -89,6 +92,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
     setPlatforms(settings.defaultPlatforms)
     setTone(settings.captionTone)
     setLang(settings.captionLanguage)
+    setWithFabric(settings.includeFabric)
     setCaption(request.caption ?? (bag ? generateCaption(bag, settings.captionTone, settings) : ''))
     setNotes('')
     setDesign(request.design ?? defaultDesign(bag?.backgroundColor || '#ffffff'))
@@ -103,12 +107,12 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
     setBagId(id)
     const b = id != null ? getBag(id) : undefined
     if (b) {
-      setCaption(generateCaption(b, tone, settings, lang))
+      setCaption(generateCaption(b, tone, settings, lang, withFabric))
       setDesign((d) => ({ ...d, bgColor: b.backgroundColor || d.bgColor }))
     }
   }
 
-  const regenerate = (t = tone, l = lang) => bag && setCaption(generateCaption(bag, t, settings, l))
+  const regenerate = (t = tone, l = lang, f = withFabric) => bag && setCaption(generateCaption(bag, t, settings, l, f))
 
   const useNextSlot = () => {
     const others = posts.filter((p) => p.id !== editing?.id)
@@ -128,6 +132,7 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
       notes: notes || undefined,
       auto: false,
       language: lang,
+      includeFabric: withFabric,
       ...overrides,
     }
     if (editing) {
@@ -270,6 +275,20 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
                     Regenerate
                   </Button>
                 </Stack>
+                <FormControlLabel
+                  sx={{ mb: 1 }}
+                  control={
+                    <Checkbox
+                      size="small"
+                      checked={withFabric}
+                      onChange={(e) => {
+                        setWithFabric(e.target.checked)
+                        regenerate(tone, lang, e.target.checked)
+                      }}
+                    />
+                  }
+                  label={<Typography variant="body2">Mention material (fabric)</Typography>}
+                />
                 <TextField
                   label="Caption"
                   value={caption}

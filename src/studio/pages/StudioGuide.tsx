@@ -179,11 +179,16 @@ export const StudioGuide: React.FC = () => {
                 posted, with its link and likes, so the scheduler won't repeat it. Bags in older posts without that text can be marked by hand in the library.
               </li>
               <li>
-                <strong>Likes &amp; comments</strong> for posts published from the studio refresh automatically every 6 hours when you open the studio, or with
-                <em> Refresh likes &amp; comments</em>. The dashboard shows your best-performing posts.
+                <strong>Insights</strong> (sidebar / More): views, reach, likes, comments, saves, shares, follows and engagement rate per post, plus average
+                performance by weekday, time of day, collection and caption language, with a hint about your best posting day. Needs the{' '}
+                <Code>instagram_manage_insights</Code> permission for everything beyond likes and comments.
               </li>
               <li>
-                Captions are plain text: number, description, fabric, sign-off and hashtags, in <strong>English, Deutsch or DE + EN</strong>. Set the default in Settings, or switch per post in the editor or bag studio. All 148 bag descriptions have hand-written German versions, and German sign-off and hashtags are set separately. Sync from Instagram recognises both “Bag #12” and “Tasche #12”. Changed your hashtags or sign-off? Use{' '}
+                <strong>Stats</strong> refresh automatically with the Instagram sync: new posts every 30 minutes, older ones every few hours or daily, to stay
+                within Instagram's limits. <em>Refresh</em> on the Insights page updates everything at once. The dashboard shows your best-performing posts.
+              </li>
+              <li>
+                Captions are plain text: number, description, sign-off and hashtags (material only if you tick <em>Mention material</em>), in <strong>English, Deutsch or DE + EN</strong>. Set the default in Settings, or switch per post in the editor or bag studio. All 148 bag descriptions have hand-written German versions, and German sign-off and hashtags are set separately. Sync from Instagram recognises both “Bag #12” and “Tasche #12”. Changed your hashtags or sign-off? Use{' '}
                 <strong>Auto-schedule → Rewrite upcoming captions</strong>.
               </li>
             </ul>
@@ -321,9 +326,9 @@ export const StudioGuide: React.FC = () => {
                 choose <em>User Token</em>, and tick these permissions:
                 <Box mt={1}>
                   <Code>pages_show_list</Code> <Code>pages_read_engagement</Code> <Code>pages_manage_posts</Code> <Code>instagram_basic</Code>{' '}
-                  <Code>instagram_content_publish</Code> <Code>business_management</Code>
+                  <Code>instagram_content_publish</Code> <Code>instagram_manage_insights</Code> <Code>business_management</Code>
                 </Box>
-                Click <em>Generate Access Token</em>. In the popup, choose <em>Edit settings</em> and make sure your Page <strong>and</strong> your Instagram
+                <Code>instagram_manage_insights</Code> is only needed for views, reach, saves and shares on the Insights page. Click <em>Generate Access Token</em>. In the popup, choose <em>Edit settings</em> and make sure your Page <strong>and</strong> your Instagram
                 account are both ticked.
               </li>
               <li>

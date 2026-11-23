@@ -1,0 +1,54 @@
+import{p as S,c as p,_ as m,q as z,r as T,a as G,o as te,j as t,s as oe,t as ne,i as L,R as se}from"./index-9f0cf1f5.js";import{g as ie,a as le,b as C,c as J,d as Q,e as Z,T as _,z as E,m as ce,n as de}from"./bits-add703cd.js";import{d as ue,L as x}from"./AutoAwesome-4d5ec04b.js";import{a as fe}from"./PostRow-fb6fa807.js";import{r as R,b as me,d as pe,B as O,s as U}from"./context-f0994a70.js";import{i as k,b as he,r as be}from"./planner-2e3d2c4b.js";import{L as ge,a as ve}from"./Menu-7750dc91.js";import{l as H,a as ye,M as $}from"./MenuItem-428b36c7.js";function xe(e){return ie("MuiLinearProgress",e)}le("MuiLinearProgress",["root","colorPrimary","colorSecondary","determinate","indeterminate","buffer","query","dashed","dashedColorPrimary","dashedColorSecondary","bar","barColorPrimary","barColorSecondary","bar1Indeterminate","bar1Determinate","bar1Buffer","bar2Indeterminate","bar2Buffer"]);const $e=["className","color","value","valueBuffer","variant"];let y=e=>e,V,F,K,W,X,Y;const M=4,je=S(V||(V=y`
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+`)),Ce=S(F||(F=y`
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+`)),_e=S(K||(K=y`
+  0% {
+    opacity: 1;
+    background-position: 0 -23px;
+  }
+
+  60% {
+    opacity: 0;
+    background-position: 0 -23px;
+  }
+
+  100% {
+    opacity: 1;
+    background-position: -200px -23px;
+  }
+`)),Pe=e=>{const{classes:r,variant:a,color:s}=e,c={root:["root",`color${p(s)}`,a],dashed:["dashed",`dashedColor${p(s)}`],bar1:["bar",`barColor${p(s)}`,(a==="indeterminate"||a==="query")&&"bar1Indeterminate",a==="determinate"&&"bar1Determinate",a==="buffer"&&"bar1Buffer"],bar2:["bar",a!=="buffer"&&`barColor${p(s)}`,a==="buffer"&&`color${p(s)}`,(a==="indeterminate"||a==="query")&&"bar2Indeterminate",a==="buffer"&&"bar2Buffer"]};return Z(c,xe,r)},N=(e,r)=>r==="inherit"?"currentColor":e.vars?e.vars.palette.LinearProgress[`${r}Bg`]:e.palette.mode==="light"?oe(e.palette[r].main,.62):ne(e.palette[r].main,.5),Le=C("span",{name:"MuiLinearProgress",slot:"Root",overridesResolver:(e,r)=>{const{ownerState:a}=e;return[r.root,r[`color${p(a.color)}`],r[a.variant]]}})(({ownerState:e,theme:r})=>m({position:"relative",overflow:"hidden",display:"block",height:4,zIndex:0,"@media print":{colorAdjust:"exact"},backgroundColor:N(r,e.color)},e.color==="inherit"&&e.variant!=="buffer"&&{backgroundColor:"none","&::before":{content:'""',position:"absolute",left:0,top:0,right:0,bottom:0,backgroundColor:"currentColor",opacity:.3}},e.variant==="buffer"&&{backgroundColor:"transparent"},e.variant==="query"&&{transform:"rotate(180deg)"})),Re=C("span",{name:"MuiLinearProgress",slot:"Dashed",overridesResolver:(e,r)=>{const{ownerState:a}=e;return[r.dashed,r[`dashedColor${p(a.color)}`]]}})(({ownerState:e,theme:r})=>{const a=N(r,e.color);return m({position:"absolute",marginTop:0,height:"100%",width:"100%"},e.color==="inherit"&&{opacity:.3},{backgroundImage:`radial-gradient(${a} 0%, ${a} 16%, transparent 42%)`,backgroundSize:"10px 10px",backgroundPosition:"0 -23px"})},z(W||(W=y`
+    animation: ${0} 3s infinite linear;
+  `),_e)),Ie=C("span",{name:"MuiLinearProgress",slot:"Bar1",overridesResolver:(e,r)=>{const{ownerState:a}=e;return[r.bar,r[`barColor${p(a.color)}`],(a.variant==="indeterminate"||a.variant==="query")&&r.bar1Indeterminate,a.variant==="determinate"&&r.bar1Determinate,a.variant==="buffer"&&r.bar1Buffer]}})(({ownerState:e,theme:r})=>m({width:"100%",position:"absolute",left:0,bottom:0,top:0,transition:"transform 0.2s linear",transformOrigin:"left",backgroundColor:e.color==="inherit"?"currentColor":(r.vars||r).palette[e.color].main},e.variant==="determinate"&&{transition:`transform .${M}s linear`},e.variant==="buffer"&&{zIndex:1,transition:`transform .${M}s linear`}),({ownerState:e})=>(e.variant==="indeterminate"||e.variant==="query")&&z(X||(X=y`
+      width: auto;
+      animation: ${0} 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+    `),je)),ke=C("span",{name:"MuiLinearProgress",slot:"Bar2",overridesResolver:(e,r)=>{const{ownerState:a}=e;return[r.bar,r[`barColor${p(a.color)}`],(a.variant==="indeterminate"||a.variant==="query")&&r.bar2Indeterminate,a.variant==="buffer"&&r.bar2Buffer]}})(({ownerState:e,theme:r})=>m({width:"100%",position:"absolute",left:0,bottom:0,top:0,transition:"transform 0.2s linear",transformOrigin:"left"},e.variant!=="buffer"&&{backgroundColor:e.color==="inherit"?"currentColor":(r.vars||r).palette[e.color].main},e.color==="inherit"&&{opacity:.3},e.variant==="buffer"&&{backgroundColor:N(r,e.color),transition:`transform .${M}s linear`}),({ownerState:e})=>(e.variant==="indeterminate"||e.variant==="query")&&z(Y||(Y=y`
+      width: auto;
+      animation: ${0} 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.15s infinite;
+    `),Ce)),Te=T.forwardRef(function(r,a){const s=J({props:r,name:"MuiLinearProgress"}),{className:c,color:h="primary",value:l,valueBuffer:v,variant:d="indeterminate"}=s,o=G(s,$e),n=m({},s,{color:h,variant:d}),u=Pe(n),b=te(),g={},f={bar1:{},bar2:{}};if((d==="determinate"||d==="buffer")&&l!==void 0){g["aria-valuenow"]=Math.round(l),g["aria-valuemin"]=0,g["aria-valuemax"]=100;let i=l-100;b&&(i=-i),f.bar1.transform=`translateX(${i}%)`}if(d==="buffer"&&v!==void 0){let i=(v||0)-100;b&&(i=-i),f.bar2.transform=`translateX(${i}%)`}return t.jsxs(Le,m({className:Q(u.root,c),ownerState:n,role:"progressbar"},g,{ref:a},o,{children:[d==="buffer"?t.jsx(Re,{className:u.dashed,ownerState:n}):null,t.jsx(Ie,{className:u.bar1,ownerState:n,style:f.bar1}),d==="determinate"?null:t.jsx(ke,{className:u.bar2,ownerState:n,style:f.bar2})]}))}),rr=Te,Me=["children","className","disableTypography","inset","primary","primaryTypographyProps","secondary","secondaryTypographyProps"],Se=e=>{const{classes:r,inset:a,primary:s,secondary:c,dense:h}=e;return Z({root:["root",a&&"inset",h&&"dense",s&&c&&"multiline"],primary:["primary"],secondary:["secondary"]},ye,r)},ze=C("div",{name:"MuiListItemText",slot:"Root",overridesResolver:(e,r)=>{const{ownerState:a}=e;return[{[`& .${H.primary}`]:r.primary},{[`& .${H.secondary}`]:r.secondary},r.root,a.inset&&r.inset,a.primary&&a.secondary&&r.multiline,a.dense&&r.dense]}})(({ownerState:e})=>m({flex:"1 1 auto",minWidth:0,marginTop:4,marginBottom:4},e.primary&&e.secondary&&{marginTop:6,marginBottom:6},e.inset&&{paddingLeft:56})),Ne=T.forwardRef(function(r,a){const s=J({props:r,name:"MuiListItemText"}),{children:c,className:h,disableTypography:l=!1,inset:v=!1,primary:d,primaryTypographyProps:o,secondary:n,secondaryTypographyProps:u}=s,b=G(s,Me),{dense:g}=T.useContext(ge);let f=d??c,i=n;const w=m({},s,{disableTypography:l,inset:v,primary:!!f,secondary:!!i,dense:g}),I=Se(w);return f!=null&&f.type!==_&&!l&&(f=t.jsx(_,m({variant:g?"body2":"body1",className:I.primary,component:o!=null&&o.variant?void 0:"span",display:"block"},o,{children:f}))),i!=null&&i.type!==_&&!l&&(i=t.jsx(_,m({variant:"body2",className:I.secondary,color:"text.secondary",display:"block"},u,{children:i}))),t.jsxs(ze,m({className:Q(I.root,h),ownerState:w,ref:a},b,{children:[f,i]}))}),j=Ne;var B={},Be=L;Object.defineProperty(B,"__esModule",{value:!0});var ee=B.default=void 0,De=Be(R()),qe=t;ee=B.default=(0,De.default)((0,qe.jsx)("path",{d:"M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"}),"ExpandMore");var D={},Ae=L;Object.defineProperty(D,"__esModule",{value:!0});var re=D.default=void 0,we=Ae(R()),Ee=t;re=D.default=(0,we.default)((0,Ee.jsx)("path",{d:"M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37"}),"AllInclusive");var q={},Oe=L;Object.defineProperty(q,"__esModule",{value:!0});var P=q.default=void 0,Ue=Oe(R()),He=t;P=q.default=(0,Ue.default)((0,He.jsx)("path",{d:"M9 11H7v2h2zm4 0h-2v2h2zm4 0h-2v2h2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 16H5V9h14z"}),"DateRange");var A={},Ve=L;Object.defineProperty(A,"__esModule",{value:!0});var ae=A.default=void 0,Fe=Ve(R()),Ke=t;ae=A.default=(0,Fe.default)((0,Ke.jsx)("path",{d:"M3 18h12v-2H3zM3 6v2h18V6zm0 7h18v-2H3z"}),"Notes");const ar=()=>{const{posts:e,settings:r}=me(),a=pe(),[s,c]=se.useState(null),h=e.filter(o=>k(o)).length,l=o=>{c(null);const n=he(r,e,o);if(!n.length){a.toast(o==="all"?"Every available bag is already scheduled or posted":"Your schedule is already full for that period");return}o==="all"&&!confirm(`Schedule ${n.length} bags, from ${E(n[0].scheduledAt)} until ${E(n[n.length-1].scheduledAt)}?`)||(U.addPosts(n),a.toast(`Scheduled ${n.length} post${n.length>1?"s":""} ✨`))},v=()=>{c(null);const o=e.filter(n=>k(n)).length;if(!o){a.toast("No upcoming auto-planned posts");return}confirm(`Rewrite the captions of ${o} upcoming auto-planned posts with your current caption settings? Posts you edited yourself are kept.`)&&(U.mutatePosts(n=>n.map(u=>{const b=k(u)?ce(u.bagId):void 0;return b?{...u,caption:de(b,r.captionTone,r),language:r.captionLanguage,includeFabric:r.includeFabric}:u})),a.toast(`Rewrote ${o} caption${o>1?"s":""}`))},d=()=>{if(!confirm(`Pick new bags for all ${h} upcoming auto-planned posts? Posts you created or edited stay as they are.`))return;const o=be(r,e);a.toast(`Reshuffled ${o} post${o===1?"":"s"} 🔀`)};return t.jsxs(t.Fragment,{children:[t.jsx(O,{variant:"contained",startIcon:t.jsx(ue,{}),endIcon:t.jsx(ee,{}),onClick:o=>c(o.currentTarget),children:"Auto-schedule"}),t.jsxs(ve,{anchorEl:s,open:!!s,onClose:()=>c(null),children:[t.jsxs($,{onClick:()=>l(1),children:[t.jsx(x,{children:t.jsx(P,{fontSize:"small"})}),t.jsx(j,{primary:"Next week"})]}),t.jsxs($,{onClick:()=>l(2),children:[t.jsx(x,{children:t.jsx(P,{fontSize:"small"})}),t.jsx(j,{primary:"Next 2 weeks"})]}),t.jsxs($,{onClick:()=>l(4),children:[t.jsx(x,{children:t.jsx(P,{fontSize:"small"})}),t.jsx(j,{primary:"Next month"})]}),t.jsxs($,{onClick:()=>l("all"),children:[t.jsx(x,{children:t.jsx(re,{fontSize:"small"})}),t.jsx(j,{primary:"Schedule everything",secondary:r.includePosted?"Every available bag":"Every bag not posted yet"})]}),t.jsxs($,{onClick:v,children:[t.jsx(x,{children:t.jsx(ae,{fontSize:"small"})}),t.jsx(j,{primary:"Rewrite upcoming captions",secondary:"Apply current language, tone, material, sign-off & hashtags"})]})]}),t.jsx(O,{variant:"outlined",startIcon:t.jsx(fe,{}),onClick:d,disabled:!h,children:"Reshuffle all"})]})};export{rr as L,ar as S};

@@ -2,6 +2,7 @@ import { allBags, categories, ExtendedBag } from '../data'
 import { DEFAULT_SETTINGS, PLATFORMS } from './constants'
 import { CaptionLanguage, CaptionTone, Platform, ScheduledPost, StudioSettings } from './types'
 import de from '../data/de.json'
+import { stripMaterials } from './materials'
 
 // ── Bags ────────────────────────────────────────────────────────────────────
 
@@ -112,7 +113,7 @@ const cleanDesc = (d?: string) => (d ?? '').trim().replace(/\.+$/, '')
 const capitalize = (t: string) => t.charAt(0).toUpperCase() + t.slice(1)
 
 type CaptionSettings = Pick<StudioSettings, 'hashtags' | 'signature'> &
-  Partial<Pick<StudioSettings, 'signatureDe' | 'hashtagsDe' | 'captionLanguage'>>
+  Partial<Pick<StudioSettings, 'signatureDe' | 'hashtagsDe' | 'captionLanguage' | 'includeFabric'>>
 
 const germanDescription = (bag: ExtendedBag) => (de.descriptions as Record<string, string>)[bag.id]
 const germanFabric = (fabric: string) => (de.fabrics as Record<string, string>)[fabric.trim().toLowerCase()]
@@ -120,10 +121,11 @@ const germanFabric = (fabric: string) => (de.fabrics as Record<string, string>)[
 /** Whether a real German description exists for this bag. */
 export const hasGerman = (bag: ExtendedBag) => !!germanDescription(bag)
 
-const bodyLines = (bag: ExtendedBag, tone: CaptionTone, lang: 'en' | 'de'): string[] => {
+const bodyLines = (bag: ExtendedBag, tone: CaptionTone, lang: 'en' | 'de', withFabric: boolean): string[] => {
   if (lang === 'de') {
-    const desc = cleanDesc(germanDescription(bag) ?? bag.description)
-    const fabric = bag.fabric?.trim() ? germanFabric(bag.fabric) ?? capitalize(bag.fabric.trim()) : ''
+    const raw = germanDescription(bag) ?? bag.description
+    const desc = cleanDesc(withFabric ? raw : stripMaterials(raw, 'de', bag.id))
+    const fabric = withFabric && bag.fabric?.trim() ? germanFabric(bag.fabric) ?? capitalize(bag.fabric.trim()) : ''
     switch (tone) {
       case 'minimal':
         return [`Tasche #${bag.id}`, `${desc}.`]
@@ -135,8 +137,8 @@ const bodyLines = (bag: ExtendedBag, tone: CaptionTone, lang: 'en' | 'de'): stri
         return [`Tasche #${bag.id}`, `${desc}.`, [fabric, 'Handgemacht, ein Unikat.'].filter(Boolean).join('. ')]
     }
   }
-  const desc = cleanDesc(bag.description)
-  const fabric = bag.fabric?.trim() ? capitalize(bag.fabric.trim()) : ''
+  const desc = cleanDesc(withFabric ? bag.description : stripMaterials(bag.description, 'en', bag.id))
+  const fabric = withFabric && bag.fabric?.trim() ? capitalize(bag.fabric.trim()) : ''
   switch (tone) {
     case 'minimal':
       return [`Bag #${bag.id}`, `${desc}.`]
@@ -175,6 +177,7 @@ export const generateCaption = (
   tone: CaptionTone,
   settings: CaptionSettings = DEFAULT_SETTINGS,
   lang: CaptionLanguage = settings.captionLanguage ?? 'en',
+  withFabric: boolean = settings.includeFabric ?? false,
 ): string => {
   const sigEn = settings.signature?.trim()
   const sigDe = (settings.signatureDe ?? DEFAULT_SETTINGS.signatureDe).trim()
@@ -182,10 +185,10 @@ export const generateCaption = (
   const tagsDe = (settings.hashtagsDe ?? DEFAULT_SETTINGS.hashtagsDe).trim()
 
   const join = (parts: (string | undefined)[]) => parts.filter(Boolean).join('\n\n')
-  if (lang === 'de') return join([...bodyLines(bag, tone, 'de'), sigDe, tagsDe])
+  if (lang === 'de') return join([...bodyLines(bag, tone, 'de', withFabric), sigDe, tagsDe])
   if (lang === 'both')
-    return join([...bodyLines(bag, tone, 'de'), sigDe, '—', ...bodyLines(bag, tone, 'en'), sigEn, mergeTags(tagsDe, tagsEn)])
-  return join([...bodyLines(bag, tone, 'en'), sigEn, tagsEn])
+    return join([...bodyLines(bag, tone, 'de', withFabric), sigDe, '—', ...bodyLines(bag, tone, 'en', withFabric), sigEn, mergeTags(tagsDe, tagsEn)])
+  return join([...bodyLines(bag, tone, 'en', withFabric), sigEn, tagsEn])
 }
 
 export const copyText = (text: string) => navigator.clipboard.writeText(text)

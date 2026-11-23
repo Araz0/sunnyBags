@@ -29,6 +29,7 @@ import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import HubOutlinedIcon from '@mui/icons-material/HubOutlined'
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined'
 import { getConnections, useConnections } from '../connections'
 import { bagThumb, getBag, isDue } from '../helpers'
 import { buildAutoPlan } from '../planner'
@@ -44,6 +45,7 @@ const NAV = [
   { to: '/studio/calendar', label: 'Calendar', icon: <CalendarMonthOutlinedIcon fontSize="small" /> },
   { to: '/studio/queue', label: 'Queue', icon: <ViewListOutlinedIcon fontSize="small" />, badge: true },
   { to: '/studio/library', label: 'Bag library', icon: <GridViewOutlinedIcon fontSize="small" /> },
+  { to: '/studio/insights', label: 'Insights', icon: <InsightsOutlinedIcon fontSize="small" /> },
   { to: '/studio/settings', label: 'Settings', icon: <TuneOutlinedIcon fontSize="small" /> },
   { to: '/studio/connections', label: 'Connections', icon: <HubOutlinedIcon fontSize="small" /> },
   { to: '/studio/guide', label: 'Guide', icon: <MenuBookOutlinedIcon fontSize="small" /> },

@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom'
 import {
   Box,
   Button,
+  Checkbox,
   Chip,
+  FormControlLabel,
   Paper,
   Stack,
   TextField,
@@ -49,6 +51,7 @@ export const ItemStudio: React.FC = () => {
   const [tone, setTone] = React.useState<CaptionTone>(settings.captionTone)
   const [caption, setCaption] = React.useState('')
   const [lang, setLang] = React.useState<CaptionLanguage>(settings.captionLanguage)
+  const [withFabric, setWithFabric] = React.useState(settings.includeFabric)
   const [platforms, setPlatforms] = React.useState<Platform[]>(settings.defaultPlatforms)
   const connections = useConnections()
   const chipProps = usePlatformChip()
@@ -58,10 +61,10 @@ export const ItemStudio: React.FC = () => {
   const extraInput = React.useRef<HTMLInputElement>(null)
 
   React.useEffect(() => {
-    if (item) setCaption(generateCaption(item, tone, settings, lang))
+    if (item) setCaption(generateCaption(item, tone, settings, lang, withFabric))
     // regenerate when the bag or tone changes, not on every settings keystroke
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item?.id, tone, lang])
+  }, [item?.id, tone, lang, withFabric])
 
   if (!item) {
     return (
@@ -128,6 +131,7 @@ export const ItemStudio: React.FC = () => {
       design: currentDesign(),
       auto: false,
       language: lang,
+      includeFabric: withFabric,
     })
     await publishNow(post.id, { confirm: false })
   }
@@ -287,6 +291,11 @@ export const ItemStudio: React.FC = () => {
                 ))}
               </ToggleButtonGroup>
             </Stack>
+            <FormControlLabel
+              sx={{ mb: 0.5 }}
+              control={<Checkbox size="small" checked={withFabric} onChange={(e) => setWithFabric(e.target.checked)} />}
+              label={<Typography variant="body2">Mention material (fabric)</Typography>}
+            />
             <TextField value={caption} onChange={(e) => setCaption(e.target.value)} multiline minRows={6} fullWidth size="small" />
             <Stack direction="row" gap={1} mt={1.5} flexWrap="wrap" alignItems="center">
               {PLATFORMS.map((p) => {
@@ -315,7 +324,7 @@ export const ItemStudio: React.FC = () => {
               >
                 Copy
               </Button>
-              <Button size="small" onClick={() => setCaption(generateCaption(item, tone, settings, lang))}>
+              <Button size="small" onClick={() => setCaption(generateCaption(item, tone, settings, lang, withFabric))}>
                 Reset
               </Button>
               <Box flex={1} />

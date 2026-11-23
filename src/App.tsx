@@ -13,6 +13,7 @@ const StudioQueue = lazyNamed(() => import('./studio/pages/StudioQueue'), 'Studi
 const StudioLibrary = lazyNamed(() => import('./studio/pages/StudioLibrary'), 'StudioLibrary')
 const StudioSettings = lazyNamed(() => import('./studio/pages/StudioSettings'), 'StudioSettings')
 const StudioConnections = lazyNamed(() => import('./studio/pages/StudioConnections'), 'StudioConnections')
+const StudioInsights = lazyNamed(() => import('./studio/pages/StudioInsights'), 'StudioInsights')
 const StudioGuide = lazyNamed(() => import('./studio/pages/StudioGuide'), 'StudioGuide')
 const ItemStudio = lazyNamed(() => import('./pages/ItemStudio'), 'ItemStudio')
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="studio/library" element={<StudioLibrary />} />
             <Route path="studio/settings" element={<StudioSettings />} />
             <Route path="studio/connections" element={<StudioConnections />} />
+            <Route path="studio/insights" element={<StudioInsights />} />
             <Route path="studio/guide" element={<StudioGuide />} />
             <Route path="item/:itemId/studio" element={<ItemStudio />} />
           </Route>

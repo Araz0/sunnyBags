@@ -39,9 +39,10 @@ export const StudioDashboard: React.FC = () => {
   const unsold = allBags.all.filter((b) => b.available !== false)
   const neverPosted = unsold.filter((b) => !postedIds.has(b.id)).length
   const ideas = React.useMemo(() => pickBags(posts, 4, { includePosted: settings.includePosted }), [posts, settings.includePosted])
+  const rank = (p: (typeof posts)[number]) => p.stats!.views ?? p.stats!.likes + p.stats!.comments * 3
   const top = posts
     .filter((p) => p.status === 'posted' && p.stats)
-    .sort((a, b) => b.stats!.likes + b.stats!.comments * 3 - (a.stats!.likes + a.stats!.comments * 3))
+    .sort((a, b) => rank(b) - rank(a))
     .slice(0, 5)
   const goalPct = Math.min(100, (postedThisWeek / Math.max(1, settings.weeklyGoal)) * 100)
 
@@ -226,7 +227,14 @@ export const StudioDashboard: React.FC = () => {
 
           {top.length > 0 && (
             <Box mt={3}>
-              <Panel title="Best performing">
+              <Panel
+                title="Best performing"
+                action={
+                  <Button size="small" onClick={() => navigate('/studio/insights')}>
+                    Insights
+                  </Button>
+                }
+              >
                 <Stack spacing={1.25}>
                   {top.map((p) => {
                     const b = getBag(p.bagId)
@@ -239,7 +247,8 @@ export const StudioDashboard: React.FC = () => {
                             Bag #{p.bagId}
                           </Typography>
                           <Typography variant="caption" color="text.secondary">
-                            ♥ {p.stats!.likes} · 💬 {p.stats!.comments} · {fmtRelative(p.postedAt ?? p.scheduledAt, now)}
+                            {p.stats!.views != null ? `${p.stats!.views.toLocaleString()} views · ` : ''}♥ {p.stats!.likes} · 💬 {p.stats!.comments} ·{' '}
+                            {fmtRelative(p.postedAt ?? p.scheduledAt, now)}
                           </Typography>
                         </Box>
                         {url && (

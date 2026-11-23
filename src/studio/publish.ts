@@ -4,7 +4,7 @@ import { getExtraPhoto } from './extras'
 import { cloudinaryReady, Connections, routeFor } from './connections'
 import { getBag } from './helpers'
 import { studioActions } from './store'
-import { Platform, PublishLogEntry, ScheduledPost } from './types'
+import { Platform, PostStats, PublishLogEntry, ScheduledPost } from './types'
 
 export interface RenderedImage {
   url: string // data URL
@@ -330,21 +330,114 @@ const igMediaId = (p: ScheduledPost) =>
   [...(p.publishLog ?? [])].reverse().find((l) => l.platform === 'instagram' && l.ok && l.via === 'meta' && l.ref)?.ref
 
 /** Refresh likes/comments for every post published to Instagram via the API. */
-export const refreshInstagramStats = async (c: Connections, posts: ScheduledPost[]) => {
-  const targets = posts.filter((p) => p.status === 'posted' && igMediaId(p))
-  let updated = 0
-  for (const p of targets) {
+const INSIGHTS_ERR_KEY = 'sunnybags_studio_insights_error'
+
+/** Last reason insights couldn't be loaded (e.g. missing permission), or ''. */
+export const insightsError = (): string => {
+  try {
+    return localStorage.getItem(INSIGHTS_ERR_KEY) ?? ''
+  } catch {
+    return ''
+  }
+}
+const setInsightsError = (msg: string) => {
+  try {
+    if (msg) localStorage.setItem(INSIGHTS_ERR_KEY, msg)
+    else localStorage.removeItem(INSIGHTS_ERR_KEY)
+  } catch {
+    /* ignore */
+  }
+}
+
+// Richest set first; Instagram rejects the whole call if one metric isn't
+// available for that media, so fall back to smaller sets.
+const METRIC_SETS = [
+  'views,reach,saved,shares,total_interactions,profile_visits,follows',
+  'views,reach,saved,shares,total_interactions',
+  'reach,saved,shares,total_interactions',
+  'reach,saved',
+]
+
+type Insights = Partial<Pick<PostStats, 'views' | 'reach' | 'saved' | 'shares' | 'interactions' | 'profileVisits' | 'follows'>>
+
+const fetchInsights = async (c: Connections, mediaId: string): Promise<Insights> => {
+  let lastErr: Error | null = null
+  for (const metric of METRIC_SETS) {
     try {
-      const r = await graph(c, igMediaId(p)!, { fields: 'like_count,comments_count,permalink' }, 'GET')
+      const r = await graph(c, `${mediaId}/insights`, { metric }, 'GET')
+      const out: Insights = {}
+      for (const d of (r.data ?? []) as { name: string; values?: { value: number }[]; total_value?: { value: number } }[]) {
+        const v = d.values?.[0]?.value ?? d.total_value?.value
+        if (typeof v !== 'number') continue
+        const key = ({ views: 'views', reach: 'reach', saved: 'saved', shares: 'shares', total_interactions: 'interactions', profile_visits: 'profileVisits', follows: 'follows' } as const)[d.name as 'views']
+        if (key) out[key] = v
+      }
+      return out
+    } catch (e) {
+      lastErr = e as Error
+      // Permission problems won't be fixed by asking for fewer metrics.
+      if (/permission|\(#10\)|\(#200\)|instagram_manage_insights/i.test(lastErr.message)) break
+    }
+  }
+  throw lastErr ?? new Error('No insights')
+}
+
+const HOUR = 3600000
+
+/** How stale a post's stats may get: fresh posts change fast, old ones barely. */
+const refreshEvery = (p: ScheduledPost) => {
+  const age = Date.now() - new Date(p.postedAt ?? p.scheduledAt).getTime()
+  return age < 3 * 24 * HOUR ? 0.5 * HOUR : age < 30 * 24 * HOUR ? 6 * HOUR : 24 * HOUR
+}
+
+/**
+ * Refresh likes, comments, views, reach, saves, shares … for posts on
+ * Instagram. Throttled per post by age unless `force` is set.
+ */
+export const refreshInstagramStats = async (c: Connections, posts: ScheduledPost[], opts: { force?: boolean } = {}) => {
+  const targets = posts.filter(
+    (p) =>
+      p.status === 'posted' &&
+      igMediaId(p) &&
+      (opts.force || !p.stats?.fetchedAt || Date.now() - new Date(p.stats.fetchedAt).getTime() > refreshEvery(p)),
+  )
+  let updated = 0
+  let insightsFailed = ''
+  let insightsOk = false
+  for (const p of targets) {
+    const id = igMediaId(p)!
+    try {
+      const r = await graph(c, id, { fields: 'like_count,comments_count,permalink' }, 'GET')
+      let ins: Insights = {}
+      if (!insightsFailed) {
+        try {
+          ins = await fetchInsights(c, id)
+          insightsOk = true
+        } catch (e) {
+          const m = (e as Error).message
+          // A permission error applies to every post — stop asking this run.
+          if (/permission|\(#10\)|\(#200\)/i.test(m)) insightsFailed = m
+        }
+      }
+      const now = new Date().toISOString()
       studioActions.updatePost(p.id, {
-        stats: { likes: r.like_count ?? 0, comments: r.comments_count ?? 0, fetchedAt: new Date().toISOString() },
-        publishLog: p.publishLog?.map((l) => (l.ref === igMediaId(p) && !l.url ? { ...l, url: r.permalink } : l)),
+        stats: {
+          ...p.stats,
+          ...ins,
+          likes: r.like_count ?? 0,
+          comments: r.comments_count ?? 0,
+          fetchedAt: now,
+          ...(Object.keys(ins).length ? { insightsAt: now } : {}),
+        },
+        publishLog: p.publishLog?.map((l) => (l.ref === id && !l.url ? { ...l, url: r.permalink } : l)),
       })
       updated++
     } catch {
       /* media deleted or no access — skip */
     }
   }
+  if (insightsFailed) setInsightsError(insightsFailed)
+  else if (insightsOk) setInsightsError('')
   return updated
 }
 
@@ -413,7 +506,7 @@ export const syncFromInstagram = async (c: Connections, posts: ScheduledPost[], 
 
     const existing = known.get(m.id)
     if (existing) {
-      patches.set(existing.id, { ...patches.get(existing.id), stats })
+      patches.set(existing.id, { ...patches.get(existing.id), stats: { ...existing.stats, ...stats } })
       postedBags.add(existing.bagId)
       continue
     }

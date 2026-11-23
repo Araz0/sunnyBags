@@ -43,8 +43,8 @@ export const StudioQueue: React.FC = () => {
   const stats = async () => {
     setSyncing('stats')
     try {
-      const n = await refreshInstagramStats(getConnections(), studioActions.exportData().posts)
-      ui.toast(n ? `Updated likes & comments for ${n} post${n > 1 ? 's' : ''}` : 'No Instagram posts published via the studio yet')
+      const n = await refreshInstagramStats(getConnections(), studioActions.exportData().posts, { force: true })
+      ui.toast(n ? `Updated views, likes & comments for ${n} post${n > 1 ? 's' : ''}` : 'No Instagram posts published via the studio yet')
     } catch (e) {
       ui.toast(`Couldn't load stats: ${(e as Error).message}`)
     } finally {
@@ -148,7 +148,7 @@ export const StudioQueue: React.FC = () => {
               {syncing === 'sync' ? 'Syncing…' : 'Sync from Instagram'}
             </Button>
             <Button variant="outlined" startIcon={<InsightsIcon />} onClick={stats} disabled={!igReady || !!syncing}>
-              {syncing === 'stats' ? 'Loading…' : 'Refresh likes & comments'}
+              {syncing === 'stats' ? 'Loading…' : 'Refresh stats'}
             </Button>
             <Typography variant="caption" color="text.secondary">
               {igReady

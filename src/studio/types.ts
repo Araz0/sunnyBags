@@ -40,6 +40,8 @@ export interface ScheduledPost {
   publishLog?: PublishLogEntry[]
   stats?: PostStats
   language?: CaptionLanguage
+  /** Mention the fabric/material in the caption. */
+  includeFabric?: boolean
 }
 
 export interface PublishLogEntry {
@@ -57,6 +59,15 @@ export interface PostStats {
   likes: number
   comments: number
   fetchedAt: string
+  /** From Instagram insights (needs instagram_manage_insights) */
+  views?: number
+  reach?: number
+  saved?: number
+  shares?: number
+  interactions?: number
+  profileVisits?: number
+  follows?: number
+  insightsAt?: string
 }
 
 export interface StudioSettings {
@@ -69,6 +80,8 @@ export interface StudioSettings {
   signature: string
   notifications: boolean
   captionLanguage: CaptionLanguage
+  /** Mention fabrics/materials in captions (off: the data isn't reliable). */
+  includeFabric: boolean
   signatureDe: string
   hashtagsDe: string
   /** Keep the queue filled this many weeks ahead automatically (0 = off). */

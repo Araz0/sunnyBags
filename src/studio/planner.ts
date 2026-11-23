@@ -91,6 +91,7 @@ const toPost = (bag: ExtendedBag, slot: Date, settings: StudioSettings): NewPost
   platforms: [...settings.defaultPlatforms],
   caption: generateCaption(bag, settings.captionTone, settings),
   language: settings.captionLanguage,
+  includeFabric: settings.includeFabric,
   status: 'scheduled',
   design: defaultDesign(bag.backgroundColor || '#ffffff'),
   auto: true,
@@ -123,7 +124,7 @@ export const reshuffleOne = (post: ScheduledPost, settings: StudioSettings, post
   if (!bag || bag.id === post.bagId) return null
   studioActions.updatePost(post.id, {
     bagId: bag.id,
-    caption: generateCaption(bag, settings.captionTone, settings, post.language ?? settings.captionLanguage),
+    caption: generateCaption(bag, settings.captionTone, settings, post.language ?? settings.captionLanguage, post.includeFabric ?? settings.includeFabric),
     design: { ...post.design, bgColor: bag.backgroundColor || post.design.bgColor },
     auto: true,
   })
@@ -152,7 +153,7 @@ export const reshuffleAll = (settings: StudioSettings, posts: ScheduledPost[]) =
         return {
           ...p,
           bagId: bag.id,
-          caption: generateCaption(bag, settings.captionTone, settings, p.language ?? settings.captionLanguage),
+          caption: generateCaption(bag, settings.captionTone, settings, p.language ?? settings.captionLanguage, p.includeFabric ?? settings.includeFabric),
           design: { ...p.design, bgColor: bag.backgroundColor || p.design.bgColor },
         }
       })
