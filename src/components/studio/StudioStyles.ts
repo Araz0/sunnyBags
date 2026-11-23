@@ -3,49 +3,17 @@ import styled from '@emotion/styled'
 // ── Layout ─────────────────────────────────────────────────────────────────
 
 export const StudioWrapper = styled.div`
-  --bg: #ffffff;
-  --text: #333333;
-  --panel: #f9f9f9;
-  --surface: #ffffff;
-  --border: #eeeeee;
-  --input-border: #cccccc;
-  --accent: #df4b4b;
-  --accent-hover: #c03939;
-  --ok: #27ae60;
-  --ok-hover: #229954;
-  --muted: rgba(0, 0, 0, 0.45);
-
-  @media (prefers-color-scheme: dark) {
-    --bg: #121212;
-    --text: #f0f0f0;
-    --panel: #1e1e1e;
-    --surface: #2a2a2a;
-    --border: #333333;
-    --input-border: #444444;
-    --muted: rgba(255, 255, 255, 0.45);
-  }
-
-  background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  padding-bottom: 50px;
-  transition:
-    background 0.3s,
-    color 0.3s;
 `
 
 export const StudioContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 20px 12px;
   }
 `
 
@@ -75,7 +43,7 @@ export const ControlsColumn = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     grid-row: 2;
   }
 `
@@ -86,14 +54,14 @@ export const PreviewColumn = styled.div`
   align-items: center;
   background: var(--panel);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--border);
   height: fit-content;
   position: sticky;
   top: 20px;
   box-sizing: border-box;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     position: relative;
     top: 0;
     grid-row: 1;
@@ -106,7 +74,7 @@ export const PreviewColumn = styled.div`
 export const ControlGroup = styled.div`
   padding: 20px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 12px;

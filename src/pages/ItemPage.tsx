@@ -272,7 +272,7 @@ const ItemPageRaw = () => {
 
   const item: ExtendedBag | null = React.useMemo(
     () =>
-      itemId ? allBags.all.find((bag) => bag.id === Number(itemId)) : null,
+      (itemId && allBags.all.find((bag) => bag.id === Number(itemId))) || null,
     [itemId],
   )
 

@@ -2,7 +2,7 @@ import { allBags, ExtendedBag } from '../data/index'
 
 // Track previously suggested items to avoid repetition
 let suggestionHistory: number[] = []
-let sessionCounter = 0
+
 
 // Weight scores for different factors
 const SCORES = {
@@ -194,7 +194,7 @@ export function suggestBag(): ExtendedBag | null {
       suggestionHistory = suggestionHistory.slice(-50)
     }
 
-    sessionCounter++
+
   }
 
   return selectedBag
@@ -203,7 +203,7 @@ export function suggestBag(): ExtendedBag | null {
 // Reset the suggestion history (useful for new sessions)
 export function resetSuggestionHistory(): void {
   suggestionHistory = []
-  sessionCounter = 0
+
 }
 
 // Get suggestion statistics

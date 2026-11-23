@@ -6,7 +6,7 @@ import {
   resetSuggestionHistory,
   getSuggestionStats,
 } from '../utils/suggest'
-import { exportAssets, copyPostText } from '../utils/export'
+import { exportAssets } from '../utils/export'
 import {
   ImageFormat,
   PreviewSide,
@@ -81,6 +81,7 @@ export const useStudio = (itemId: string | undefined) => {
       { id: 'insta_feed', w: 1080, h: 1350, name: 'Instagram Feed (4:5)' },
       { id: 'insta_story', w: 1080, h: 1920, name: 'Story / Reel (9:16)' },
       { id: 'square_post', w: 1080, h: 1080, name: 'Square Grid (1:1)' },
+      { id: 'pin', w: 1000, h: 1500, name: 'Pinterest Pin (2:3)' },
       { id: 'hq_print', w: 2160, h: 2700, name: 'Ultra High-Res (4:5)' },
       { id: 'custom_frame', w: customW, h: customH, name: 'Custom' },
     ],
@@ -189,10 +190,6 @@ export const useStudio = (itemId: string | undefined) => {
     })
   }
 
-  const handleCopyPostText = () => {
-    if (currentItem) copyPostText(currentItem.id, currentItem.description ?? '')
-  }
-
   return {
     // item
     currentItem,
@@ -241,6 +238,5 @@ export const useStudio = (itemId: string | undefined) => {
     handleResetHistory,
     handleViewSuggestion,
     handleExport,
-    handleCopyPostText,
   }
 }

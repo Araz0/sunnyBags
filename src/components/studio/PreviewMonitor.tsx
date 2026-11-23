@@ -6,7 +6,6 @@ import {
   SideTab,
   PreviewCanvas,
   BagImage,
-  PrimaryButton,
 } from './StudioStyles';
 
 interface Props {
@@ -16,10 +15,7 @@ interface Props {
   isTransparent: boolean;
   bagScale: number;
   previewImgSrc: string;
-  itemId: number;
   onSideChange: (s: PreviewSide) => void;
-  onCopyPostText: () => void;
-  onGoToItem: () => void;
 }
 
 export const PreviewMonitor: React.FC<Props> = ({
@@ -29,10 +25,7 @@ export const PreviewMonitor: React.FC<Props> = ({
   isTransparent,
   bagScale,
   previewImgSrc,
-  itemId,
   onSideChange,
-  onCopyPostText,
-  onGoToItem,
 }:Props) => (
   <PreviewColumn>
     <SideToggle>
@@ -65,25 +58,5 @@ export const PreviewMonitor: React.FC<Props> = ({
       {livePreview.name} · {livePreview.w}×{livePreview.h}px
     </p>
 
-    <PrimaryButton onClick={onCopyPostText} style={{ marginTop: 12 }}>
-      📋 Copy post text
-    </PrimaryButton>
-
-    <button
-      onClick={onGoToItem}
-      style={{
-        marginTop: 8,
-        width: '100%',
-        background: 'none',
-        border: '1px solid var(--border)',
-        borderRadius: 6,
-        padding: '10px 0',
-        cursor: 'pointer',
-        color: 'var(--text)',
-        fontSize: '0.9rem',
-      }}
-    >
-      🔗 Bag #{itemId} catalog page
-    </button>
   </PreviewColumn>
 );

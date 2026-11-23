@@ -80,9 +80,9 @@ const StyledPrice = styled.span`
 `
 
 export type CategoryCardProps = {
-  id: string
+  id: string | number
   thumbnail: string
-  discount: number
+  discount?: number
   name: string
   price?: number
   soldOut?: boolean
@@ -92,7 +92,7 @@ const CategoryCardRaw = ({
   id,
   thumbnail,
   name,
-  discount,
+  discount = 0,
   price,
   soldOut = false,
 }: CategoryCardProps) => {
