@@ -19,6 +19,8 @@ export interface PostDesign {
   format: ImageFormat
   /** Add the bag's extra photo (set in the bag studio) as the last slide. Default: yes. */
   includeExtra?: boolean
+  /** Add the bag's size diagram right after the bag photos. Default: yes (when the bag has one). */
+  includeDimensions?: boolean
 }
 
 export interface ScheduledPost {

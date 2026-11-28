@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650" width="600" height="650" role="img" aria-labelledby="bag-title-2 bag-desc-2" data-category="2" data-variant="small">
+<title id="bag-title-2">Category 2 small pouch dimensions</title><desc id="bag-desc-2">Flat pouch with folded top and no bow with body measurements in centimeters.</desc>
+<defs><marker id="arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#555" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="600" height="650" fill="#eee"/>
+<g id="bag" stroke-linejoin="round" stroke-linecap="round">
+<path d="M104 144 Q260 140 420 144 L423 392 Q423 408 408 423 L350 465 H174 L115 423 Q101 409 101 392 Z" fill="#b8b8b8" stroke="#777" stroke-width="2"/>
+<path d="M104 144 Q260 140 420 144 L420 245 Q260 249 104 245 Z" fill="#a5a5a5" stroke="#777" stroke-width="2"/>
+</g>
+<g fill="none" stroke="#999" stroke-width="1" stroke-dasharray="4 4"><path d="M420 144 H495 M423 465 H495 M101 465 V507 M423 465 V507"/></g>
+<g stroke="#555" stroke-width="1.5" fill="none" marker-start="url(#arrow-2)" marker-end="url(#arrow-2)"><path d="M488 144 V465"/><path d="M101 502 H423"/></g>
+<g font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="500" fill="#333" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+<text id="body-height" data-measurement="bodyHeight" data-min="19" data-max="19" data-unit="cm" transform="translate(515 304.5) rotate(-90)">19 cm</text>
+<text id="body-width" data-measurement="bodyWidth" data-min="19" data-max="19" data-unit="cm" x="262" y="532">19 cm</text>
+</g></svg>

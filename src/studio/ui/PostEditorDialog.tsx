@@ -38,6 +38,7 @@ import { BagThumb, bagLabel, usePlatformChip } from './bits'
 import { EditorRequest } from './context'
 import { usePublishNow } from './usePublishNow'
 import { useExtraPhoto } from '../extras'
+import { dimensionImage } from '../../utils/dimensions'
 import { PublishNowButton } from './PublishNowButton'
 
 const bagOptions = allBags.all.filter((b) => b.available !== false)
@@ -378,6 +379,24 @@ export const PostEditorDialog: React.FC<Props> = ({ request, onClose, onSaved })
                 <ToggleButton value="A">Front only</ToggleButton>
                 <ToggleButton value="B">Back only</ToggleButton>
               </ToggleButtonGroup>
+
+              {bag && dimensionImage(bag) && (
+                <FormControlLabel
+                  control={
+                    <Switch
+                      size="small"
+                      checked={design.includeDimensions !== false}
+                      onChange={(e) => setDesign({ ...design, includeDimensions: e.target.checked })}
+                    />
+                  }
+                  label={
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <img src={dimensionImage(bag)} alt="" style={{ width: 28, height: 30, objectFit: 'contain', borderRadius: 4 }} />
+                      <Typography variant="body2">Add size diagram after the bag photos</Typography>
+                    </Stack>
+                  }
+                />
+              )}
 
               {extraPhoto ? (
                 <FormControlLabel

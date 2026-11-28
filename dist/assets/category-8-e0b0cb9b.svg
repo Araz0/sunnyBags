@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650" width="600" height="650" role="img" aria-labelledby="bag-title bag-desc" data-category="8">
+  <title id="bag-title">Category 8 bag dimensions</title>
+  <desc id="bag-desc">Front view of a shoulder bag with a closure tab with vertical handle height, body height and horizontal width measurements in centimeters.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#555" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="600" height="650" fill="#eee"/>
+  <g id="bag" stroke-linejoin="round">
+    <path d="M112 350 C126 245 165 107 236 57 Q262 39 288 57 C359 107 398 245 412 350 L412 440 Q410 553 322 553 H202 Q114 553 112 440 Z M166 290 C179 206 211 111 252 77 Q262 68 272 77 C313 111 345 206 358 290 Q365 330 262 330 Q159 330 166 290 Z" fill="#b8b8b8" fill-rule="evenodd" stroke="#777" stroke-width="2"/>
+    <path d="M246 330 V394 Q246 400 252 400 H272 Q278 400 278 394 V330" fill="#aaa" stroke="#777" stroke-width="1.5"/>
+  </g>
+  <g fill="none" stroke="#999" stroke-width="1" stroke-dasharray="4 4">
+    <path d="M262 48 H450 M412 330 H450 M412 553 H450"/>
+    <path d="M112 550 V590 M412 550 V590"/>
+  </g>
+  <g stroke="#555" stroke-width="1.5" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)">
+    <path d="M443 48 V330"/>
+    <path d="M443 330 V553"/>
+    <path d="M112 584 H412"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="500" fill="#333" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+    <text id="handle-height" data-measurement="handleHeight" data-min="56" data-max="58" data-unit="cm" x="0" y="0" transform="translate(470 189) rotate(-90)">56 – 58 cm</text>
+    <text id="body-height" data-measurement="bodyHeight" data-min="34" data-max="37" data-unit="cm" x="0" y="0" transform="translate(470 441.5) rotate(-90)">34 – 37 cm</text>
+    <text id="body-width" data-measurement="bodyWidth" data-min="39" data-max="41" data-unit="cm" x="262" y="614">39 – 41 cm</text>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650" width="600" height="650" role="img" aria-labelledby="bag-title-0 bag-desc-0" data-category="0">
+<title id="bag-title-0">Category 0 bag dimensions</title><desc id="bag-desc-0">Rectangular woven shoulder bag with braided strap and closed fringed flap. Measurements in centimeters.</desc>
+<defs><marker id="arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#555" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="600" height="650" fill="#eee"/>
+<g id="bag" stroke-linejoin="round">
+<path d="M146 290 C165 205 219 76 262 70 C305 76 359 205 378 290" fill="none" stroke="#777" stroke-width="13" stroke-linecap="round"/>
+<path d="M146 290 C165 205 219 76 262 70 C305 76 359 205 378 290" fill="none" stroke="#aaa" stroke-width="9" stroke-linecap="round"/>
+<path d="M146 290 C165 205 219 76 262 70 C305 76 359 205 378 290" fill="none" stroke="#777" stroke-width="5" stroke-dasharray="3 8" stroke-linecap="round"/>
+<path d="M142 285 H382 L386 565 Q386 570 380 570 H144 Q138 570 138 565 Z" fill="#b8b8b8" stroke="#777" stroke-width="2"/>
+<path d="M142 285 H382 V398 H142 Z" fill="#a5a5a5" stroke="#777" stroke-width="2"/>
+<g fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round"><path d="M145 398 q-3 7 0 13"/><path d="M153 398 q-3 7 0 13"/><path d="M161 398 q-3 7 0 13"/><path d="M169 398 q-3 7 0 13"/><path d="M177 398 q-3 7 0 13"/><path d="M185 398 q-3 7 0 13"/><path d="M193 398 q-3 7 0 13"/><path d="M201 398 q-3 7 0 13"/><path d="M209 398 q-3 7 0 13"/><path d="M217 398 q-3 7 0 13"/><path d="M225 398 q-3 7 0 13"/><path d="M233 398 q-3 7 0 13"/><path d="M241 398 q-3 7 0 13"/><path d="M249 398 q-3 7 0 13"/><path d="M257 398 q-3 7 0 13"/><path d="M265 398 q-3 7 0 13"/><path d="M273 398 q-3 7 0 13"/><path d="M281 398 q-3 7 0 13"/><path d="M289 398 q-3 7 0 13"/><path d="M297 398 q-3 7 0 13"/><path d="M305 398 q-3 7 0 13"/><path d="M313 398 q-3 7 0 13"/><path d="M321 398 q-3 7 0 13"/><path d="M329 398 q-3 7 0 13"/><path d="M337 398 q-3 7 0 13"/><path d="M345 398 q-3 7 0 13"/><path d="M353 398 q-3 7 0 13"/><path d="M361 398 q-3 7 0 13"/><path d="M369 398 q-3 7 0 13"/><path d="M377 398 q-3 7 0 13"/></g>
+</g>
+<g fill="none" stroke="#999" stroke-width="1" stroke-dasharray="4 4"><path d="M262 63.5 H450 M382 285 H450 M386 570 H450 M142 285 H88 M142 398 H88 M138 570 V603 M386 570 V603"/></g>
+<g stroke="#555" stroke-width="1.5" fill="none" marker-start="url(#arrow-0)" marker-end="url(#arrow-0)"><path d="M443 63.5 V285"/><path d="M443 285 V570"/><path d="M95 285 V398"/><path d="M138 598 H386"/></g>
+<g font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="500" fill="#333" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+<text id="handle-height" data-measurement="handleHeight" data-min="43" data-max="48" data-unit="cm" transform="translate(470 174.25) rotate(-90)">43 – 48 cm</text>
+<text id="body-height" data-measurement="bodyHeight" data-min="43" data-max="46" data-unit="cm" transform="translate(470 427.5) rotate(-90)">43 – 46 cm</text>
+<text id="lid-height" data-measurement="lidHeight" data-min="18" data-max="20" data-unit="cm" transform="translate(69 341.5) rotate(-90)">18 – 20 cm</text>
+<text id="body-width" data-measurement="bodyWidth" data-min="35" data-max="36" data-unit="cm" x="262" y="628">35 – 36 cm</text></g></svg>

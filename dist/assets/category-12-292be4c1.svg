@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650" width="600" height="650" role="img" aria-labelledby="bag-title-12 bag-desc-12" data-category="12">
+<title id="bag-title-12">Category 12 bag dimensions</title>
+<desc id="bag-desc-12">Flat shoulder bag with a V-shaped opening and three measurements in centimeters.</desc>
+<defs><marker id="arrow-12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#555" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="600" height="650" fill="#eee"/>
+<g id="bag" stroke-linejoin="round">
+<path d="M262 112 C324 112 346 166 352 252 L412 306 L412 476 Q412 524 376 543 Q354 553 262 553 Q170 553 148 543 Q112 524 112 476 L112 306 L172 252 C178 166 200 112 262 112 Z M262 126 C216 126 195 174 190 252 L262 301 L334 252 C329 174 308 126 262 126 Z" fill="#b8b8b8" fill-rule="evenodd" stroke="#777" stroke-width="2"/>
+</g>
+<g fill="none" stroke="#999" stroke-width="1" stroke-dasharray="4 4"><path d="M262 112 H450 M262 301 H450 M350 553 H450"/><path d="M112 476 V590 M412 476 V590"/></g>
+<g stroke="#555" stroke-width="1.5" fill="none" marker-start="url(#arrow-12)" marker-end="url(#arrow-12)"><path d="M443 112 V301"/><path d="M443 301 V553"/><path d="M112 584 H412"/></g>
+<g font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="500" fill="#333" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+<text id="handle-height" data-measurement="handleHeight" data-min="24" data-max="24" data-unit="cm" transform="translate(470 206.5) rotate(-90)">24 cm</text>
+<text id="body-height" data-measurement="bodyHeight" data-min="32" data-max="32" data-unit="cm" transform="translate(470 427) rotate(-90)">32 cm</text>
+<text id="body-width" data-measurement="bodyWidth" data-min="39" data-max="39" data-unit="cm" x="262" y="614">39 cm</text>
+</g></svg>

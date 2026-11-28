@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { PageContainer, Cards } from '../components'
 import { allBags, ExtendedBag } from '../data'
 import styled from '@emotion/styled'
+import { dimensionImage } from '../utils/dimensions'
 
 const BackButton = styled.button`
   color: #333333;
@@ -92,9 +93,10 @@ const Blob = styled.div<{
   transform: translate(-50%, -50%);
 `
 
+/* No z-index: a stacking context here would stop the size diagram's
+   mix-blend-mode from reaching the hero background (DOM order keeps it above the blobs) */
 const ImageStage = styled.div`
   position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,6 +112,21 @@ const BagImage = styled.img`
 
   @media (min-width: 900px) {
     max-width: 400px;
+  }
+`
+
+/* Size diagram: its light grey backdrop is brightened to white and multiplied
+   away, so the drawing sits directly on the hero background */
+const DimensionImage = styled.img`
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 600 / 650;
+  object-fit: contain;
+  filter: brightness(1.08);
+  mix-blend-mode: multiply;
+
+  @media (min-width: 900px) {
+    max-width: 420px;
   }
 `
 
@@ -268,7 +285,7 @@ const BLOB_LAYOUT = [
 const ItemPageRaw = () => {
   const { itemId } = useParams<{ itemId: string }>()
   const navigate = useNavigate()
-  const [side, setSide] = React.useState<'front' | 'back'>('front')
+  const [side, setSide] = React.useState<'front' | 'back' | 'size'>('front')
 
   const item: ExtendedBag | null = React.useMemo(
     () =>
@@ -357,6 +374,7 @@ const ItemPageRaw = () => {
   }
 
   const bg = item.backgroundColor || '#e8e8e8'
+  const dimsImage = dimensionImage(item)
 
   return (
     <PageContainer>
@@ -378,10 +396,14 @@ const ItemPageRaw = () => {
             </BlobField>
 
             <ImageStage>
-              <BagImage
-                src={side === 'front' ? frontMainImage : backMainImage}
-                alt={`${item.id} - ${side}`}
-              />
+              {side === 'size' && dimsImage ? (
+                <DimensionImage src={dimsImage} alt={`Bag #${item.id} dimensions in cm`} />
+              ) : (
+                <BagImage
+                  src={side === 'back' ? backMainImage : frontMainImage}
+                  alt={`${item.id} - ${side}`}
+                />
+              )}
               <SideToggle>
                 <ToggleButton
                   active={side === 'front'}
@@ -395,6 +417,14 @@ const ItemPageRaw = () => {
                 >
                   Back
                 </ToggleButton>
+                {dimsImage && (
+                  <ToggleButton
+                    active={side === 'size'}
+                    onClick={() => setSide('size')}
+                  >
+                    Size
+                  </ToggleButton>
+                )}
               </SideToggle>
             </ImageStage>
           </HeroSection>

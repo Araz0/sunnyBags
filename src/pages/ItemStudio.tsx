@@ -38,6 +38,7 @@ import { bagImage, copyText, fmtRelative, formatPrice, generateCaption, platform
 import { compressPhoto, removeExtraPhoto, setExtraPhoto, useExtraPhoto } from '../studio/extras'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
 import { useStudioData } from '../studio/store'
+import { DIMENSION_BG, dimensionImage } from '../utils/dimensions'
 import { CaptionLanguage, CaptionTone, Platform, PostDesign, ScheduledPost } from '../studio/types'
 import { useStudioUi } from '../studio/ui/context'
 
@@ -58,6 +59,8 @@ export const ItemStudio: React.FC = () => {
   const { publishNow, busyId, progress } = usePublishNow()
   const extraPhoto = useExtraPhoto(item?.id)
   const [includeExtra, setIncludeExtra] = React.useState(true)
+  const [includeDimensions, setIncludeDimensions] = React.useState(true)
+  const dimsImage = item ? dimensionImage(item) : undefined
   const extraInput = React.useRef<HTMLInputElement>(null)
 
   React.useEffect(() => {
@@ -94,6 +97,7 @@ export const ItemStudio: React.FC = () => {
     bagScale: s.bagScale,
     format: s.format,
     includeExtra,
+    includeDimensions,
   })
 
   const uploadExtra = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,11 +113,14 @@ export const ItemStudio: React.FC = () => {
     }
   }
 
-  const slides: { key: string; label: string; src?: string; on: boolean; toggle: () => void; photo?: boolean }[] = [
-    { key: 'A', label: '1 · Front', src: bagImage(item, 'A'), on: s.sides.front, toggle: () => s.setSides({ ...s.sides, front: !s.sides.front || !s.sides.back }) },
-    { key: 'B', label: '2 · Back', src: bagImage(item, 'B'), on: s.sides.back, toggle: () => s.setSides({ ...s.sides, back: !s.sides.back || !s.sides.front }) },
-    { key: 'X', label: '3 · Extra photo', src: extraPhoto, on: !!extraPhoto && includeExtra, toggle: () => setIncludeExtra(!includeExtra), photo: true },
-  ]
+  const slides: { key: string; label: string; src?: string; on: boolean; toggle: () => void; photo?: boolean; diagram?: boolean }[] = [
+    { key: 'A', label: 'Front', src: bagImage(item, 'A'), on: s.sides.front, toggle: () => s.setSides({ ...s.sides, front: !s.sides.front || !s.sides.back }) },
+    { key: 'B', label: 'Back', src: bagImage(item, 'B'), on: s.sides.back, toggle: () => s.setSides({ ...s.sides, back: !s.sides.back || !s.sides.front }) },
+    ...(dimsImage
+      ? [{ key: 'D', label: 'Size', src: dimsImage, on: includeDimensions, toggle: () => setIncludeDimensions(!includeDimensions), diagram: true }]
+      : []),
+    { key: 'X', label: 'Extra photo', src: extraPhoto, on: !!extraPhoto && includeExtra, toggle: () => setIncludeExtra(!includeExtra), photo: true },
+  ].map((sl, i) => ({ ...sl, label: `${i + 1} · ${sl.label}` }))
 
   const schedule = () => ui.openEditor({ bagId: item.id, design: currentDesign(), caption })
 
@@ -212,7 +219,7 @@ export const ItemStudio: React.FC = () => {
               </Typography>
             </Stack>
             <Typography variant="body2" color="text.secondary" mb={1.5}>
-              Posts go out in this order. The extra photo (e.g. the bag being worn) is saved for this bag and used in all its posts.
+              Posts go out in this order. The size diagram helps buyers judge the bag's size. The extra photo (e.g. the bag being worn) is saved for this bag and used in all its posts.
             </Typography>
             <Stack direction="row" spacing={1.5}>
               {slides.map((sl) => (
@@ -221,7 +228,7 @@ export const ItemStudio: React.FC = () => {
                     onClick={sl.src ? sl.toggle : () => extraInput.current?.click()}
                     sx={{
                       aspectRatio: `${s.livePreview.w} / ${s.livePreview.h}`,
-                      bgcolor: sl.photo ? 'action.hover' : s.bgColor,
+                      bgcolor: sl.photo ? 'action.hover' : sl.diagram ? DIMENSION_BG : s.bgColor,
                       borderRadius: 2,
                       border: 2,
                       borderStyle: sl.src ? 'solid' : 'dashed',
@@ -238,7 +245,13 @@ export const ItemStudio: React.FC = () => {
                       <img
                         src={sl.src}
                         alt={sl.label}
-                        style={sl.photo ? { width: '100%', height: '100%', objectFit: 'cover' } : { maxWidth: `${s.bagScale * 90}%`, maxHeight: `${s.bagScale * 90}%`, objectFit: 'contain' }}
+                        style={
+                          sl.photo
+                            ? { width: '100%', height: '100%', objectFit: 'cover' }
+                            : sl.diagram
+                              ? { width: '100%', height: '100%', objectFit: 'contain' }
+                              : { maxWidth: `${s.bagScale * 90}%`, maxHeight: `${s.bagScale * 90}%`, objectFit: 'contain' }
+                        }
                       />
                     ) : (
                       <Stack alignItems="center" spacing={0.5} sx={{ color: 'text.secondary', p: 1, textAlign: 'center' }}>

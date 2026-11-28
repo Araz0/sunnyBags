@@ -65,9 +65,19 @@ export const renderBagImage = async (opts: RenderOptions): Promise<string> => {
   return canvas.toDataURL(format, 0.95)
 }
 
-/** Render a regular photo filling the frame (cropped to fit, like Instagram does). */
-export const renderPhoto = async (opts: { src: string; w: number; h: number; bgColor: string; format: ImageFormat }) => {
-  const { src, w, h, bgColor, format } = opts
+/**
+ * Render an image onto a frame. `cover` fills and crops (photos, like Instagram does);
+ * `contain` fits the whole image and pads with bgColor (size diagrams).
+ */
+export const renderPhoto = async (opts: {
+  src: string
+  w: number
+  h: number
+  bgColor: string
+  format: ImageFormat
+  fit?: 'cover' | 'contain'
+}) => {
+  const { src, w, h, bgColor, format, fit = 'cover' } = opts
   const canvas = document.createElement('canvas')
   canvas.width = w
   canvas.height = h
@@ -76,7 +86,8 @@ export const renderPhoto = async (opts: { src: string; w: number; h: number; bgC
   ctx.fillStyle = bgColor
   ctx.fillRect(0, 0, w, h)
   const img = await loadImage(src)
-  const ratio = Math.max(w / img.width, h / img.height)
+  // SVGs report their intrinsic size via width/height attributes
+  const ratio = (fit === 'contain' ? Math.min : Math.max)(w / img.width, h / img.height)
   const dw = img.width * ratio
   const dh = img.height * ratio
   ctx.drawImage(img, (w - dw) / 2, (h - dh) / 2, dw, dh)

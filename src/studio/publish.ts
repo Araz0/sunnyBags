@@ -1,6 +1,7 @@
 import { ExtendedBag } from '../data'
 import { extFor, renderBagImage, renderPhoto } from '../utils/export'
 import { getExtraPhoto } from './extras'
+import { DIMENSION_BG, dimensionImage } from '../utils/dimensions'
 import { cloudinaryReady, Connections, routeFor } from './connections'
 import { getBag } from './helpers'
 import { studioActions } from './store'
@@ -16,13 +17,18 @@ export const renderPostImages = async (
   bag: ExtendedBag,
   forceJpeg = false,
 ): Promise<RenderedImage[]> => {
-  // Slide order: front, back, then the optional extra photo.
+  // Slide order: front, back, size diagram, then the optional extra photo.
   const sides: ('A' | 'B')[] = post.design.side === 'both' ? ['A', 'B'] : [post.design.side]
   const format = forceJpeg ? 'image/jpeg' : post.design.format
   const rendered = await Promise.all(
     sides.map((side) => renderBagImage({ ...post.design, format, item: bag, side }).catch(() => null)),
   )
   const urls = rendered.filter((u): u is string => !!u) // skip a missing back photo
+  const dims = post.design.includeDimensions !== false ? dimensionImage(bag) : undefined
+  if (dims && urls.length) {
+    const url = await renderPhoto({ src: dims, w: post.design.w, h: post.design.h, bgColor: DIMENSION_BG, format, fit: 'contain' }).catch(() => null)
+    if (url) urls.push(url)
+  }
   const extra = post.design.includeExtra !== false ? getExtraPhoto(bag.id) : undefined
   if (extra) {
     urls.push(await renderPhoto({ src: extra, w: post.design.w, h: post.design.h, bgColor: post.design.bgColor, format }))
